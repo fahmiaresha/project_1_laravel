@@ -1,6 +1,6 @@
-@extends('penjualan/template')
+@extends('master/customer/template')
 
-@section('title','Halaman Home')
+@section('title','Halaman Tambah Customer')
 
 @section('konten')
 

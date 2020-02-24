@@ -1,4 +1,4 @@
-@extends('penjualan/template')
+@extends('master/customer/template')
 
 @section('title','Halaman Home')
 
@@ -14,7 +14,7 @@
       <input type="hidden" name="id" value="{{ $cus->customer_Id }}">
       <div class="form-row">
     <div class="col">
-    <label for="first_name"><font size="5">Full Name</font></label>
+    <label for="first_name"><font size="4">First Name</font></label>
     <input type="text" class="form-control @error('first_name') is-invalid @enderror"
      id="first_name" placeholder="First name " name="first_name"
      value="{{ $cus->first_name }}" required>
@@ -24,7 +24,7 @@
   </div>
 
     <div class="col">
-    <label for="last_name"><font size="5">.</font></label>
+    <label for="last_name"><font size="4">Last Name</font></label>
     <input type="text" class="form-control @error('last_name') is-invalid @enderror" 
      id="last_name" placeholder="Last name" name="last_name" 
      value="{{ $cus->last_name }}" required>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="form-group">
-    <label for="phone"><font size="5">Phone</font></label>
+    <label for="phone"><font size="4">Phone</font></label>
     <input type="text" class="form-control @error('phone') is-invalid @enderror" 
     id="phone" placeholder="08xxxxxxxx
      " name="phone" value="{{ $cus->phone }}"  required>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group">
-    <label for="email"><font size="5">Email</font></label>
+    <label for="email"><font size="4">Email</font></label>
     <input type="text" class="form-control @error('email') is-invalid @enderror" 
     id="email" placeholder="email@example.com" name="email" 
     value="{{ $cus->email }}" required>
@@ -55,7 +55,7 @@
   </div>
 
   <div class="form-group">
-    <label for="street"><font size="5">Street</font></label>
+    <label for="street"><font size="4">Street</font></label>
     <input type="text" class="form-control @error('street') is-invalid @enderror" 
     id="street" placeholder="Masukkan Jalan " name="street" 
     value="{{ $cus->street }}" required>
@@ -67,7 +67,7 @@
 
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="city"><font size="5">City</font></label>
+      <label for="city"><font size="4">City</font></label>
       <input type="text" class="form-control @error('city') is-invalid @enderror" 
       id="city" name="city" placeholder="Kota"
       value="{{ $cus->city }}"  required>
@@ -76,7 +76,7 @@
       @enderror
     </div>
     <div class="form-group col-md-4">
-      <label for="state"><font size="5">State</font></label>
+      <label for="state"><font size="4">State</font></label>
       <select id="state" name="state" class="form-control @error('state') is-invalid @enderror"
        placeholder="Kota" value="{{ $cus->state }}"  required>
         <option selected>Indonesia</option>
@@ -89,7 +89,7 @@
       @enderror
     </div>
     <div class="form-group col-md-4">
-      <label for="zip_code"><font size="5">Zip_Code</font></label>
+      <label for="zip_code"><font size="4">Zip_Code</font></label>
       <input type="text" class="form-control @error('zip_code') is-invalid @enderror" id="zip_code" name="zip_code"
       placeholder="Kodepos"
       value="{{ $cus->zip_code }}"  required>

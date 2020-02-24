@@ -1,6 +1,6 @@
-@extends('penjualan/template')
+@extends('master/customer/template')
 
-@section('title','Halaman Home')
+@section('title','Halaman Customer')
 
 @section('konten')
 
@@ -33,7 +33,7 @@
       </div> 
     </font>
     @endif
-    <font size="3"><table class="table table-striped table-bordered mydatatable" 
+    <font size="2"><table class="table table-striped table-bordered mydatatable" 
     height= width="0%"> </font>
     <thead class="thead-dark">
     <tr>
@@ -71,6 +71,8 @@
   <path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"></path>
 </svg>Edit</a>
           
+<a href="/customer/destroy/{{ $cus->customer_Id }}">
+        <font color="red">Yes</font></a></button>
         <!-- Button trigger modal -->
        
 <button type="button" class="badge badge-danger" data-toggle="modal" 
@@ -79,7 +81,7 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
 </svg>Delete</button>
         
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,7 +95,7 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/customer/hapus/{{ $cus->customer_Id }}">
+        <a href="/customer/destroy/{{ $cus->customer_Id }}">
         <font color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal">No</button>
       </div>

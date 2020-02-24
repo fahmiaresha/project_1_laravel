@@ -1,41 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\master;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ControllerTampil extends Controller
+
+class Controller_Customer extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    // public function tampil_mahasiswa(){
-    // $users = DB::table('users')->get();
-    // $mahasiswa = DB::table('murid')->get();
-    //dump($mahasiswa);
-    //return view ('penjualan/home', ['mahasiswa' => $mahasiswa]);
-    //}
-
-    public function tampil_home(){
-        return view('penjualan/home');
-    }
-
-    public function tampil_customer(){
+    public function index()
+    {
         $customer = DB::table('customer')->get();
        
-       //dump($customer);
-        return view ('penjualan/customer',['customer' =>$customer]);
-
+        //dump($customer);
+         return view ('master/customer/index',['customer' =>$customer]);
+ 
     }
-     public function about(){
-         return view('penjualan/about');
-     }
 
-   
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +30,7 @@ class ControllerTampil extends Controller
      */
     public function create()
     {
-       return view ('penjualan/create');
+        return view ('master/customer/create');
     }
 
     /**
@@ -53,9 +40,8 @@ class ControllerTampil extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-        //insert
-          $request->validate([
+    {
+        $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'phone' => 'required|numeric',
@@ -78,7 +64,7 @@ class ControllerTampil extends Controller
         ]);
 
         //mengalihkan halaman
-        return redirect('/customer')->with('status','Data Berhasil Di
+        return redirect('customer/index')->with('status','Data Berhasil Di
          Tambahkan');
     }
 
@@ -90,7 +76,7 @@ class ControllerTampil extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -101,11 +87,11 @@ class ControllerTampil extends Controller
      */
     public function edit($id)
     {
-        //mengambil id
-        $customer= DB::table('customer')->where('customer_Id',$id)->get();
+       //mengambil id
+       $customer= DB::table('customer')->where('customer_Id',$id)->get();
        // dump($customer);
-        //mengirim data yang telah di ambil ke view
-        return view('penjualan/edit',['customer' => $customer]);
+       //mengirim data yang telah di ambil ke view
+        return view('master/customer/edit',['customer' => $customer]);
     }
 
     /**
@@ -141,7 +127,7 @@ class ControllerTampil extends Controller
         ]);
 
         //redirect
-        return redirect('/customer')->with('status2','Data Berhasil Di
+        return redirect('/customer/index')->with('status2','Data Berhasil Di
         Edit');
     }
 
@@ -152,11 +138,10 @@ class ControllerTampil extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        DB::table('customer')->where('customer_Id',$id)->delete();
-
+    {  DB::table('customer')->where('customer_Id',$id)->delete();
+        
         //mengalihkan halaman
-        return redirect('/customer')->with('status3','Data Berhasil Di
+        return redirect('/customer/index')->with('status3','Data Berhasil Di
         Hapus');
     }
 }
