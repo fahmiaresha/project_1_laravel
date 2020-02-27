@@ -82,7 +82,7 @@
       @enderror
     </div>
     <div class="form-group col-md-4">
-      <label for="zip_code"><font size="4">Zip_Code</font></label>
+      <label for="zip_code"><font size="4">Zip Code</font></label>
       <input type="text" class="form-control @error('zip_code') is-invalid @enderror" id="zip_code" name="zip_code"
       placeholder="Kodepos" required>
       @error('zip_code')
@@ -91,7 +91,7 @@
     </div>
    
   </div>
-   <button type="submit" class="btn btn-primary">Tambah Data </button>
+   <button type="submit" class="btn btn-primary">Tambah Data!</button>
 </form>
 
       </div>

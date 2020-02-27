@@ -22,7 +22,8 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="{{ url('/about') }}">About</a>
-      <a class="nav-item nav-link" href="{{ url('/customer') }}">Customer</a>
+      <a class="nav-item nav-link" href="{{ url('/customer/index') }}">Customer</a>
+      <a class="nav-item nav-link" href="{{ url('/kategori/index') }}">Kategori Produk</a>
      
     </div>
   </div>

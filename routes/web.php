@@ -28,42 +28,41 @@ Route::get('/admin','Controller_Admin@tampil_admin');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
 Route::get('/customer/index','master\Controller_Customer@index');
-
 Route::get('/customer/create','master\Controller_Customer@create');
 Route::post('/customer/store','master\Controller_Customer@store');
-
 Route::get('/customer/edit/{id}','master\Controller_Customer@edit');
 Route::post('/customer/update','master\Controller_Customer@update');
-
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
 
-Route::get('kategori/index','master\Controller_Categorie@index');
-Route::get('kategori/create','master\Controller_Categorie@create');
-Route::get('kategori/edit','master\Controller_Categorie@edit');
-Route::get('kategori/destroy','master\Controller_Categorie@destroy');
+Route::get('/kategori/index','master\Controller_Categorie@index');
+Route::get('/kategori/create','master\Controller_Categorie@create');
+Route::post('/kategori/store','master\Controller_Categorie@store');
+Route::get('/kategori/edit/{id}','master\Controller_Categorie@edit');
+Route::put('/kategori/update/{id}','master\Controller_Categorie@update');
+Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 
 
-Route::get('user/index','master\Controller_User@index');
-Route::get('user/create','master\Controller_User@create');
-Route::get('user/edit','master\Controller_User@edit');
-Route::get('user/destroy','master\Controller_User@destroy');
+Route::get('/user/index','master\Controller_User@index');
+Route::get('/user/create','master\Controller_User@create');
+Route::get('/user/edit','master\Controller_User@edit');
+Route::get('/user/destroy','master\Controller_User@destroy');
 
-Route::get('product/index','master\Controller_Product@index');
-Route::get('product/create','master\Controller_Product@create');
-Route::get('product/edit','master\Controller_Product@edit');
-Route::get('product/destroy','master\Controller_Product@destroy');
-
-
-Route::get('sales/index','transaksi\Controller_Sales@index');
-Route::get('sales/create','transaksi\Controller_Sales@create');
-Route::get('sales/edit','transaksi\Controller_Sales@edit');
-Route::get('sales/destroy','transaksi\Controller_Sales@destroy');
+Route::get('/product/index','master\Controller_Product@index');
+Route::get('/product/create','master\Controller_Product@create');
+Route::get('/product/edit','master\Controller_Product@edit');
+Route::get('/product/destroy','master\Controller_Product@destroy');
 
 
-Route::get('sales_detail/index','transaksi\Controller_Sales_Detail@index');
-Route::get('sales_detail/create','transaksi\Controller_Sales_Detail@create');
-Route::get('sales_detail/edit','transaksi\Controller_Sales_Detail@edit');
-Route::get('sales_detail/destroy','transaksi\Controller_Sales_Detail@destroy');
+Route::get('/sales/index','transaksi\Controller_Sales@index');
+Route::get('/sales/create','transaksi\Controller_Sales@create');
+Route::get('/sales/edit','transaksi\Controller_Sales@edit');
+Route::get('/sales/destroy','transaksi\Controller_Sales@destroy');
+
+
+Route::get('/sales_detail/index','transaksi\Controller_Sales_Detail@index');
+Route::get('/sales_detail/create','transaksi\Controller_Sales_Detail@create');
+Route::get('/sales_detail/edit','transaksi\Controller_Sales_Detail@edit');
+Route::get('/sales_detail/destroy','transaksi\Controller_Sales_Detail@destroy');
 
 /*
 Route::get('MyView', function () {

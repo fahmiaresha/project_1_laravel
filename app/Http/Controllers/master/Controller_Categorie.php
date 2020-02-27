@@ -4,6 +4,7 @@ namespace App\Http\Controllers\master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\categorie;
 
 class Controller_Categorie extends Controller
 {
@@ -14,7 +15,9 @@ class Controller_Categorie extends Controller
      */
     public function index()
     {
-       return "Ini Halaman Index";
+        $categories= categorie::all();
+        return view('master/categorie/index' , ['kategori' => $categories]);
+       //return view('master/categorie/index ');
     }
 
     /**
@@ -24,7 +27,7 @@ class Controller_Categorie extends Controller
      */
     public function create()
     {
-        return 'Ini Halaman Create';
+        return view('master/categorie/create');
     }
 
     /**
@@ -35,7 +38,15 @@ class Controller_Categorie extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_name' => 'required'
+          ]);
+          categorie::create([
+             'category_name' => $request->category_name
+          ]);
+
+          return redirect('/kategori/index')->with('status','Data Berhasil Di
+          Tambahkan');
     }
 
     /**
@@ -55,9 +66,10 @@ class Controller_Categorie extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return 'Ini Halaman Edit';
+        $cat=categorie::find($id);
+        return view('master/categorie/edit',['kategori' =>$cat]);
     }
 
     /**
@@ -69,7 +81,15 @@ class Controller_Categorie extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'category_name' => 'required'
+          ]);
+
+          $kategori=categorie::find($id); 
+          $kategori->category_name = $request->category_name;
+          $kategori->save();
+
+          return redirect('master/kategori/index');
     }
 
     /**
@@ -78,8 +98,10 @@ class Controller_Categorie extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        return 'Ini Halaman Destroy';
+        $kategori= categorie::find($id);
+        $kategori->delete();
+        return redirect('master/kategori/index');
     }
 }

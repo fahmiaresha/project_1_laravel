@@ -98,7 +98,7 @@
       @enderror
     </div>
 
-   <button type="submit" class="btn btn-primary"> Simpan Data </button>
+   <button type="submit" class="btn btn-primary"> Simpan Data!</button>
 </form>
 @endforeach
       </div>

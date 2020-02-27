@@ -1,19 +1,28 @@
-@extends('penjualan/template')
+@extends('master/customer/template')
 
-@section('title','Halaman Home')
+@section('title','Halaman Kategori Produk')
 
 @section('konten')
 
 <div class="container">
    <div class="row">
       <div class="col-12">
-  <h2 class ="mt-3">Daftar Kategori</h2>
-    <a href="/customer/create" class="btn btn-primary my-3">Tambah Data Kategori</a> 
+  <h2 class ="mt-3">Daftar Kategori Produk</h2>
+    <a href="/kategori/create" class="btn btn-primary my-3">Tambah Data Kategori Produk</a> 
 
-    <font size="3"><table class="table table-striped table-bordered mydatatable" 
+    @if (session('status'))
+    <font size="4"> 
+      <div class="alert alert-success">
+          {{ session ('status') }} 
+      </div>
+    </font>
+    @endif
+   
+    <font size="2"><table class="table table-striped table-bordered mydatatable" 
     height= width="0%"> </font>
     <thead class="thead-dark">
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Category_id</th>
       <th scope="col">Category_name</th>
       <th scope="col">Aksi</th>
@@ -21,14 +30,15 @@
   </thead>
 
   <tbody>
-  @foreach($categories as $kategori )
+  @foreach($kategori as $kt )
     <tr>
       <th scope="row"> {{ $loop->iteration }}</th>
-      <td>{{ $kategori->category_name }}</td>
+      <td>{{ $kt->category_id }}</td>
+      <td>{{ $kt->category_name }}</td>
       <td>
         <form>
        
-        <a href="/customer/edit/{{ $kategori->category_id }}" 
+        <a href="/kategori/edit/{{ $kt->category_id }}" 
            class="badge badge-success"><svg class="bi bi-check-box" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"></path>
@@ -42,7 +52,7 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
 </svg>Delete</button>
         
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -56,7 +66,7 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/customer/hapus/{{ $kategori->category_id }}">
+        <a href="/kategori/destroy/{{ $kt->category_id }}">
         <font color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal">No</button>
       </div>
@@ -73,6 +83,9 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
   </tbody>
 </table>
   
+<div class="container">
+      <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
+    </div>
 
       </div>
    </div>

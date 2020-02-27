@@ -37,6 +37,7 @@
     height= width="0%"> </font>
     <thead class="thead-dark">
     <tr>
+    <th scope="col">#</th>
       <th scope="col">Customer_id</th>
       <th scope="col">First_name</th>
       <th scope="col">Last_name</th>
@@ -54,6 +55,7 @@
   @foreach($customer as $cus )
     <tr>
       <th scope="row"> {{ $loop->iteration }}</th>
+      <td>{{ $cus->customer_Id }}</td>
       <td>{{ $cus->first_name }}</td>
       <td>{{ $cus->last_name }}</td>
       <td>{{ $cus->phone }}</td>
@@ -71,8 +73,6 @@
   <path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"></path>
 </svg>Edit</a>
           
-<a href="/customer/destroy/{{ $cus->customer_Id }}">
-        <font color="red">Yes</font></a></button>
         <!-- Button trigger modal -->
        
 <button type="button" class="badge badge-danger" data-toggle="modal" 
@@ -112,6 +112,9 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
   </tbody>
 </table>
   
+<div class="container">
+      <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
+    </div>
 
       </div>
    </div>
