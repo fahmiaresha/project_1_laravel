@@ -33,12 +33,12 @@
       </div> 
     </font>
     @endif
-    <font size="2"><table class="table table-striped table-bordered mydatatable" 
-    height= width="0%"> </font>
+    <font size="2">
+      <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
-      <th scope="col">Customer_id</th>
+      <th scope="col">ID</th>
       <th scope="col">First_name</th>
       <th scope="col">Last_name</th>
       <th scope="col">Phone</th>
@@ -47,7 +47,7 @@
       <th scope="col">City</th>
       <th scope="col">State</th>
       <th scope="col">Zip_code</th>
-      <th scope="col">Aksi</th>
+      <th width="90%" scope="col">Aksi</th>
     </tr>
   </thead>
 
@@ -76,12 +76,12 @@
         <!-- Button trigger modal -->
        
 <button type="button" class="badge badge-danger" data-toggle="modal" 
-data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
 </svg>Delete</button>
         
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$cus -> customer_Id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -119,4 +119,10 @@ data-target="#exampleModal"><svg class="bi bi-trash-fill" width="20px" height="2
       </div>
    </div>
   </div>
-@endsection 
+@endsection
+
+@section('tambahscript')
+<script>
+     $('.mydatatable').DataTable();
+</script> >
+@endsection

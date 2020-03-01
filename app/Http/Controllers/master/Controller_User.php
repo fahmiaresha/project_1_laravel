@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\master;
 
+use App\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class Controller_User extends Controller
      */
     public function index()
     {
-        return 'ini halaman index';
+        $us=users::all();
+        dump($us);
+        return view('master/user/index' , ['user' => $us]);
     }
 
     /**

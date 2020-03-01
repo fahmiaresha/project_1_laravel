@@ -24,14 +24,14 @@ Route::post('/customer/update','ControllerTampil@update');
 Route::get('/customer/hapus/{id}' ,'ControllerTampil@destroy');
 */
 
-Route::get('/admin','Controller_Admin@tampil_admin');
+Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
 Route::get('/customer/index','master\Controller_Customer@index');
 Route::get('/customer/create','master\Controller_Customer@create');
 Route::post('/customer/store','master\Controller_Customer@store');
 Route::get('/customer/edit/{id}','master\Controller_Customer@edit');
-Route::post('/customer/update','master\Controller_Customer@update');
+Route::get('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
 
 Route::get('/kategori/index','master\Controller_Categorie@index');

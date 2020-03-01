@@ -10,7 +10,7 @@ class Controller_Admin extends Controller
         return view('admin/admin');
     }
 
-    public function tampil_form(){
-        return view('admin/admin2');
+    public function coba_tampil(){
+        return view('template/admin');
     }
 }

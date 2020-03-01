@@ -41,7 +41,7 @@ class Controller_Categorie extends Controller
         $request->validate([
             'category_name' => 'required'
           ]);
-          categorie::create([
+            categorie::create([
              'category_name' => $request->category_name
           ]);
 
@@ -89,7 +89,8 @@ class Controller_Categorie extends Controller
           $kategori->category_name = $request->category_name;
           $kategori->save();
 
-          return redirect('master/kategori/index');
+          return redirect('/kategori/index')->with('status2','Data Berhasil Di
+          Edit');
     }
 
     /**
@@ -102,6 +103,15 @@ class Controller_Categorie extends Controller
     {
         $kategori= categorie::find($id);
         $kategori->delete();
-        return redirect('master/kategori/index');
+        return redirect('/kategori/index')->with('status3','Data Berhasil Di
+        delete');
+    }
+
+    public function destroy2(categorie $id)
+    {
+        $id->delete(); //Fungsi untuk menghapus data sesuai dengan ID yang dipilih
+
+        return redirect('master/kategori/index')->with('status3','Data Berhasil Di
+        delete');
     }
 }
