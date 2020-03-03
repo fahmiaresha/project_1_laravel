@@ -44,7 +44,9 @@ Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 
 Route::get('/user/index','master\Controller_User@index');
 Route::get('/user/create','master\Controller_User@create');
+Route::post('/user/store','master\Controller_User@store');
 Route::get('/user/edit','master\Controller_User@edit');
+Route::put('/user/update/{id}','master\Controller_User@update');
 Route::get('/user/destroy','master\Controller_User@destroy');
 
 Route::get('/product/index','master\Controller_Product@index');

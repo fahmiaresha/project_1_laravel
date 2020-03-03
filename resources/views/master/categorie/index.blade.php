@@ -6,9 +6,44 @@
 
 <div class="container">
    <div class="row">
-      <div class="col-12">
-  <h2 class ="mt-3">Daftar Kategori Produk</h2>
-    <a href="/kategori/create" class="btn btn-primary my-3">Tambah Data Kategori Produk</a> 
+      <div class="col-20">
+  <h2 class ="mt-3">Data Kategori</h2>
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal">
+  Tambah Data Kategori
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Form Insert Data Categorie</font></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <form method="post" action="/kategori/store">
+      {{ csrf_field() }}
+    <label for="category_name"><font size="4">Category Name</font></label>
+    <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
+    id="category_name" placeholder="Masukkan Nama Kategori " name="category_name">
+    @error('category_name')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-danger">Reset</button>
+        <button type="submit" class="btn btn-success">Insert</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
     @if (session('status'))
     <font size="4"> 
@@ -41,7 +76,7 @@
       <th scope="col">#</th>
       <th scope="col">Category_id</th>
       <th scope="col">Category_name</th>
-      <th width="100px" scope="col">Aksi</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 
@@ -55,10 +90,55 @@
         <form>
        
         <a href="/kategori/edit/{{ $kt-> category_id }}" 
-           class="badge badge-success"><svg class="bi bi-check-box" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
-  <path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"></path>
+           class="badge badge-success"><svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
 </svg>Edit</a>
+
+<!-- Button trigger modal -->
+<button type="button" class="badge badge-success" data-toggle="modal" 
+data-target="#editModal{{$kt -> category_id}}">
+<svg class="bi bi-pencil" width="23px" height="23px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
+</svg>Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal{{$kt -> category_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModal{{$kt -> category_id}}">Form Edit Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form method="post" action="/kategori/update/{{ $kt->category_id }}">
+      {{ csrf_field() }}
+      {{ method_field('PUT') }}
+
+  <div class="form-group">
+    <label for="category_name"><font size="4">Category Name</font></label>
+    <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
+    id="category_name" name="category_name" 
+     value="{{ $kt->category_name }}" required>
+    @error('category_name')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+ 
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
           
         <!-- Button trigger modal -->
        
@@ -83,8 +163,8 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
         <a href="/kategori/destroy/{{ $kt->category_id }}">
-        <font color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal">No</button>
+        <font size="3" color="white">Yes</font></a></button>
+        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="3">No</font></button>
       </div>
     </div>
   </div>
@@ -106,12 +186,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
 @section('tambahscript')
 <script>
 $('.mydatatable').dataTable( {
-  "columns": [
-    { "width": "10%" },
-    { "width": "10%" },
-    { "width": "50%" },
-    { "width": "25%" }
-  ]
+  
 } );
 </script>
 @endsection

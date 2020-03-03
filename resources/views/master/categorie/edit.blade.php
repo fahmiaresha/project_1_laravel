@@ -6,7 +6,7 @@
 
 <div class="container">
    <div class="row">
-      <div class="col-5">
+      <div class="col-10">
   <h2 class ="mt-3"><font size="6">Form Edit Data Kategori</font></h2>
       <form method="post" action="/kategori/update/{{ $kategori->category_id }}">
       {{ csrf_field() }}

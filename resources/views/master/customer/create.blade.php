@@ -6,7 +6,7 @@
 
 <div class="container">
    <div class="row">
-      <div class="col-5">
+      <div class="col-10">
   <h2 class ="mt-3"><font size="6">Form Tambah Data Customer</font></h2>
       <form method="post" action="/customer/store">
       {{ csrf_field() }}

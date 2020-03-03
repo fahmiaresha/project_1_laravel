@@ -16,7 +16,7 @@ class Controller_User extends Controller
     public function index()
     {
         $us=users::all();
-        dump($us);
+       // dump($us);
         return view('master/user/index' , ['user' => $us]);
     }
 
@@ -38,7 +38,25 @@ class Controller_User extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required' ,
+            'last_name' => 'required' ,
+            'email' => 'required|email' ,
+            'phone' => 'required|numeric' ,
+            'password' => 'required' ,
+            'job_status' => 'required' 
+          ]);
+            users::create([
+             'first_name' => $request->first_name ,
+             'last_name' => $request->last_name ,
+             'email' => $request->email ,
+             'phone' => $request->phone ,
+             'password' => $request->password ,
+             'job_status' => $request->job_status 
+          ]);
+
+          return redirect('/user/index')->with('status','Data Berhasil Di
+          Tambahkan');
     }
 
     /**
