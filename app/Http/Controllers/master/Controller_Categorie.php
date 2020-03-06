@@ -5,6 +5,7 @@ namespace App\Http\Controllers\master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\categorie;
+use Illuminate\Support\Facades\DB;
 
 class Controller_Categorie extends Controller
 {
@@ -79,6 +80,23 @@ class Controller_Categorie extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update2(Request $request)
+    {
+        $request->validate([
+            'category_name' => 'required'
+          ]);
+          
+        //edit
+        DB::table('categories')->where('category_id',$request->id)->update([
+            'category_name' => $request->category_name
+        ]);
+
+        //redirect
+        return redirect('/kategori/index')->with('status2','Data Berhasil Di
+        Edit');
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([

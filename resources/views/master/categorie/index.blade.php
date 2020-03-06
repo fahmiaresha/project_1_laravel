@@ -29,7 +29,7 @@
       {{ csrf_field() }}
     <label for="category_name"><font size="4">Category Name</font></label>
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
-    id="category_name" placeholder="Masukkan Nama Kategori " name="category_name">
+    id="category_name" placeholder="Category Name " name="category_name">
     @error('category_name')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
@@ -115,9 +115,9 @@ data-target="#editModal{{$kt -> category_id}}">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/kategori/update/{{ $kt->category_id }}">
+      <form method="post" action="/kategori/update">
       {{ csrf_field() }}
-      {{ method_field('PUT') }}
+      <input type="hidden" name="id" value="{{ $kt->category_id }}">
 
   <div class="form-group">
     <label for="category_name"><font size="4">Category Name</font></label>

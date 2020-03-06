@@ -5,6 +5,7 @@ namespace App\Http\Controllers\master;
 use App\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Controller_User extends Controller
 {
@@ -46,14 +47,15 @@ class Controller_User extends Controller
             'password' => 'required' ,
             'job_status' => 'required' 
           ]);
-            users::create([
-             'first_name' => $request->first_name ,
-             'last_name' => $request->last_name ,
-             'email' => $request->email ,
-             'phone' => $request->phone ,
-             'password' => $request->password ,
-             'job_status' => $request->job_status 
-          ]);
+
+          DB::table('user')->insert([
+            'first_name' => $request->first_name ,
+            'last_name' => $request->last_name ,
+            'email' => $request->email ,
+            'phone' => $request->phone ,
+            'password' => $request->password ,
+            'job_status' => $request->job_status 
+        ]);          
 
           return redirect('/user/index')->with('status','Data Berhasil Di
           Tambahkan');
@@ -99,8 +101,11 @@ class Controller_User extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        return 'ini halaman destroy';
+        $kategori= users::find($id);
+        $kategori->delete();
+        return redirect('/user/index')->with('status3','Data Berhasil Di
+        delete');
     }
 }

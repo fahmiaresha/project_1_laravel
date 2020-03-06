@@ -27,18 +27,22 @@ Route::get('/customer/hapus/{id}' ,'ControllerTampil@destroy');
 Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
+
 Route::get('/customer/index','master\Controller_Customer@index');
 Route::get('/customer/create','master\Controller_Customer@create');
 Route::post('/customer/store','master\Controller_Customer@store');
 Route::get('/customer/edit/{id}','master\Controller_Customer@edit');
-Route::get('/customer/update','master\Controller_Customer@update');
+Route::post('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
+
+Route::get('/login','master\Controller_Customer@index');
+Route::get('/kontak','master\Controller_Customer@kontak');
 
 Route::get('/kategori/index','master\Controller_Categorie@index');
 Route::get('/kategori/create','master\Controller_Categorie@create');
 Route::post('/kategori/store','master\Controller_Categorie@store');
 Route::get('/kategori/edit/{id}','master\Controller_Categorie@edit');
-Route::put('/kategori/update/{id}','master\Controller_Categorie@update');
+Route::post('/kategori/update','master\Controller_Categorie@update');
 Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 
 
@@ -47,12 +51,13 @@ Route::get('/user/create','master\Controller_User@create');
 Route::post('/user/store','master\Controller_User@store');
 Route::get('/user/edit','master\Controller_User@edit');
 Route::put('/user/update/{id}','master\Controller_User@update');
-Route::get('/user/destroy','master\Controller_User@destroy');
+Route::get('/user/destroy/{id}','master\Controller_User@destroy');
 
 Route::get('/product/index','master\Controller_Product@index');
 Route::get('/product/create','master\Controller_Product@create');
+Route::post('/product/store','master\Controller_Product@store');
 Route::get('/product/edit','master\Controller_Product@edit');
-Route::get('/product/destroy','master\Controller_Product@destroy');
+Route::get('/product/destroy/{id}','master\Controller_Product@destroy');
 
 
 Route::get('/sales/index','transaksi\Controller_Sales@index');

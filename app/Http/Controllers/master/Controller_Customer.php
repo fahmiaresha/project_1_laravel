@@ -14,6 +14,15 @@ class Controller_Customer extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function kontak(){
+        return view('template/kontak');
+    }
+
+    public function login(){
+        return view('template/login');
+    }
+    
     public function index()
     {
         $customer = DB::table('customer')->get();

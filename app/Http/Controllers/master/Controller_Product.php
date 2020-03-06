@@ -4,6 +4,7 @@ namespace App\Http\Controllers\master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Controller_Product extends Controller
 {
@@ -14,7 +15,9 @@ class Controller_Product extends Controller
      */
     public function index()
     {
-        return 'ini halaman index';
+        $product = DB::table('product')->get();
+        //dump($product);
+        return view ('master/product/index',['product' =>$product]);
     }
 
     /**
@@ -34,8 +37,19 @@ class Controller_Product extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {      
+        DB::table('product')->insert([
+            'product_id' => $request->product_id,
+            'category_id' => $request->category_id,
+            'product_name' => $request->product_name,
+            'product_price' => $request->product_price,
+            'product_stok' => $request->product_stok,
+            'explanation' => $request->explanation,
+        ]);
+
+        //mengalihkan halaman
+        return redirect('product/index')->with('status','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -78,8 +92,12 @@ class Controller_Product extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        return 'ini halaman destroy';
+        DB::table('product')->where('product_id',$id)->delete();
+        
+        //mengalihkan halaman
+        return redirect('/product/index')->with('status3','Data Berhasil Di
+        Hapus');
     }
 }

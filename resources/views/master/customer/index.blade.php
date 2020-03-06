@@ -68,7 +68,7 @@
   <div class="form-group">
     <label for="street"><font size="4">Street</font></label>
     <input type="text" class="form-control @error('street') is-invalid @enderror" 
-    id="street" placeholder="Masukkan Jalan " name="street" value="{{ old('street') }}">
+    id="street" placeholder=" Jalan " name="street" value="{{ old('street') }}">
     @error('street')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
