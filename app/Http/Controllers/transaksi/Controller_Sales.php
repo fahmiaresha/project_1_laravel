@@ -4,6 +4,7 @@ namespace App\Http\Controllers\transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Controller_Sales extends Controller
 {
@@ -14,7 +15,9 @@ class Controller_Sales extends Controller
      */
     public function index()
     {
-        return 'ini halaman edit';
+        $sales = DB::table('sales')->get();
+        dump($sales);
+        //  return view('transaksi/sales/index');
     }
 
     /**

@@ -78,9 +78,12 @@ class Controller_User extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return 'ini halaman edit';
+        $user= DB::table('user')->where('user_id',$id)->get();
+        // dump($user);
+        //mengirim data yang telah di ambil ke view
+         return view('master/user/edit',['user' => $user]);
     }
 
     /**
@@ -90,9 +93,30 @@ class Controller_User extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'password' => 'required',
+            'job_status' => 'required'
+          ]);
+          
+        //edit
+        DB::table('user')->where('user_id',$request->id)->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $request->password,
+            'job_status' => $request->job_status,
+        ]);
+
+        //redirect
+        return redirect('/user/index')->with('status2','Data Berhasil Di
+        Edit');
     }
 
     /**

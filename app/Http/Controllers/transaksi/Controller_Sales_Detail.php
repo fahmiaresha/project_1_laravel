@@ -14,7 +14,7 @@ class Controller_Sales_Detail extends Controller
      */
     public function index()
     {
-        return 'ini halaman index';
+        return view('transaksi/sales_detail/create');
     }
 
     /**
@@ -24,7 +24,7 @@ class Controller_Sales_Detail extends Controller
      */
     public function create()
     {
-        'ini halaman create';
+        return view('transaksi/sales_detail/create');
     }
 
     /**

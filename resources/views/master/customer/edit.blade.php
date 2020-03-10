@@ -6,7 +6,7 @@
 
 <div class="container">
    <div class="row">
-      <div class="col-10">
+      <div class="col-6">
   <h2 class ="mt-3"><font size="6">Form Edit Data Customer</font></h2>
   @foreach($customer as $cus)
       <form method="post" action="/customer/update">

@@ -49,14 +49,15 @@ Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 Route::get('/user/index','master\Controller_User@index');
 Route::get('/user/create','master\Controller_User@create');
 Route::post('/user/store','master\Controller_User@store');
-Route::get('/user/edit','master\Controller_User@edit');
-Route::put('/user/update/{id}','master\Controller_User@update');
+Route::get('/user/edit/{id}','master\Controller_User@edit');
+Route::post('/user/update','master\Controller_User@update');
 Route::get('/user/destroy/{id}','master\Controller_User@destroy');
 
 Route::get('/product/index','master\Controller_Product@index');
 Route::get('/product/create','master\Controller_Product@create');
 Route::post('/product/store','master\Controller_Product@store');
-Route::get('/product/edit','master\Controller_Product@edit');
+Route::get('/product/edit/{id}','master\Controller_Product@edit');
+Route::post('/product/update','master\Controller_Product@update');
 Route::get('/product/destroy/{id}','master\Controller_Product@destroy');
 
 
