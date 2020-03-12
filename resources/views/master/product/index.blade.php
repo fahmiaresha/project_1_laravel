@@ -135,13 +135,96 @@ data-target="#exampleModal4">
       <td>{{ $pr->product_stok }}</td>
       <td>{{ $pr->explanation }}</td>
       <td>
-        <form>
+      
        
-        <a href="/product/edit/{{ $pr->product_id }}" 
+        <!-- <a href="/product/edit/{{ $pr->product_id }}" 
            class="badge badge-success"><svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
-</svg>Edit</a>
+</svg>Edit</a> -->
+
+<!-- Button trigger modal -->
+<button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $pr->product_id }}">
+<svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
+</svg> Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal{{ $pr->product_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Form Edit Data Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form method="post" action="/product/update">
+      {{ csrf_field() }}
+      <input type="hidden" name="id" value="{{ $pr->product_id }}">
+
+  <div class="form-group">
+    <label for="category_id"><font size="4">Category_Id</font></label>
+    <input type="text" class="form-control @error('category_id') is-invalid @enderror" 
+    id="category_id" placeholder="Category_Id " name="category_id" value="{{ $pr->category_id }}"  required>
+    @error('category_id')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="product_name"><font size="4">Name</font></label>
+    <input type="text" class="form-control @error('product_name') is-invalid @enderror" 
+    id="product_name" placeholder="Product_Name" name="product_name" 
+    value="{{ $pr->product_name }}" required>
+    @error('product_name')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="product_price"><font size="4">Price</font></label>
+    <input type="text" class="form-control @error('product_price') is-invalid @enderror" 
+    id="product_price" placeholder="Product_Price" name="product_price" 
+    value="{{ $pr->product_price }}" required>
+    @error('product_price')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="product_stok"><font size="4">Stok</font></label>
+    <input type="number" class="form-control @error('product_stok') is-invalid @enderror" 
+    id="product_stok" placeholder="Product_Stok" name="product_stok" 
+    value="{{ $pr->product_stok }}" required>
+    @error('product_stok')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="explanation"><font size="4">Explanation</font></label>
+    <input type="text" class="form-control @error('explanation') is-invalid @enderror" 
+    id="explanation" placeholder="Explanation" name="explanation" 
+    value="{{ $pr->explanation }}" required>
+    @error('explanation')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
+      </div>
+</form>
+    </div>
+  </div>
+</div>
 
 
           

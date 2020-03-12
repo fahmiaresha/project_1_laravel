@@ -97,13 +97,13 @@ class Controller_Categorie extends Controller
         Edit');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'category_name' => 'required'
           ]);
 
-          $kategori=categorie::find($id); 
+          $kategori=categorie::find($request->id); 
           $kategori->category_name = $request->category_name;
           $kategori->save();
 

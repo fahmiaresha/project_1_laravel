@@ -87,16 +87,18 @@
       <td>{{ $kt->category_id }}</td>
       <td>{{ $kt->category_name }}</td>
       <td>
-        <form>
        
-        <a href="/kategori/edit/{{ $kt-> category_id }}" 
+       
+        <!-- <a href="/kategori/edit/{{ $kt-> category_id }}" 
            class="badge badge-success"><svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
-</svg>Edit</a>
+</svg>Edit</a> -->
+
+
 
 <!-- Button trigger modal -->
-<!--button type="button" class="badge badge-success" data-toggle="modal" 
+<button type="button" class="badge badge-success" data-toggle="modal" 
 data-target="#editModal{{$kt -> category_id}}">
 <svg class="bi bi-pencil" width="23px" height="23px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
@@ -105,18 +107,18 @@ data-target="#editModal{{$kt -> category_id}}">
 </button>
 
 <!-- Modal -->
-<!--div class="modal fade" id="editModal{{$kt -> category_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal{{$kt -> category_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModal{{$kt -> category_id}}">Form Edit Data</h5>
+        <h5 class="modal-title" id="editModal{{$kt -> category_id}}">Form Edit Data Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
       <form method="post" action="/kategori/update">
-      {{ csrf_field() }}
+      @csrf
       <input type="hidden" name="id" value="{{ $kt->category_id }}">
 
   <div class="form-group">
@@ -132,10 +134,11 @@ data-target="#editModal{{$kt -> category_id}}">
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        </form>
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
+       
       </div>
+      </form>
     </div>
   </div>
 </div>

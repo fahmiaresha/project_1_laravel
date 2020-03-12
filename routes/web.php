@@ -12,6 +12,7 @@
 */
 Route::get('/home', 'ControllerTampil@tampil_home');
 Route::get('/about', 'ControllerTampil@about');
+Route::get('/script', 'ControllerTampil@tes_script');
 
 /*
 Route::get('/customer', 'ControllerTampil@tampil_customer');
@@ -43,6 +44,7 @@ Route::get('/kategori/create','master\Controller_Categorie@create');
 Route::post('/kategori/store','master\Controller_Categorie@store');
 Route::get('/kategori/edit/{id}','master\Controller_Categorie@edit');
 Route::post('/kategori/update','master\Controller_Categorie@update');
+//Route::put('/kategori/update/{id}','master\Controller_Categorie@update');
 Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 
 

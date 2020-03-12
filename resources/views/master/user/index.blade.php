@@ -146,15 +146,110 @@ data-target="#exampleModal3">
       <td>{{ $us->password }}</td>
       <td>{{ $us->job_status }}</td>
       <td>
-        <form>
+        
        
-        <a href="/user/edit/{{ $us->customer_Id }}" 
+        <!-- <a href="/user/edit/{{ $us->user_id }}" 
            class="badge badge-success"><svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
-</svg>Edit</a>
+</svg>Edit</a> -->
 
+<!-- Button trigger modal -->
+<button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $us->user_id }}">
+<svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
+</svg>Edit
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="editModal{{ $us->user_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Form Edit Data User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <form method="post" action="/user/update">
+      {{ csrf_field() }}
+      <input type="hidden" name="id" value="{{ $us->user_id }}">
+
+      <div class="form-row">
+    <div class="col">
+    <label for="first_name"><font size="4">First Name</font></label>
+    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
+     id="first_name" placeholder="First name " name="first_name"
+     value="{{ $us->user_id }}" required>
+     @error('first_name')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+    <div class="col">
+    <label for="last_name"><font size="4">Last Name</font></label>
+    <input type="text" class="form-control @error('last_name') is-invalid @enderror" 
+     id="last_name" placeholder="Last name" name="last_name" 
+     value="{{ $us->user_id }}" required>
+     @error('last_name')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror  
+    </div>
+  </div>
+
+  
+  <div class="form-group">
+    <label for="email"><font size="4">Email</font></label>
+    <input type="email" class="form-control @error('email') is-invalid @enderror" 
+    id="email" placeholder="email" name="email" 
+    value="{{ $us->email }}" required>
+    @error('email')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="phone"><font size="4">Phone</font></label>
+    <input type="text" class="form-control @error('phone') is-invalid @enderror" 
+    id="phone" placeholder="phone" name="phone" 
+    value="{{ $us->phone }}" required>
+    @error('phone')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+ 
+  <div class="form-group">
+    <label for="password"><font size="4">Password</font></label>
+    <input type="text" class="form-control @error('password') is-invalid @enderror" 
+    id="password" placeholder="password" name="password" 
+    value="{{ $us->password }}" required>
+    @error('password')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="job_status"><font size="4">Job Status</font></label>
+    <input type="text" class="form-control @error('job_status') is-invalid @enderror" 
+    id="job_status" placeholder="job_status" name="job_status" 
+    value="{{ $us->job_status }}" required>
+    @error('job_status')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+      
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
+</form>
+      </div>
+    </div>
+  </div>
+</div>
           
         <!-- Button trigger modal -->
        

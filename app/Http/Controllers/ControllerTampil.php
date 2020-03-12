@@ -159,4 +159,8 @@ class ControllerTampil extends Controller
         return redirect('/customer')->with('status3','Data Berhasil Di
         Hapus');
     }
+
+    public function tes_script(){
+            return view('template/test_script');
+    }
 }
