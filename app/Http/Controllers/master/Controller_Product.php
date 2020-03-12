@@ -5,6 +5,7 @@ namespace App\Http\Controllers\master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\categorie;
 
 class Controller_Product extends Controller
 {
@@ -15,10 +16,15 @@ class Controller_Product extends Controller
      */
     public function index()
     {
-        
         $product = DB::table('product')->get();
-        //dump($product);
-        return view ('master/product/index',['product' =>$product]);
+        $categories= DB::table('categories')->get();
+        $product2= DB::table('product')
+                    ->join('categories','product.category_id','=','categories.category_id')
+                    ->get();
+        //$categories = categorie::all();
+       // dump($categories);
+        return view 
+        ('master/product/index',['product' =>$product2],['categories'=>$categories]);
     }
 
     /**
@@ -40,7 +46,7 @@ class Controller_Product extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required',
+           
             'category_id' => 'required',
             'product_name' => 'required',
             'product_price' => 'required',
@@ -49,7 +55,6 @@ class Controller_Product extends Controller
           ]);
 
         DB::table('product')->insert([
-            'product_id' => $request->product_id,
             'category_id' => $request->category_id,
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,

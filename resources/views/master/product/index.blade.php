@@ -29,13 +29,14 @@ data-target="#exampleModal4">
       <form method="post" action="/product/store">
       {{ csrf_field() }}
 
-  <div class="form-group">
+    <div class="form-group ">
     <label for="category_id"><font size="4">Category_Id</font></label>
-    <input type="text" class="form-control @error('category_id') is-invalid @enderror" 
-    id="category_id" placeholder="Category_Id" name="category_id" value="{{ old('category_id') }}">
-    @error('category_id')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
-      @enderror
+    <select class="form-control" id="category_id" name="category_id">
+    <option disabled selected="">Pilih Kategori</option>
+      @foreach($categories as $cat)
+      <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
+      @endforeach
+    </select>
   </div>
 
   <div class="form-group">
@@ -115,7 +116,7 @@ data-target="#exampleModal4">
     <tr>
     <th scope="col">#</th>
       <th scope="col">Product_Id</th>
-      <th scope="col">Category_id</th>
+      <th scope="col">Category_Name</th>
       <th scope="col">Product_Name</th>
       <th scope="col">Product_Price</th>
       <th scope="col">Product_Stok</th>
@@ -129,7 +130,7 @@ data-target="#exampleModal4">
     <tr>
       <th scope="row"> {{ $loop->iteration }}</th>
       <td>{{ $pr->product_id}}</td>
-      <td>{{ $pr->category_id }}</td>
+      <td>{{ $pr->category_name }}</td>
       <td>{{ $pr->product_name }}</td>
       <td>{{ $pr->product_price }}</td>
       <td>{{ $pr->product_stok }}</td>
@@ -166,13 +167,23 @@ data-target="#exampleModal4">
       {{ csrf_field() }}
       <input type="hidden" name="id" value="{{ $pr->product_id }}">
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="category_id"><font size="4">Category_Id</font></label>
     <input type="text" class="form-control @error('category_id') is-invalid @enderror" 
     id="category_id" placeholder="Category_Id " name="category_id" value="{{ $pr->category_id }}"  required>
     @error('category_id')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
+  </div> -->
+
+  <div class="form-group ">
+    <label for="category_id"><font size="4">Category_Id</font></label>
+    <select class="form-control" id="category_id" name="category_id">
+    <!-- <option disabled selected="">Pilih Kategori</option> -->
+      @foreach($categories as $cat)
+      <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
+      @endforeach
+    </select>
   </div>
 
   <div class="form-group">
