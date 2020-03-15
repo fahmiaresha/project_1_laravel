@@ -161,6 +161,6 @@ class ControllerTampil extends Controller
     }
 
     public function tes_script(){
-            return view('template/test_script');
+            return view('template/create');
     }
 }

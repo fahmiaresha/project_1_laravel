@@ -4,6 +4,7 @@ namespace App\Http\Controllers\transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Controller_Sales_Detail extends Controller
 {
@@ -14,7 +15,11 @@ class Controller_Sales_Detail extends Controller
      */
     public function index()
     {
-        return view('transaksi/sales_detail/create');
+        $categories = DB::table('categories')->get();
+        $product = DB::table('product')->get();
+        //dump($categories);
+        return view('transaksi/sales_detail/create',['categories'=>$categories,
+        'product'=>$product]);
     }
 
     /**
@@ -24,7 +29,7 @@ class Controller_Sales_Detail extends Controller
      */
     public function create()
     {
-        return view('transaksi/sales_detail/create');
+        
     }
 
     /**

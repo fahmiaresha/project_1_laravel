@@ -40,7 +40,7 @@ class Controller_User extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required' ,
+            'first_name2' => 'required' ,
             'last_name' => 'required' ,
             'email' => 'required|email' ,
             'phone' => 'required|numeric' ,
@@ -49,7 +49,7 @@ class Controller_User extends Controller
           ]);
 
           DB::table('user')->insert([
-            'first_name' => $request->first_name ,
+            'first_name2' => $request->first_name2 ,
             'last_name' => $request->last_name ,
             'email' => $request->email ,
             'phone' => $request->phone ,
@@ -96,7 +96,7 @@ class Controller_User extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'first_name' => 'required',
+            'first_name2' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
@@ -106,7 +106,7 @@ class Controller_User extends Controller
           
         //edit
         DB::table('user')->where('user_id',$request->id)->update([
-            'first_name' => $request->first_name,
+            'first_name2' => $request->first_name2,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,

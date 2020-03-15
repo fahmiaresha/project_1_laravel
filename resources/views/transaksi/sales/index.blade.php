@@ -49,7 +49,7 @@ data-target="#exampleModal3">
   </div> -->
 
   <div class="form-group ">
-    <label for="customer_id"><font size="4">Nama Customer</font></label>
+    <label for="customer_id"><font size="4">Customer Name</font></label>
     <select class="form-control" id="customer_id" name="customer_id">
     <option disabled selected="">Pilih Customer</option>
       @foreach($customer as $cus)
@@ -59,11 +59,11 @@ data-target="#exampleModal3">
   </div>
 
   <div class="form-group ">
-    <label for="user_id"><font size="4">Nama User</font></label>
+    <label for="user_id"><font size="4">User Name</font></label>
     <select class="form-control" id="user_id" name="user_id">
     <option disabled selected="">Pilih User</option>
       @foreach($user as $us)
-      <option value="{{$us->user_id}}">{{$us->first_name}}</option>
+      <option value="{{$us->user_id}}">{{$us->first_name2}}</option>
       @endforeach
     </select>
   </div>
@@ -129,9 +129,9 @@ data-target="#exampleModal3">
     <tr>
     <th scope="col">#</th>
       <th scope="col">Nota_Id</th>
-      <th scope="col">Customer_Id</th>
-      <th scope="col">User_Id</th>
-      <th scope="col">Date</th>
+      <th scope="col">Customer_Name</th>
+      <th scope="col">User_Name</th>
+      <th width="40%" scope="col">Date</th>
       <th scope="col">Total_Payment</th>
       <th width="90%" scope="col">Action</th>
     </tr>
@@ -143,7 +143,7 @@ data-target="#exampleModal3">
       <th scope="row"> {{ $loop->iteration }}</th>
       <td>{{ $sl->nota_id}}</td>
       <td>{{ $sl->first_name }}</td>
-      <td>{{ $sl->last_name}}</td>
+      <td>{{ $sl->first_name2}}</td>
       <td>{{ $sl->nota_date }}</td>
       <td>{{ $sl->total_payment }}</td>
       <td>
@@ -199,9 +199,9 @@ data-target="#exampleModal3">
   </div> -->
 
   <div class="form-group ">
-    <label for="customer_id"><font size="4">Nama Customer</font></label>
+    <label for="customer_id"><font size="4">Customer Name</font></label>
     <select class="form-control" id="customer_id" name="customer_id">
-    <!-- <option disabled selected="">Pilih Customer</option> -->
+    <option disabled selected="">Pilih Customer</option>
       @foreach($customer as $cus)
       <option value="{{$cus -> customer_Id}}">{{$cus->first_name}}</option>
       @endforeach
@@ -209,11 +209,11 @@ data-target="#exampleModal3">
   </div>
 
   <div class="form-group ">
-    <label for="user_id"><font size="4">Nama User</font></label>
+    <label for="user_id"><font size="4">User Name</font></label>
     <select class="form-control" id="user_id" name="user_id">
-    <!-- <option disabled selected="">Pilih User</option> -->
+    <option disabled selected="">Pilih User</option>
       @foreach($user as $us)
-      <option value="{{$us->user_id}}">{{$us->first_name}}</option>
+      <option value="{{$us->user_id}}">{{$us->first_name2}}</option>
       @endforeach
     </select>
   </div>
@@ -251,12 +251,12 @@ data-target="#exampleModal3">
         <!-- Button trigger modal -->
        
 <button type="button" class="badge badge-danger" data-toggle="modal" 
-data-target="#exampleModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
 </svg>Delete</button>
         
 <!-- Modal -->
-<div class="modal fade" id="exampleModal{{$sl -> nota_id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal{{$sl -> nota_id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

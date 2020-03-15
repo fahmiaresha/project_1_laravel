@@ -30,7 +30,7 @@ data-target="#exampleModal4">
       {{ csrf_field() }}
 
     <div class="form-group ">
-    <label for="category_id"><font size="4">Category_Id</font></label>
+    <label for="category_id"><font size="4">Category Name</font></label>
     <select class="form-control" id="category_id" name="category_id">
     <option disabled selected="">Pilih Kategori</option>
       @foreach($categories as $cat)
@@ -40,7 +40,7 @@ data-target="#exampleModal4">
   </div>
 
   <div class="form-group">
-    <label for="product_name"><font size="4">Name</font></label>
+    <label for="product_name"><font size="4">Product Name</font></label>
     <input type="text" class="form-control @error('product_name') is-invalid @enderror" 
     id="product_name" placeholder="Product_Name
      " name="product_name" value="{{ old('product_name') }}">
@@ -177,9 +177,9 @@ data-target="#exampleModal4">
   </div> -->
 
   <div class="form-group ">
-    <label for="category_id"><font size="4">Category_Id</font></label>
+    <label for="category_id"><font size="4">Category Name</font></label>
     <select class="form-control" id="category_id" name="category_id">
-    <!-- <option disabled selected="">Pilih Kategori</option> -->
+    <option disabled selected="">Pilih Kategori</option>
       @foreach($categories as $cat)
       <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
       @endforeach
@@ -187,7 +187,7 @@ data-target="#exampleModal4">
   </div>
 
   <div class="form-group">
-    <label for="product_name"><font size="4">Name</font></label>
+    <label for="product_name"><font size="4">Product Name</font></label>
     <input type="text" class="form-control @error('product_name') is-invalid @enderror" 
     id="product_name" placeholder="Product_Name" name="product_name" 
     value="{{ $pr->product_name }}" required>

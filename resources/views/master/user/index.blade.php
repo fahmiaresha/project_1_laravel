@@ -30,10 +30,10 @@ data-target="#exampleModal3">
       {{ csrf_field() }}
   <div class="form-row">
     <div class="col">
-    <label for="first_name"><font size="4">First Name</font></label>
-    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-     id="first_name" placeholder="First name " name="first_name" value="{{ old('first_name') }}">
-     @error('first_name')
+    <label for="first_name2"><font size="4">First Name</font></label>
+    <input type="text" class="form-control @error('first_name2') is-invalid @enderror"
+     id="first_name2" placeholder="First name " name="first_name2" value="{{ old('first_name2') }}">
+     @error('first_name2')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
@@ -139,7 +139,7 @@ data-target="#exampleModal3">
     <tr>
       <th scope="row"> {{ $loop->iteration }}</th>
       <td>{{ $us->user_id}}</td>
-      <td>{{ $us->first_name }}</td>
+      <td>{{ $us->first_name2 }}</td>
       <td>{{ $us->last_name }}</td>
       <td>{{ $us->email }}</td>
       <td>{{ $us->phone }}</td>
@@ -180,11 +180,11 @@ data-target="#exampleModal3">
 
       <div class="form-row">
     <div class="col">
-    <label for="first_name"><font size="4">First Name</font></label>
-    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-     id="first_name" placeholder="First name " name="first_name"
-     value="{{ $us->user_id }}" required>
-     @error('first_name')
+    <label for="first_name2"><font size="4">First Name</font></label>
+    <input type="text" class="form-control @error('first_name2') is-invalid @enderror"
+     id="first_name2" placeholder="First name " name="first_name2"
+     value="{{ $us->first_name2 }}" required>
+     @error('first_name2')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
@@ -193,7 +193,7 @@ data-target="#exampleModal3">
     <label for="last_name"><font size="4">Last Name</font></label>
     <input type="text" class="form-control @error('last_name') is-invalid @enderror" 
      id="last_name" placeholder="Last name" name="last_name" 
-     value="{{ $us->user_id }}" required>
+     value="{{ $us->last_name }}" required>
      @error('last_name')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror  
@@ -254,12 +254,12 @@ data-target="#exampleModal3">
         <!-- Button trigger modal -->
        
 <button type="button" class="badge badge-danger" data-toggle="modal" 
-data-target="#exampleModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
 </svg>Delete</button>
         
 <!-- Modal -->
-<div class="modal fade" id="exampleModal{{$us -> user_id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal{{$us -> user_id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
