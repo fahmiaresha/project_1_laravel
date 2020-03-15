@@ -85,10 +85,104 @@
                 </div>
               </div>
 
+              <div class="form-group">
+              </div>
+             <!-- <br> -->
+
+              <font size="3">
+              <table class="table table-striped table-bordered mydatatable" style="width:0%;"></font>
+                  <thead class="thead-white">
+                  <tr>
+                  <th scope="col">#</th>
+                    <th width="25%" scope="col">Product Name</th>
+                    <th width="25%" scope="col">Price</th>
+                    <th width="25%" scope="col">Quantity</th>
+                    <th width="25%" scope="col">Sub Total</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                      <th scope="row"><button type="button" class="badge badge-danger"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
+                      </svg></button></th>
+                      <td>Chiki</td>
+                      <td>8000</td>
+                      
+                      <td><input type="number" value="0" min="0" max="1000" step="1" style='text-align:right;'></td>
+                      <td>16000</td>
+                </tr>
+                </tbody>
+                </table>
+
+                <table>
+                <td><div class="card bg-light mb-3" style="max-width: 100rem;">
+                  <!-- <div class="card-header">Header</div> -->
+                  <div class="card-body">
+                    <!-- <h5 class="card-title">Light card title</h5> -->
+                    <table>
+                        <tr>
+                            <td><p class="card-text">Sub Total</p></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> 
+                            <td>:</td>
+                            <td></td><td></td><td></td><td>Rp. 16.000</td> 
+                        </tr>
+                        <tr>
+                            <td><p class="card-text">Tax (10%)</p></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> 
+                            <td>:</td>
+                            <td></td><td></td><td></td><td>Rp. 1.600</td> 
+                        </tr>
+                        <tr>
+                          <td><p class="card-text">Discount</p></td>
+                          <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> 
+                            <td>:</td>
+                            <td></td><td></td><td></td><td>Rp. 0</td> 
+                        </tr>
+                    </table>
+                  
+                  </div>
+                </div></td>
+
+                <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> 
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td><td></td> 
+                 <td><div class="card text-right bg-light mb-3" >
+                        <div class="card-body">
+                          <h3 class="card-title">Total : Rp. 17.600</h3>
+                        </div>
+                </div></td>
+
+</table>
+                
+                
 
       </div> <!-- tutup cards -->
     </div> <!-- tutup cards -->
 </div>  <!-- tutup kontainer -->
+              
 
        
 @endsection
@@ -110,3 +204,13 @@
 
 </script> 
 @endsection
+
+<script>
+    $("input[name='demo2']").TouchSpin({
+        min: -1000000000,
+        max: 1000000000,
+        stepinterval: 50,
+        maxboostedstep: 10000000,
+        prefix: '$'
+    });
+</script>
