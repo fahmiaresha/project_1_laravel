@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\transaksi;
 
 use App\Http\Controllers\Controller;
+//use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +16,16 @@ class Controller_Sales extends Controller
      */
     public function index()
     {
-        $sales = DB::table('sales')->get();
-        dump($sales);
-        //  return view('transaksi/sales/index');
+        $sales = DB::table('sales') 
+                ->join('customer','sales.customer_id','=','customer.customer_Id')
+                ->join('user','sales.user_id','=','user.user_id')
+                ->select('sales.*','customer.first_name','user.last_name')
+                ->get();
+        $customer = DB::table('customer')->get();
+        $user = DB::table('user')->get();
+        //dump($sales);
+        return view('transaksi/sales/index',['sales'=>$sales]
+        ,['customer'=>$customer,'user'=>$user]);
     }
 
     /**
@@ -38,7 +46,16 @@ class Controller_Sales extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+          DB::table('sales')->insert([
+            'customer_id' => $request->customer_id ,
+            'user_id' => $request->user_id ,
+            'nota_date' => $request->nota_date ,
+            'total_payment' => $request->total_payment 
+        ]);          
+
+          return redirect('/sales/index')->with('status','Data Berhasil Di
+          Tambahkan');
     }
 
     /**
@@ -70,9 +87,19 @@ class Controller_Sales extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request)
+    {     
+        //edit
+        DB::table('sales')->where('nota_id',$request->id)->update([
+            'customer_id' => $request->customer_id,
+            'user_id' => $request->user_id,
+            'nota_date' => $request->nota_date,
+            'total_payment' => $request->total_payment
+        ]);
+
+        //redirect
+        return redirect('/sales/index')->with('status2','Data Berhasil Di
+        Edit');
     }
 
     /**
@@ -81,8 +108,12 @@ class Controller_Sales extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        return 'ini halaman destroy';
+        DB::table('sales')->where('nota_id',$id)->delete();
+        
+        //mengalihkan halaman
+        return redirect('/sales/index')->with('status3','Data Berhasil Di
+        Hapus');
     }
 }

@@ -3,6 +3,8 @@
 @section('title','Halaman Point Of Sales')
 
 @section('konten')
+<div class="card" style="width: 50rem;" style="margin-left: 5px;">
+  <div class="card-body">
       <div class="container">
           <h3 class ="my-2">Nota Id</h3>
           <div class="form-row">
@@ -10,7 +12,7 @@
           <label for="customer"><font size="4">Customer</font></label>
           <select id="customer" name="customer" class="form-control @error('customer') is-invalid @enderror"
           placeholder="Kota" value="{{ old('customer') }}">
-            <option selected>Pilih Nama Customer</option>
+           <option disabled selected="">Pilih Nama Customer</option>
             <option>Customer1</option>
             <option>Customer2</option>
             <option>Customer3</option>
@@ -28,7 +30,7 @@
           <label for="user"><font size="4">User</font></label>
           <select id="user" name="user" class="form-control @error('user') is-invalid @enderror"
           placeholder="Kota" value="{{ old('user') }}">
-            <option selected>Pilih Nama User</option>
+          <option disabled selected="">Pilih Nama User</option>
             <option>User1</option>
             <option>User2</option>
             <option>User3</option>
@@ -42,12 +44,23 @@
 
 
 
-    <div class="form-row">
+    <!-- <div class="form-row">
       <div class="form-group col-md-3">
             <label for="date"><font size="4">Date</font></label>
             <input type="date" class="form-control @error('date') is-invalid @enderror" 
             id="date" placeholder="08xxxxxxxx
             " name="date" value="{{ old('date') }}">
+            @error('date')
+          <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+              @enderror
+          </div>
+    </div> -->
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+            <label for="date"><font size="4">Date</font></label>
+            <input type="text" class="form-control @error('date') is-invalid @enderror" 
+            id="date" name="date" value="<?php echo date("d-m-Y h:i:sa")?>"readonly>
             @error('date')
           <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
               @enderror
@@ -127,8 +140,10 @@
         </div>
        
 
-
+</div>
+</div>
 @endsection
+
 @section('tambahscript')
 
 <script>

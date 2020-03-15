@@ -147,7 +147,8 @@ class Controller_Customer extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {  DB::table('customer')->where('customer_Id',$id)->delete();
+    { 
+         DB::table('customer')->where('customer_Id',$id)->delete();
         
         //mengalihkan halaman
         return redirect('/customer/index')->with('status3','Data Berhasil Di

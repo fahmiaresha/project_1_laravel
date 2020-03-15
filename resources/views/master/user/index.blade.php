@@ -4,7 +4,7 @@
 
 @section('konten')
 
-<div class="container">
+<div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
   <h2 class ="mt-3">Data User</h2>

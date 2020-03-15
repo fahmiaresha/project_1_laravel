@@ -64,9 +64,11 @@ Route::get('/product/destroy/{id}','master\Controller_Product@destroy');
 
 
 Route::get('/sales/index','transaksi\Controller_Sales@index');
+Route::post('/sales/store','transaksi\Controller_Sales@store');
 Route::get('/sales/create','transaksi\Controller_Sales@create');
 Route::get('/sales/edit','transaksi\Controller_Sales@edit');
-Route::get('/sales/destroy','transaksi\Controller_Sales@destroy');
+Route::post('/sales/update','transaksi\Controller_Sales@update');
+Route::get('/sales/destroy/{id}','transaksi\Controller_Sales@destroy');
 
 
 Route::get('/sales_detail/index','transaksi\Controller_Sales_Detail@index');
