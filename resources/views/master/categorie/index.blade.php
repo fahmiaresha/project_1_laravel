@@ -166,8 +166,8 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
         <a href="/kategori/destroy/{{ $kt->category_id }}">
-        <font size="3" color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="3">No</font></button>
+        <font size="2" color="white">Yes</font></a></button>
+        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>

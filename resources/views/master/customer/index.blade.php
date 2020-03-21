@@ -1,7 +1,6 @@
 @extends('master/customer/template')
 
 @section('title','Halaman Customer')
-
 @section('konten')
 
 <div class="container">
@@ -25,7 +24,7 @@ Tambah Data Customer
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/customer/store">
+  <form method="post" action="/customer/store">
       {{ csrf_field() }}
   <div class="form-row">
     <div class="col">
@@ -88,7 +87,8 @@ Tambah Data Customer
         <label for="state"><font size="4">State</font></label>
         <select id="state" name="state" class="form-control @error('state') is-invalid @enderror"
         placeholder="Kota" value="{{ old('state') }}">
-          <option selected>Indonesia</option>
+          <option disabled selected>Pilih Negara</option>
+          <option>Indonesia</option>
           <option>Singapore</option>
           <option>Amerika</option>
           <option>Malaysia</option>
@@ -125,7 +125,7 @@ Tambah Data Customer
       </div>
     </font>
     @endif
-
+    
     @if (session('status2'))
     <font size="4">  
       <div class="alert alert-success">
@@ -134,13 +134,15 @@ Tambah Data Customer
     </font>
     @endif
 
+
     @if (session('status3'))
     <font size="4">  
       <div class="alert alert-success">
       {{ session ('status3') }}
-      </div> 
+      </div>
     </font>
     @endif
+
     <font size="2">
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
@@ -173,14 +175,6 @@ Tambah Data Customer
       <td>{{ $cus->state }}</td>
       <td>{{ $cus->zip_code }}</td>
       <td>
-       
-       
-        <!-- <a href="/customer/edit/{{ $cus->customer_Id }}" 
-           class="badge badge-success"><svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
-  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
-</svg>Edit</a> -->
-
 <!-- Button trigger modal -->
 <button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $cus->customer_Id }}">
 <svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -191,7 +185,7 @@ Tambah Data Customer
 
 <!-- Modal -->
 <div class="modal fade" id="editModal{{ $cus->customer_Id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Form Edit Data Customer</h5>
@@ -202,6 +196,7 @@ Tambah Data Customer
       <div class="modal-body">
       <form method="post" action="/customer/update">
       {{ csrf_field() }}
+     
       <input type="hidden" name="id" value="{{ $cus->customer_Id }}">
       <div class="form-row">
     <div class="col">
@@ -288,8 +283,8 @@ Tambah Data Customer
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
     </div>
-  </div>
-
+  
+      </div>
       </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-success">Update</button>
@@ -323,8 +318,8 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
         <a href="/customer/destroy/{{ $cus->customer_Id }}">
-        <font color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal">No</button>
+        <font size="2" color="white">Yes</font></a></button>
+        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
@@ -344,8 +339,8 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
   </div>
 @endsection
 
-@section('tambahscript')
+<!-- @section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
-</script> >
-@endsection
+</script> > -->
+<!-- @endsection --> 

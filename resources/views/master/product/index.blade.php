@@ -262,8 +262,8 @@ data-target="#exampleModal4">
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
         <a href="/product/destroy/{{ $pr->product_id }}">
-        <font color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal">No</button>
+        <font size="2" color="white">Yes</font></a></button>
+        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
