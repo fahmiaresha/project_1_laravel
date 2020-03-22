@@ -125,11 +125,14 @@ class Controller_Categorie extends Controller
         delete');
     }
 
-    public function destroy2(categorie $id)
-    {
-        $id->delete(); //Fungsi untuk menghapus data sesuai dengan ID yang dipilih
+    // public function destroy($id)
+    // { 
+    //     DB::table('categories')->where('category_id',$id)->delete();
+    //     //mengalihkan halaman
+    //     return redirect('/kategori/index')->with('status2','Data Berhasil Di
+    //     Hapus');
 
-        return redirect('master/kategori/index')->with('status3','Data Berhasil Di
-        delete');
-    }
+    //  }
+
+   
 }

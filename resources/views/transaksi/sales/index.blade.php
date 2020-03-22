@@ -26,7 +26,7 @@ data-target="#exampleModal3">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/sales/store">
+      <form method="post" action="{{ url('/sales/store') }}">
       {{ csrf_field() }}
 
   <!-- <div class="form-group">
@@ -77,7 +77,7 @@ data-target="#exampleModal3">
     <input type="text" class="form-control @error('nota_date') is-invalid @enderror" 
     id="nota_date" placeholder=" nota_date " name="nota_date" value="<?php echo date("Y-m-d")?>"readonly>
     @error('nota_date')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+  <div class="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
   
@@ -86,7 +86,7 @@ data-target="#exampleModal3">
     <input type="numeric" class="form-control @error('total_payment') is-invalid @enderror" 
     id="total_payment" placeholder="Total" name="total_payment" value="{{ old('total_payment') }}">
     @error('total_payment')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+  <div class="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
       </div>
@@ -174,7 +174,7 @@ data-target="#exampleModal3">
       </div>
       <div class="modal-body">
         
-      <form method="post" action="/sales/update">
+      <form method="post" action="{{ url('/sales/update') }}">
       {{ csrf_field() }}
       <input type="hidden" name="id" value="{{ $sl->nota_id }}">
   
@@ -222,7 +222,7 @@ data-target="#exampleModal3">
     <label for="nota_date"><font size="4">Date</font></label>
     <input type="text" class="form-control @error('nota_date') is-invalid @enderror" 
     id="nota_date" placeholder="nota_date" name="nota_date" 
-    value="{{ $sl->nota_date }}" required>
+    value="{{ $sl->nota_date }}" readonly>
     @error('nota_date')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
@@ -231,8 +231,8 @@ data-target="#exampleModal3">
   <div class="form-group">
     <label for="total_payment"><font size="4">Total Payment</font></label>
     <input type="text" class="form-control @error('total_payment') is-invalid @enderror" 
-    id="total_payment" placeholder="total_payment" name="total_payment" 
-    value="{{ $sl->total_payment }}" required>
+    id="total_payment" placeholder="Total" name="total_payment" 
+    value="{{ $sl->total_payment }}" >
     @error('total_payment')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
@@ -270,7 +270,7 @@ data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/sales/destroy/{{ $sl->nota_id }}">
+        <a href="{{ url('/sales/destroy/'.$sl->nota_id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>

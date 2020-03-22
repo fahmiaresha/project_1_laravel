@@ -42,7 +42,7 @@
 
               <!-- Modal -->
               <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="modal-body">
 
-                    <font size="3"> <table class="table table-bordered"></font>
+                    <font size="3"> <table class="table table-striped table-bordered mydatatable"></font>
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">#</th>
@@ -101,7 +101,7 @@
                   </tr>
                 </thead>
 
-                <!-- <tbody>
+                <tbody>
                 <tr>
                       <th scope="row"><button type="button" class="badge badge-danger"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
@@ -116,7 +116,7 @@
                           <button class='dec btn btn-sm btn-dark' type='button' onclick='dec("+id+")'>-</button>
                         </div>
                       </td>
-                      <td>16.000</td>
+                      <td>8.000</td>
                 </tr>
 
                 <tr>
@@ -135,7 +135,7 @@
                       </td>
                       <td>9.000</td>
                 </tr> 
-                </tbody> -->
+                </tbody>
 
                 <!-- <tbody>
 
@@ -157,7 +157,7 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <td></td><td></td><td></td><td>Rp. 25.000</td> 
+                            <td></td><td></td><td></td><td>Rp. 17.000</td> 
                         </tr>
                         <tr>
                             <td><p class="card-text">Tax (10%)</p></td>
@@ -168,7 +168,7 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <td></td><td></td><td></td><td>Rp. 2.500</td> 
+                            <td></td><td></td><td></td><td>Rp.  1.700</td> 
                         </tr>
                         <tr>
                           <td><p class="card-text">Discount</p></td>
@@ -198,7 +198,7 @@
                             <td></td><td></td><td></td><td></td> 
                 <td><div class="card text-right bg-light mb-3" >
                         <div class="card-body">
-                          <h3 class="card-title">Total : Rp. 27.500</h3>
+                          <h3 class="card-title">Total : Rp. 18.700</h3>
                         </div>
                 </div></td>
 

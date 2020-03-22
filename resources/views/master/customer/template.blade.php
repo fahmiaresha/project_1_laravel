@@ -19,9 +19,12 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet"> 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+  <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">   
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
+  
 
+ 
 </head>
 
 <body id="page-top">
@@ -31,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -43,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('/dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -65,10 +68,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tabel</h6>
-            <a class="collapse-item" href="/customer/index">Customer</a>
-            <a class="collapse-item" href="/kategori/index">Category</a>
-            <a class="collapse-item" href="/product/index">Product</a>
-            <a class="collapse-item" href="/user/index">User</a>
+            <a class="collapse-item" href="{{ url('/customer/index') }}">Customer</a>
+            <a class="collapse-item" href="{{ url('/kategori/index') }}">Category</a>
+            <a class="collapse-item" href="{{ url('/product/index') }}">Product</a>
+            <a class="collapse-item" href="{{ url('/user/index') }}">User</a>
           </div>
         </div>
       </li>
@@ -82,12 +85,44 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tabel</h6>
-            <a class="collapse-item" href="/sales/index">Sales</a>
-            <a class="collapse-item" href="/sales_detail/index">Sales Detail</a>
+            <a class="collapse-item" href="{{ url('/sales/index') }}">Sales</a>
+            <a class="collapse-item" href="{{ url('/sales_detail/index') }}">Sales Detail</a>
           </div>
         </div>
       </li>
 
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Account</span>
+        </a>
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens</h6>
+            <a class="collapse-item" href="{{ url('/login') }}">Login</a>
+            <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a class="collapse-item" href="{{ url('/register') }}">Register</a>
+            <div class="collapse-divider"></div>
+          </div>
+        </div>
+      </li> -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Account</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+          <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Login Screens</h6>
+          <a class="collapse-item" href="{{ url('/register') }}">Register</a>
+            <a class="collapse-item" href="{{ url('/login') }}">Login</a>
+            <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          
+            <div class="collapse-divider"></div>
+          </div>
+        </div>
+      </li>
       
 
       <!-- Divider -->
@@ -295,7 +330,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -307,6 +342,7 @@
         </nav>
   
     <h1> @yield('konten') </h1>
+    @include('sweet::alert')
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -332,20 +368,37 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Logout Account</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Pilih "Logout" di bawah ini jika Anda ingin keluar.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+        <a class="btn btn-success" href="{{ url('/login') }}">Logout</a>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+        
         </div>
       </div>
     </div>
   </div>
 
+  
+  
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <!-- <script src="./src/bootstrap-input-spinner.js"></script> -->
+   
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+  
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <!-- Bootstrap core JavaScript-->
 
   <script src="{{ asset('asset/admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -363,21 +416,6 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('asset/admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('asset/admin/js/demo/chart-pie-demo.js') }}"></script>
-  
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-    <!-- <script src="./src/bootstrap-input-spinner.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-  
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  
   <!-- </div>
 </body> -->
 <!-- < <script>

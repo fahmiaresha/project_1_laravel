@@ -24,7 +24,7 @@ Tambah Data Customer
         </button>
       </div>
       <div class="modal-body">
-  <form method="post" action="/customer/store">
+  <form method="post" action="{{ url('/customer/store') }}">
       {{ csrf_field() }}
   <div class="form-row">
     <div class="col">
@@ -134,7 +134,7 @@ Tambah Data Customer
     </font>
     @endif
 
-
+    
     @if (session('status3'))
     <font size="4">  
       <div class="alert alert-success">
@@ -194,7 +194,7 @@ Tambah Data Customer
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/customer/update">
+      <form method="post" action="{{ url('/customer/update') }}">
       {{ csrf_field() }}
      
       <input type="hidden" name="id" value="{{ $cus->customer_Id }}">
@@ -317,7 +317,9 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/customer/destroy/{{ $cus->customer_Id }}">
+        
+        
+          <a href="{{ url('/customer/destroy/'.$cus->customer_Id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>

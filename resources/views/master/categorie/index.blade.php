@@ -25,7 +25,7 @@
       </div>
       <div class="modal-body">
       <div class="form-group">
-      <form method="post" action="/kategori/store">
+      <form method="post" action="{{ url('/kategori/store') }}">
       {{ csrf_field() }}
     <label for="category_name"><font size="4">Category Name</font></label>
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
@@ -117,10 +117,10 @@ data-target="#editModal{{$kt -> category_id}}">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/kategori/update">
+
+      <form method="post" action="{{ url('/kategori/update') }}">
       @csrf
       <input type="hidden" name="id" value="{{ $kt->category_id }}">
-
   <div class="form-group">
     <label for="category_name"><font size="4">Category Name</font></label>
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
@@ -130,8 +130,6 @@ data-target="#editModal{{$kt -> category_id}}">
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
- 
-      
       </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-success">Update</button>
@@ -165,7 +163,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/kategori/destroy/{{ $kt->category_id }}">
+        <a href="{{ url('/kategori/destroy/'.$kt->category_id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>

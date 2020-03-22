@@ -26,7 +26,7 @@ data-target="#exampleModal4">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/product/store">
+      <form method="post"  action="{{ url('/product/store') }}">
       {{ csrf_field() }}
 
     <div class="form-group ">
@@ -163,7 +163,7 @@ data-target="#exampleModal4">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/product/update">
+      <form method="post"  action="{{ url('/product/update') }}">
       {{ csrf_field() }}
       <input type="hidden" name="id" value="{{ $pr->product_id }}">
 
@@ -261,7 +261,8 @@ data-target="#exampleModal4">
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/product/destroy/{{ $pr->product_id }}">
+       
+        <a href="{{ url('/product/destroy/'.$pr->product_id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>

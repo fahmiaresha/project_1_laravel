@@ -46,6 +46,11 @@ class Controller_Sales extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'customer_id' => 'required',
+            'user_id' => 'required' ,
+            'total_payment' => 'required|numeric'
+          ]);
 
           DB::table('sales')->insert([
             'customer_id' => $request->customer_id ,
@@ -89,6 +94,12 @@ class Controller_Sales extends Controller
      */
     public function update(Request $request)
     {     
+        $request->validate([
+            'customer_id' => 'required',
+            'user_id' => 'required' ,
+            'total_payment' => 'required|numeric'
+          ]);
+          
         //edit
         DB::table('sales')->where('nota_id',$request->id)->update([
             'customer_id' => $request->customer_id,

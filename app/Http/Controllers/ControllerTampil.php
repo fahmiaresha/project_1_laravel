@@ -13,6 +13,25 @@ class ControllerTampil extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function tampil_dashboard(){
+         return view('template/dashboard');
+     }
+
+     public function tampil_login(){
+        return view('template/login');
+     }
+
+     public function tampil_register(){
+        return view('template/register');
+     }
+
+
+
+    //  public function tampil_kontak(){
+    //         return view('template/kontak');
+    //  }
+
+
     // public function tampil_mahasiswa(){
     // $users = DB::table('users')->get();
     // $mahasiswa = DB::table('murid')->get();
@@ -20,20 +39,20 @@ class ControllerTampil extends Controller
     //return view ('penjualan/home', ['mahasiswa' => $mahasiswa]);
     //}
 
-    public function tampil_home(){
-        return view('penjualan/home');
-    }
+    // public function tampil_home(){
+    //     return view('penjualan/home');
+    // }
 
-    public function tampil_customer(){
-        $customer = DB::table('customer')->get();
+    // public function tampil_customer(){
+    //     $customer = DB::table('customer')->get();
        
-       //dump($customer);
-        return view ('penjualan/customer',['customer' =>$customer]);
+    //    //dump($customer);
+    //     return view ('penjualan/customer',['customer' =>$customer]);
 
-    }
-     public function about(){
-         return view('penjualan/about');
-     }
+    // }
+    //  public function about(){
+    //      return view('penjualan/about');
+    //  }
 
    
     /**
@@ -41,10 +60,10 @@ class ControllerTampil extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-       return view ('penjualan/create');
-    }
+    // public function create()
+    // {
+    //    return view ('penjualan/create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -52,35 +71,35 @@ class ControllerTampil extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    { 
-        //insert
-          $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required|email',
-            'street' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip_code' => 'required|numeric'
-          ]);
+    // public function store(Request $request)
+    // { 
+    //     //insert
+    //       $request->validate([
+    //         'first_name' => 'required',
+    //         'last_name' => 'required',
+    //         'phone' => 'required|numeric',
+    //         'email' => 'required|email',
+    //         'street' => 'required',
+    //         'city' => 'required',
+    //         'state' => 'required',
+    //         'zip_code' => 'required|numeric'
+    //       ]);
 
-        DB::table('customer')->insert([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'street' => $request->street,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip_code' => $request->zip_code
-        ]);
+    //     DB::table('customer')->insert([
+    //         'first_name' => $request->first_name,
+    //         'last_name' => $request->last_name,
+    //         'phone' => $request->phone,
+    //         'email' => $request->email,
+    //         'street' => $request->street,
+    //         'city' => $request->city,
+    //         'state' => $request->state,
+    //         'zip_code' => $request->zip_code
+    //     ]);
 
-        //mengalihkan halaman
-        return redirect('/customer')->with('status','Data Berhasil Di
-         Tambahkan');
-    }
+    //     //mengalihkan halaman
+    //     return redirect('/customer')->with('status','Data Berhasil Di
+    //      Tambahkan');
+    // }
 
     /**
      * Display the specified resource.
@@ -99,14 +118,14 @@ class ControllerTampil extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //mengambil id
-        $customer= DB::table('customer')->where('customer_Id',$id)->get();
-       // dump($customer);
-        //mengirim data yang telah di ambil ke view
-        return view('penjualan/edit',['customer' => $customer]);
-    }
+    // public function edit($id)
+    // {
+    //     //mengambil id
+    //     $customer= DB::table('customer')->where('customer_Id',$id)->get();
+    //    // dump($customer);
+    //     //mengirim data yang telah di ambil ke view
+    //     return view('penjualan/edit',['customer' => $customer]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -115,35 +134,35 @@ class ControllerTampil extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required|email',
-            'street' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip_code' => 'required|numeric'
-          ]);
+    // public function update(Request $request)
+    // {
+    //     $request->validate([
+    //         'first_name' => 'required',
+    //         'last_name' => 'required',
+    //         'phone' => 'required|numeric',
+    //         'email' => 'required|email',
+    //         'street' => 'required',
+    //         'city' => 'required',
+    //         'state' => 'required',
+    //         'zip_code' => 'required|numeric'
+    //       ]);
           
-        //edit
-        DB::table('customer')->where('customer_Id',$request->id)->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'street' => $request->street,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip_code' => $request->zip_code
-        ]);
+    //     //edit
+    //     DB::table('customer')->where('customer_Id',$request->id)->update([
+    //         'first_name' => $request->first_name,
+    //         'last_name' => $request->last_name,
+    //         'phone' => $request->phone,
+    //         'email' => $request->email,
+    //         'street' => $request->street,
+    //         'city' => $request->city,
+    //         'state' => $request->state,
+    //         'zip_code' => $request->zip_code
+    //     ]);
 
-        //redirect
-        return redirect('/customer')->with('status2','Data Berhasil Di
-        Edit');
-    }
+    //     //redirect
+    //     return redirect('/customer')->with('status2','Data Berhasil Di
+    //     Edit');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -151,16 +170,16 @@ class ControllerTampil extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        DB::table('customer')->where('customer_Id',$id)->delete();
+    // public function destroy($id)
+    // {
+    //     DB::table('customer')->where('customer_Id',$id)->delete();
 
-        //mengalihkan halaman
-        return redirect('/customer')->with('status3','Data Berhasil Di
-        Hapus');
-    }
+    //     //mengalihkan halaman
+    //     return redirect('/customer')->with('status3','Data Berhasil Di
+    //     Hapus');
+    // }
 
-    public function tes_script(){
-            return view('template/create');
-    }
+    // public function tes_script(){
+    //         return view('template/create');
+    // }
 }

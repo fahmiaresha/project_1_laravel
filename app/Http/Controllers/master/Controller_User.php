@@ -125,11 +125,19 @@ class Controller_User extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function destroy($id)
+    // {
+    //     $kategori= users::find($id)->delete();
+    //     return redirect('/user/index')->with('status3','Data Berhasil Di
+    //     delete');
+    // }
+
     public function destroy($id)
-    {
-        $kategori= users::find($id);
-        $kategori->delete();
-        return redirect('/user/index')->with('status3','Data Berhasil Di
-        delete');
-    }
+    { 
+        DB::table('user')->where('user_id',$id)->delete();
+        //mengalihkan halaman
+        return redirect('/user/index')->with('status2','Data Berhasil Di
+        Hapus');
+
+     }
 }

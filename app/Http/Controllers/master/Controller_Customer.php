@@ -126,9 +126,10 @@ class Controller_Customer extends Controller
     public function destroy($id)
     { 
         DB::table('customer')->where('customer_Id',$id)->delete();
-      //  $nama_cus= DB::table('customer')->where('customer_Id',$id)->value('first_name');
+        $nama_cus= DB::table('customer')->where('customer_Id',$id)->value('first_name');
         //mengalihkan halaman
         return redirect('/customer/index')->with('status3','Data Berhasil Di
         Hapus');
+        // return redirect('/customer/index')->with('deleted',$nama_cus);
     }
 }

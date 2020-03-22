@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', 'ControllerTampil@tampil_home');
-Route::get('/about', 'ControllerTampil@about');
-Route::get('/script', 'ControllerTampil@tes_script');
+
 
 /*
 Route::get('/customer', 'ControllerTampil@tampil_customer');
@@ -29,13 +27,17 @@ Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
 
+Route::get('/dashboard', 'ControllerTampil@tampil_dashboard');
+Route::get('/kontak', 'ControllerTampil@tampil_kontak');
+Route::get('/login', 'ControllerTampil@tampil_login');
+Route::get('/register', 'ControllerTampil@tampil_register');
+
 Route::get('/customer/index','master\Controller_Customer@index');
 Route::post('/customer/store','master\Controller_Customer@store');
 Route::post('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
 
-Route::get('/login','master\Controller_Customer@index');
-Route::get('/kontak','master\Controller_Customer@kontak');
+
 
 Route::get('/kategori/index','master\Controller_Categorie@index');
 Route::get('/kategori/create','master\Controller_Categorie@create');
@@ -93,5 +95,5 @@ Route::get('kontak', 'Controller_coba@kontak');
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('template/login');
 });

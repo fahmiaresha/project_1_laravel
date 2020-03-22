@@ -26,7 +26,7 @@ data-target="#exampleModal3">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post" action="/user/store">
+      <form method="post" action="{{ url('/user/store') }}">
       {{ csrf_field() }}
   <div class="form-row">
     <div class="col">
@@ -174,7 +174,7 @@ data-target="#exampleModal3">
       </div>
       <div class="modal-body">
         
-      <form method="post" action="/user/update">
+      <form method="post" action="{{ url('/user/update') }}">
       {{ csrf_field() }}
       <input type="hidden" name="id" value="{{ $us->user_id }}">
 
@@ -273,7 +273,9 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        <a href="/user/destroy/{{ $us->user_id }}">
+        
+       
+       <a href="{{ url('/user/destroy/'.$us->user_id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
