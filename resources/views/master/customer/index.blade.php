@@ -344,5 +344,5 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
 <!-- @section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
-</script> > -->
-<!-- @endsection --> 
+</script> >
+ @endsection  -->

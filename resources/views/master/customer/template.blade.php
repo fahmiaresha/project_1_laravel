@@ -22,9 +22,6 @@
   <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   
-  
-
- 
 </head>
 
 <body id="page-top">
@@ -91,26 +88,14 @@
         </div>
       </li>
 
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Account</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens</h6>
-            <a class="collapse-item" href="{{ url('/login') }}">Login</a>
-            <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            <a class="collapse-item" href="{{ url('/register') }}">Register</a>
-            <div class="collapse-divider"></div>
-          </div>
-        </div>
-      </li> -->
-
+     
+      <div class="sidebar-heading">
+        Account
+      </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Account</span>
+          <span>Settings</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -342,7 +327,7 @@
         </nav>
   
     <h1> @yield('konten') </h1>
-    @include('sweet::alert')
+   
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -397,8 +382,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
   
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
   <!-- Bootstrap core JavaScript-->
 
   <script src="{{ asset('asset/admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -416,9 +400,12 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('asset/admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('asset/admin/js/demo/chart-pie-demo.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <!-- </div>
+
 </body> -->
-<!-- < <script>
+<!-- <script>
      $('.mydatatable').DataTable();
 </script> > -->
 

@@ -26,11 +26,15 @@ Route::get('/customer/hapus/{id}' ,'ControllerTampil@destroy');
 Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
-
+// Route::get('/kontak', 'ControllerTampil@tampil_kontak');
 Route::get('/dashboard', 'ControllerTampil@tampil_dashboard');
-Route::get('/kontak', 'ControllerTampil@tampil_kontak');
-Route::get('/login', 'ControllerTampil@tampil_login');
-Route::get('/register', 'ControllerTampil@tampil_register');
+
+Route::get('/home_user', 'User@index');
+Route::get('/login', 'User@login');
+Route::post('/loginPost', 'User@loginPost');
+Route::get('/register', 'User@register');
+Route::post('/registerPost', 'User@registerPost');
+Route::get('/logout', 'User@logout');
 
 Route::get('/customer/index','master\Controller_Customer@index');
 Route::post('/customer/store','master\Controller_Customer@store');
