@@ -25,6 +25,14 @@ class ControllerTampil extends Controller
         return view('template/register');
      }
 
+     public function tampil_rating(){
+         return view('template/rating');
+     }
+
+     public function tampil_about(){
+         return view('template/about');
+     }
+
 
 
     //  public function tampil_kontak(){

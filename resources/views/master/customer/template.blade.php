@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+   
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -20,8 +20,11 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">   
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   
+
+  <link href=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">  
+ 
+    @yield('head')
 </head>
 
 <body id="page-top">
@@ -44,7 +47,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('/dashboard') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i><img src="{{ asset('asset/login/images/dashboard.png') }}" width="16px" height="16px"></i>
           <span>Dashboard</span></a>
       </li>
 
@@ -53,13 +56,13 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Tabel
+        Table
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-table"></i>
+          <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i>
           <span>Master</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -76,8 +79,8 @@
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Transaksi</span>
+        <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i>
+          <span>Transaction</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -88,18 +91,17 @@
         </div>
       </li>
 
-     
       <div class="sidebar-heading">
         Account
       </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
+          <i><img src="{{ asset('asset/login/images/pengaturan.png') }}" width="16px" height="16px"></i>
           <span>Settings</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens</h6>
+          <!-- <h6 class="collapse-header">Login Screens</h6> -->
           <a class="collapse-item" href="{{ url('/register') }}">Register</a>
             <a class="collapse-item" href="{{ url('/login') }}">Login</a>
             <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
@@ -109,6 +111,25 @@
         </div>
       </li>
       
+      <div class="sidebar-heading">
+        About
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/about') }}">
+          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
+          <!-- i></i>< -->
+          <span>Contact Us</span>
+        </a>
+        <!-- <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+          <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Login Screens</h6>
+          <a class="collapse-item" href="{{ url('/about') }}">Developer</a>
+        
+          
+            <div class="collapse-divider"></div>
+          </div>
+        </div> -->
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -404,7 +425,11 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <!-- </div>
 
-</body> -->
+    <-- Toats -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+ 
+</body>
 <!-- <script>
      $('.mydatatable').DataTable();
 </script> > -->

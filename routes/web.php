@@ -28,6 +28,8 @@ Route::get('/admin/create','Controller_Admin@tampil_form');
 
 // Route::get('/kontak', 'ControllerTampil@tampil_kontak');
 Route::get('/dashboard', 'ControllerTampil@tampil_dashboard');
+Route::get('/rating', 'ControllerTampil@tampil_rating');
+Route::get('/about', 'ControllerTampil@tampil_about');
 
 Route::get('/home_user', 'User@index');
 Route::get('/login', 'User@login');
