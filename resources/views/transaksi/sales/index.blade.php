@@ -128,12 +128,12 @@ data-target="#exampleModal3">
     <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
-      <th scope="col">Nota_Id</th>
-      <th scope="col">Customer_Name</th>
-      <th scope="col">User_Name</th>
-      <th width="40%" scope="col">Date</th>
-      <th scope="col">Total_Payment</th>
-      <th width="90%" scope="col">Action</th>
+      <th scope="col">Nota Id</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Total Payment</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 

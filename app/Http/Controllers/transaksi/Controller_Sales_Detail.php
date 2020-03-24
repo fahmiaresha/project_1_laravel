@@ -5,6 +5,7 @@ namespace App\Http\Controllers\transaksi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class Controller_Sales_Detail extends Controller
@@ -16,12 +17,17 @@ class Controller_Sales_Detail extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
         $categories = DB::table('categories')->get();
         $product = DB::table('product')->get();
         //dump($categories);
         
         return view('transaksi/sales_detail/create',['categories'=>$categories,
         'product'=>$product]);
+        }
     }
 
     /**

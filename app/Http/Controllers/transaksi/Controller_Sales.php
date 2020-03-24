@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 //use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Sales extends Controller
 {
@@ -16,6 +17,10 @@ class Controller_Sales extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
         $sales = DB::table('sales') 
                 ->join('customer','sales.customer_id','=','customer.customer_Id')
                 ->join('user','sales.user_id','=','user.user_id')
@@ -26,6 +31,7 @@ class Controller_Sales extends Controller
         //dump($sales);
         return view('transaksi/sales/index',['sales'=>$sales]
         ,['customer'=>$customer,'user'=>$user]);
+        }
     }
 
     /**

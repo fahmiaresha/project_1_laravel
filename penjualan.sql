@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 02:31 PM
+-- Generation Time: Mar 23, 2020 at 09:06 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -67,19 +67,6 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_Id`, `first_name`, `last_name`, `phone`, `email`, `street`, `city`, `state`, `zip_code`) VALUES
-(90, 'Hasan Widodo S.Sos', 'Yance Melani', '9962', 'yrajasa@yuliarti.web.id', 'Warga', 'Padangsidempuan', 'Riau', '61254'),
-(91, 'Bajragin Adika Zulkarnain S.Sos', 'Laila Pertiwi', '7199', 'riyanti.gamani@uwais.asia', 'Gading', 'Mojokerto', 'Sulawesi Tenggara', '61257'),
-(92, 'Raina Agustina', 'Halima Halimah', '8448', 'wsafitri@anggriawan.asia', 'Dewi Sartika', 'Kupang', 'Kalimantan Tengah', '61257'),
-(93, 'Ulva Handayani', 'Hani Karimah Andriani', '5468', 'pradana.cayadi@nugroho.org', 'Rajawali', 'Magelang', 'Nusa Tenggara Barat', '61258'),
-(94, 'Jamalia Ade Hartati S.I.Kom', 'Nabila Shakila Pertiwi', '7148', 'kusumo.paramita@melani.biz.id', 'Moch. Yamin', 'Probolinggo', 'Kalimantan Tengah', '61258'),
-(95, 'Ikhsan Utama Mansur', 'Yuliana Purnawati', '7403', 'humaira.tarihoran@wahyuni.net', 'Muwardi', 'Administrasi Jakarta Pusat', 'Gorontalo', '61255'),
-(96, 'Ihsan Wira Tampubolon S.H.', 'Eli Vera Haryanti M.TI.', '5548', 'mtampubolon@puspasari.info', 'Gading', 'Palembang', 'Banten', '61256'),
-(97, 'Lili Pratiwi S.Pt', 'Dasa Sirait', '8757', 'purwanti.wulan@marbun.co', 'Babah', 'Tegal', 'Sulawesi Tengah', '61258'),
-(98, 'Salman Firgantoro', 'Jagapati Wacana S.T.', '5662', 'dono.nurdiyanti@zulkarnain.my.id', 'Raden', 'Sukabumi', 'Papua', '61257'),
-(99, 'Jayeng Bajragin Firgantoro S.H.', 'Diana Palastri', '7847', 'rahmawati.karsana@nasyidah.id', 'B.Agam 1', 'Prabumulih', 'Kalimantan Selatan', '61252'),
-(100, 'Laksana Siregar S.T.', 'Bancar Marsito Widodo', '9436', 'tprayoga@siregar.mil.id', 'Moch. Yamin', 'Kendari', 'Indonesia', '61254'),
-(101, 'Laila Prastuti', 'Nadine Hastuti S.Farm', '6558', 'martaka.suartini@pranowo.tv', 'Sunaryo', 'Blitar', 'Sulawesi Tengah', '61256'),
-(102, 'Farah Suci Zulaika', 'Najib Samosir', '5166', 'tami.maryadi@namaga.my.id', 'Yohanes', 'Bitung', 'Papua', '61253'),
 (103, 'Lintang Julia Purwanti', 'Diana Oktaviani S.T.', '5208', 'umi.simanjuntak@sudiati.or.id', 'Setia Budi', 'Administrasi Jakarta Pusat', 'Bengkulu', '61254'),
 (104, 'Jasmani Rajasa S.Kom', 'Opung Candra Prabowo', '8134', 'ipermata@prasetyo.mil.id', 'Salak', 'Sungai Penuh', 'Kepulauan Riau', '61250'),
 (105, 'Chelsea Halimah', 'Carla Winarsih', '7366', 'dongoran.irma@hardiansyah.ac.id', 'Bahagia ', 'Jayapura', 'Bali', '61256'),
@@ -137,7 +124,8 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2020_02_24_022934_create_categories_table', 1);
+(1, '2020_02_24_022934_create_categories_table', 1),
+(2, '2020_03_23_101120_create_model_users_table', 2);
 
 -- --------------------------------------------------------
 
@@ -216,7 +204,10 @@ INSERT INTO `sales` (`nota_id`, `customer_id`, `user_id`, `nota_date`, `total_pa
 (10, 91, 4, '2020-03-22', 93000),
 (11, 93, 4, '2020-03-22', 12000),
 (12, 100, 3, '2020-03-22', 555),
-(13, 92, 5, '2020-03-22', 123);
+(13, 92, 5, '2020-03-22', 123),
+(14, 106, 4, '2020-03-23', 99999),
+(15, 107, 5, '2020-03-23', 7456460),
+(16, 108, 4, '2020-03-23', 678678);
 
 -- --------------------------------------------------------
 
@@ -273,15 +264,22 @@ INSERT INTO `user` (`user_id`, `first_name2`, `last_name`, `email`, `phone`, `pa
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `remember_token`, `created_at`, `updated_at`) VALUES
+(4, 'admin@gmail.com', '$2y$10$8YGtvXEDqHZctZsRpxQ.YulkorBpNcvqc/jkpIR9XEuIojNdvaEwa', 'admin', NULL, '2020-03-23 04:37:59', '2020-03-23 04:37:59'),
+(5, 'fahmi@gmail.com', '$2y$10$P7Pxw4qe9f1Ya/kFJUn5CuGdtfPgzCUYrTE6ciSoN7HmDnqDLsvKy', 'fahmi', NULL, '2020-03-23 04:40:49', '2020-03-23 04:40:49');
 
 --
 -- Indexes for dumped tables
@@ -343,7 +341,8 @@ ALTER TABLE `user`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -365,7 +364,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `murid`
@@ -383,7 +382,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -395,7 +394,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

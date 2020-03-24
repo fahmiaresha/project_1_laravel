@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\categorie;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Product extends Controller
 {
@@ -16,6 +17,10 @@ class Controller_Product extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
         $product = DB::table('product')->get();
         $categories= DB::table('categories')->get();
         $product2= DB::table('product')
@@ -25,6 +30,7 @@ class Controller_Product extends Controller
        // dump($categories);
         return view 
         ('master/product/index',['product' =>$product2],['categories'=>$categories]);
+        }
     }
 
     /**

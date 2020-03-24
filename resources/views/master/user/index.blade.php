@@ -124,13 +124,13 @@ data-target="#exampleModal3">
     <tr>
     <th scope="col">#</th>
       <th scope="col">ID</th>
-      <th scope="col">First_Name</th>
-      <th scope="col">Last_Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Password</th>
-      <th scope="col">Job_Status</th>
-      <th width="90%" scope="col">Action</th>
+      <th scope="col">Job Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 

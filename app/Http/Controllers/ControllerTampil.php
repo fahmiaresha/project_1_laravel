@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ControllerTampil extends Controller
 {
@@ -14,7 +15,12 @@ class ControllerTampil extends Controller
      */
 
      public function tampil_dashboard(){
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
          return view('template/dashboard');
+        }
      }
 
      public function tampil_login(){
@@ -25,12 +31,13 @@ class ControllerTampil extends Controller
         return view('template/register');
      }
 
-     public function tampil_rating(){
-         return view('template/rating');
-     }
-
      public function tampil_about(){
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
          return view('template/about');
+        }
      }
 
 

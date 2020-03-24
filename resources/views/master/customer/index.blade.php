@@ -152,14 +152,14 @@ Tambah Data Customer
     <tr>
     <th scope="col">#</th>
       <th scope="col">ID</th>
-      <th scope="col">First_Name</th>
-      <th scope="col">Last_Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
       <th scope="col">Phone</th>
       <th scope="col">Email</th>
       <th scope="col">Street</th>
       <th scope="col">City</th>
       <th scope="col">State</th>
-      <th scope="col">Zip_Code</th>
+      <th scope="col">Zip Code</th>
       <th width="90%" scope="col">Action</th>
     </tr>
   </thead>
@@ -298,8 +298,7 @@ Tambah Data Customer
   </div>
 </div>
           
-        <!-- Button trigger modal -->
-       
+<!-- Button trigger modal -->
 <button type="button" class="badge badge-danger" data-toggle="modal" 
 data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
@@ -320,9 +319,7 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
       </div>
       <div class="modal-footer">
         <button type="button" class="badge badge-success">
-        
-        
-          <a href="{{ url('/customer/destroy/'.$cus->customer_Id) }}">
+        <a href="{{ url('/customer/destroy/'.$cus->customer_Id) }}">
         <font size="2" color="white">Yes</font></a></button>
         <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class Controller_Customer extends Controller
@@ -25,10 +26,19 @@ class Controller_Customer extends Controller
     
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
         $customer = DB::table('customer')->get();
         //dump($customer);
-         return view ('master/customer/index',['customer' =>$customer]);
- 
+        return view ('master/customer/index',['customer' =>$customer]);
+        }
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect('/login')->with('alert','Anda sudah logout !');
     }
 
     /**

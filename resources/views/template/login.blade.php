@@ -28,7 +28,6 @@
                         <figure><img src="{{ asset('asset/login/images/signin-image.jpg') }}" alt="sing up image"></figure>
                         <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a>
                     </div>
-
                              
                     <div class="signin-form">
                                 @if(\Session::has('alert'))

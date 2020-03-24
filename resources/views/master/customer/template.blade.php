@@ -103,13 +103,33 @@
           <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens</h6> -->
           <a class="collapse-item" href="{{ url('/register') }}">Register</a>
-            <a class="collapse-item" href="{{ url('/login') }}">Login</a>
-            <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModallogin">Login</a>
+          <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
           
             <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
+      <!-- Logout Modal untuk login -->
+  <div class="modal fade" id="logoutModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Logout Account</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Jika anda ke halaman " Login " akan mereset session anda </div>
+        <div class="modal-footer">
+        <a class="btn btn-success" href="{{ url('/logout') }}">Yes</a>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
       
       <div class="sidebar-heading">
         About
@@ -336,7 +356,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -381,7 +401,7 @@
         </div>
         <div class="modal-body">Pilih "Logout" di bawah ini jika Anda ingin keluar.</div>
         <div class="modal-footer">
-        <a class="btn btn-success" href="{{ url('/login') }}">Logout</a>
+        <a class="btn btn-success" href="{{ url('/logout') }}">Logout</a>
           <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
         
         </div>

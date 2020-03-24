@@ -37,7 +37,7 @@ class User extends Controller
                 return redirect('/dashboard');
             }
             else{
-                return redirect('/login')->with('alert','Password , Salah !');
+                return redirect('/login')->with('alert','Password Anda , Salah !');
             }
         }
         else{

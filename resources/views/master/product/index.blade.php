@@ -115,13 +115,13 @@ data-target="#exampleModal4">
     <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
-      <th scope="col">Product_Id</th>
-      <th scope="col">Category_Name</th>
-      <th scope="col">Product_Name</th>
-      <th scope="col">Product_Price</th>
-      <th scope="col">Product_Stok</th>
+      <th scope="col">Id</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stok</th>
       <th scope="col">Explanation</th>
-      <th width="90%" scope="col">Action</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 

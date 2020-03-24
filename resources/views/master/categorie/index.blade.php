@@ -74,8 +74,8 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Category_id</th>
-      <th scope="col">Category_name</th>
+      <th scope="col">Category Id</th>
+      <th scope="col">Category Name</th>
       <th scope="col">Action</th>
     </tr>
   </thead>

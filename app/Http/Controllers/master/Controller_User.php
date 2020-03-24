@@ -6,6 +6,7 @@ use App\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Controller_User extends Controller
 {
@@ -16,9 +17,14 @@ class Controller_User extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
         $us=users::all();
        // dump($us);
         return view('master/user/index' , ['user' => $us]);
+        }
     }
 
     /**

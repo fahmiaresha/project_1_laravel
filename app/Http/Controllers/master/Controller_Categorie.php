@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\categorie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Categorie extends Controller
 {
@@ -15,10 +16,15 @@ class Controller_Categorie extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
+        if(!Session::get('login')){
+        return redirect('/login')->with('alert','Anda Belum Login !');
+    }
+    else{
         $categories= categorie::all();
         return view('master/categorie/index' , ['kategori' => $categories]);
        //return view('master/categorie/index ');
+    }
     }
 
     /**
