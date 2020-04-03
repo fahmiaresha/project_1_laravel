@@ -1,6 +1,14 @@
 @extends('master/customer/template')
 
 @section('title','Halaman Customer')
+@section('head')
+<style>
+    .post1
+    :hover{
+      cursor: pointer;
+    }
+</style>
+@endsection
 @section('konten')
 
 <div class="container">
@@ -118,31 +126,41 @@ Tambah Data Customer
   </div>
 </div> 
 
-    @if (session('status'))
+@if (session('status'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status') }} 
-      </div>
+      <script>
+      Swal.fire(
+          'Data Berhasil Di Tambahkan!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
-    
+   
     @if (session('status2'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status2') }}
-      </div>
+    <font size="4"> 
+    <script>
+      Swal.fire(
+        'Data Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
-    
     @if (session('status3'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status3') }}
-      </div>
+    <font size="4"> 
+    <script>
+      Swal.fire(
+          'Data Berhasil Di Hapus!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
-
   
 
 
@@ -150,7 +168,7 @@ Tambah Data Customer
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
+    <th scope="col">Status</th>
       <th scope="col">ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
@@ -160,14 +178,35 @@ Tambah Data Customer
       <th scope="col">City</th>
       <th scope="col">State</th>
       <th scope="col">Zip Code</th>
-      <th width="90%" scope="col">Action</th>
+      <th width="5%" scope="col">Action</th>
     </tr>
   </thead>
 
   <tbody>
   @foreach($customer as $cus )
     <tr>
-      <th scope="row"> {{ $loop->iteration }}</th>
+      <!-- <th scope="row"> -->
+      <td>
+      <form class="post1" method="post" action="{{ url('/customer/update/switch') }}">
+        @csrf
+        <input type="hidden" name="id" value="{{ $cus->customer_Id }}">
+        @if($cus->status == 1)
+          <div class="custom-control custom-switch">
+          <input type="checkbox" checked class="custom-control-input" id="switch{{ $cus->customer_Id }}">
+          <label class="custom-control-label" for="switch{{ $cus->customer_Id }}"></label>
+          </div>
+          <span class="badge badge-success"><font size="2">Active</font></span>
+      @else
+          <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="switch{{ $cus->customer_Id }}">
+          <label class="custom-control-label" for="switch{{ $cus->customer_Id }}"></label>
+          </div>
+          <span class="badge badge-danger"><font size="2">Non-Active</font></span>
+      @endif 
+      </form>
+      
+       </td>
+      <!-- </th> -->
       <td>{{ $cus->customer_Id }}</td>
       <td>{{ $cus->first_name }}</td>
       <td>{{ $cus->last_name }}</td>
@@ -179,12 +218,22 @@ Tambah Data Customer
       <td>{{ $cus->zip_code }}</td>
       <td>
 <!-- Button trigger modal -->
+@if($cus->status == 1)
 <button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $cus->customer_Id }}">
 <svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
 </svg>Edit
 </button>
+
+@else
+<button id="modal{{ $cus->customer_Id }}" onclick="tampil_modal(id)" type="button" class="badge badge-success" data-toggle="modal" data-target="#e">
+<svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
+</svg>Edit
+</button>
+@endif 
 
 <!-- Modal -->
 <div class="modal fade" id="editModal{{ $cus->customer_Id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -288,12 +337,15 @@ Tambah Data Customer
     </div>
   
       </div>
+      
+
       </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-success">Update</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-</form>
+
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -327,6 +379,7 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
   </div>
 </div> 
       </td>
+    
     </tr>
   @endforeach
   </tbody>
@@ -341,8 +394,26 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
   </div>
 @endsection
 
-<!-- @section('tambahscript')
+
+@section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
-</script> >
- @endsection  -->
+
+     console.log('x : ')
+    const x = document.getElementsByClassName('post1');
+    for(let i=0;i<x.length;i++){
+    x[i].addEventListener('click',function(){
+        x[i].submit();
+    });
+    }
+
+    function tampil_modal(id){
+      const y = document.getElementById(id);
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Status Data Tidak Aktif',
+        })
+    }
+</script>
+ @endsection 

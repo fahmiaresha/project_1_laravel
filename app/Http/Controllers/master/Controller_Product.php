@@ -22,12 +22,10 @@ class Controller_Product extends Controller
         }
         else{
         $product = DB::table('product')->get();
-        $categories= DB::table('categories')->get();
+        $categories= DB::table('categories')->where('status','=',1)->get();
         $product2= DB::table('product')
                     ->join('categories','product.category_id','=','categories.category_id')
                     ->get();
-        //$categories = categorie::all();
-       // dump($categories);
         return view 
         ('master/product/index',['product' =>$product2],['categories'=>$categories]);
         }

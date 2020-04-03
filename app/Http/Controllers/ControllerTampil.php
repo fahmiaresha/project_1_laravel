@@ -40,6 +40,14 @@ class ControllerTampil extends Controller
         }
      }
 
+     public function tampil_javascript1(){
+        return view('javascript/index');
+     }
+     public function tampil_javascript2(){
+      return view('javascript/index2');
+   }
+
+
 
 
     //  public function tampil_kontak(){

@@ -24,13 +24,14 @@ class Controller_Sales extends Controller
         $sales = DB::table('sales') 
                 ->join('customer','sales.customer_id','=','customer.customer_Id')
                 ->join('user','sales.user_id','=','user.user_id')
-                ->select('sales.*','customer.first_name','user.first_name2')
+                ->select('sales.*','customer.first_name','user.first_name2','customer.customer_Id',
+                'user.user_id')
                 ->get();
         $customer = DB::table('customer')->get();
         $user = DB::table('user')->get();
         //dump($sales);
-        return view('transaksi/sales/index',['sales'=>$sales]
-        ,['customer'=>$customer,'user'=>$user]);
+        return view('transaksi/sales/index',['sales'=>$sales,
+        'customer'=>$customer,'user'=>$user]);
         }
     }
 

@@ -26,7 +26,7 @@ data-target="#exampleModal4">
         </button>
       </div>
       <div class="modal-body">
-      <form method="post"  action="{{ url('/product/store') }}">
+      <form method="post" action="{{ url('/product/store') }}">
       {{ csrf_field() }}
 
     <div class="form-group ">
@@ -181,6 +181,7 @@ data-target="#exampleModal4">
     <select class="form-control" id="category_id" name="category_id">
     <option disabled selected="">Pilih Kategori</option>
       @foreach($categories as $cat)
+      
       <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
       @endforeach
     </select>
@@ -287,5 +288,7 @@ data-target="#exampleModal4">
 @section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
+
+
 </script> >
 @endsection

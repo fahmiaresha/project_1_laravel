@@ -1,6 +1,14 @@
 @extends('master/customer/template')
 
 @section('title','Halaman Kategori Produk')
+@section('head')
+<style>
+    .post0
+    :hover{
+      cursor: pointer;
+    }
+</style>
+@endsection
 
 @section('konten')
 
@@ -24,16 +32,21 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class="form-group">
-      <form method="post" action="{{ url('/kategori/store') }}">
+
+      
+      <form method="post" action="{{ url('/kategori/store') }}"> 
       {{ csrf_field() }}
+    <div class="form-group">
     <label for="category_name"><font size="4">Category Name</font></label>
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
     id="category_name" placeholder="Category Name " name="category_name">
     @error('category_name')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
-      @enderror
+    @enderror
   </div>
+
+
+  
       </div>
 
       <div class="modal-footer">
@@ -47,25 +60,37 @@
 
     @if (session('status'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status') }} 
-      </div>
+      <script>
+      Swal.fire(
+          'Data Berhasil Di Tambahkan!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
    
     @if (session('status2'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status2') }} 
-      </div>
+    <script>
+      Swal.fire(
+        'Data Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
     @if (session('status3'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status3') }} 
-      </div>
+    <script>
+      Swal.fire(
+          'Data Berhasil Di Hapus!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
@@ -73,8 +98,8 @@
     height= width="0%"> </font>
     <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Category Id</th>
+      <th width="2%" scope="col">Status</th>
+      <th scope="col">ID</th>
       <th scope="col">Category Name</th>
       <th scope="col">Action</th>
     </tr>
@@ -83,7 +108,29 @@
   <tbody>
   @foreach($kategori as $kt )
     <tr>
-      <th scope="row"> {{ $loop->iteration }}</th>
+      <!-- <th scope="row"> -->
+        <td>
+        <form class="post0" method="post" action="{{ url('/kategori/update/switch') }}">
+        @csrf
+        <input type="hidden" name="id" value="{{ $kt->category_id }}">
+        @if($kt->status == 1)
+          <div class="custom-control custom-switch">
+          <input type="checkbox" checked class="custom-control-input" id="switch{{$kt->category_id}}">
+          <label class="custom-control-label" for="switch{{$kt->category_id}}"></label>
+          </div>
+          <span class="badge badge-success"><font size="2">Active</font></span>
+            
+      @else
+          <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="switch{{$kt->category_id}}">
+          <label class="custom-control-label" for="switch{{$kt->category_id}}"></label>
+          </div>
+          <span class="badge badge-danger"><font size="2">Non-Active</font></span>
+         
+      @endif 
+      </form>
+       </td>
+      <!-- </th> -->
       <td>{{ $kt->category_id }}</td>
       <td>{{ $kt->category_name }}</td>
       <td>
@@ -98,13 +145,25 @@
 
 
 <!-- Button trigger modal -->
+@if($kt->status == 1)
 <button type="button" class="badge badge-success" data-toggle="modal" 
-data-target="#editModal{{$kt -> category_id}}">
+data-target="#editModal{{$kt -> category_id}}" >
 <svg class="bi bi-pencil" width="23px" height="23px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
 </svg>Edit
 </button>
+
+@else
+<button id="modal{{$kt->category_id}}" onclick="tampil_modal(id)" type="button" class="badge badge-success" data-toggle="modal" 
+data-target="#e" >
+<svg class="bi bi-pencil" width="23px" height="23px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
+</svg>Edit
+</button>
+
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="editModal{{$kt -> category_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -121,16 +180,16 @@ data-target="#editModal{{$kt -> category_id}}">
       <form method="post" action="{{ url('/kategori/update') }}">
       @csrf
       <input type="hidden" name="id" value="{{ $kt->category_id }}">
-  <div class="form-group">
+    <div class="form-group">
     <label for="category_name"><font size="4">Category Name</font></label>
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
     id="category_name" name="category_name" 
      value="{{ $kt->category_name }}" required>
     @error('category_name')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+  <div class="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
-  </div>
       </div>
+</div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-success">Update</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
@@ -171,6 +230,9 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
   </div>
 </div>
       </td>
+     
+
+      
     </tr>
   @endforeach
   </tbody>
@@ -187,7 +249,27 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
 @section('tambahscript')
 <script>
 $('.mydatatable').dataTable( {
-  
 } );
+    
+    
+const x = document.getElementsByClassName('post0');
+    for(let i=0;i<x.length;i++){
+    x[i].addEventListener('click',function(){
+        x[i].submit();
+    });
+    }
+
+   
+    function tampil_modal(id){
+      const y = document.getElementById(id);
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Status Data Tidak Aktif',
+        })
+    }
+    
+    
+       
 </script>
 @endsection

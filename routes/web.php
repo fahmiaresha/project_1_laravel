@@ -22,6 +22,13 @@ Route::post('/customer/update','ControllerTampil@update');
 
 Route::get('/customer/hapus/{id}' ,'ControllerTampil@destroy');
 */
+Route::get('/', function () {
+    return view('template/login');
+});
+
+Route::get('/javascript1','ControllerTampil@tampil_javascript1');
+Route::get('/javascript2','ControllerTampil@tampil_javascript2');
+
 
 Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
@@ -44,6 +51,7 @@ Route::post('/customer/store','master\Controller_Customer@store');
 Route::post('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
 Route::get('/logout','master\Controller_Customer@logout');
+Route::post('/customer/update/switch','master\Controller_customer@update_switch');
 
 
 
@@ -54,6 +62,8 @@ Route::get('/kategori/edit/{id}','master\Controller_Categorie@edit');
 Route::post('/kategori/update','master\Controller_Categorie@update');
 //Route::put('/kategori/update/{id}','master\Controller_Categorie@update');
 Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
+Route::post('/kategori/update/switch','master\Controller_Categorie@update_switch');
+
 
 
 Route::get('/user/index','master\Controller_User@index');
@@ -102,6 +112,3 @@ Route::get('tentang', 'Controller_coba@tentang');
 Route::get('kontak', 'Controller_coba@kontak');
 */
 
-Route::get('/', function () {
-    return view('template/login');
-});

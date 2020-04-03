@@ -120,12 +120,34 @@ class Controller_Customer extends Controller
             'phone' => $request->phone,'email' => $request->email,
             'street' => $request->street,'city' => $request->city,
             'state' => $request->state,'zip_code' => $request->zip_code
+            
         ]);
 
         //redirect
         return redirect('/customer/index')->with('status2','Data Berhasil Di
         Edit');
     }
+
+    public function update_switch(Request $request)
+    {
+        $cus=DB::table('customer')->where('customer_Id',$request->id)->value('status','=','1');
+        if($cus){
+        DB::table('customer')
+            ->where('customer_Id',$request->id)
+            ->update(['status' => 0]);
+        }
+        else{
+            DB::table('customer')
+            ->where('customer_Id',$request->id)
+            ->update(['status' => 1]);
+        }
+        //redirect
+        return redirect('/customer/index')->with('status2','Data Berhasil Di
+        Edit');
+
+       
+    }
+   
 
     /**
      * Remove the specified resource from storage.

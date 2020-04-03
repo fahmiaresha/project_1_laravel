@@ -54,7 +54,10 @@ class Controller_Categorie extends Controller
 
           return redirect('/kategori/index')->with('status','Data Berhasil Di
           Tambahkan');
+
+
     }
+
 
     /**
      * Display the specified resource.
@@ -92,6 +95,7 @@ class Controller_Categorie extends Controller
         $request->validate([
             'category_name' => 'required'
           ]);
+    
           
         //edit
         DB::table('categories')->where('category_id',$request->id)->update([
@@ -108,14 +112,28 @@ class Controller_Categorie extends Controller
         $request->validate([
             'category_name' => 'required'
           ]);
-
+        
           $kategori=categorie::find($request->id); 
-          $kategori->category_name = $request->category_name;
-          $kategori->save();
+          $kategori->category_name = $request->category_name; 
+          $kategori->save();          
+        
+          return redirect('/kategori/index')->with('status2','data berhasil di update');
+    }
 
-          return redirect('/kategori/index')->with('status2','Data Berhasil Di
+    public function update_switch(Request $request)
+    {
+          $ct=categorie::find($request->id);
+          if($ct->status==1){ 
+          $ct->status=0;
+          }
+          else{
+              $ct->status=1;
+          }
+          $ct->save();
+          return redirect('/kategori/index')->with('status4','Data Berhasil Di
           Edit');
     }
+
 
     /**
      * Remove the specified resource from storage.
