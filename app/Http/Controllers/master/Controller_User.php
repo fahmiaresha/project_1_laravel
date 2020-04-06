@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\master;
 
 use App\users;
+use App\ModelUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,6 +66,8 @@ class Controller_User extends Controller
 
           return redirect('/user/index')->with('status','Data Berhasil Di
           Tambahkan');
+
+       
     }
 
     /**
@@ -142,7 +145,7 @@ class Controller_User extends Controller
     { 
         DB::table('user')->where('user_id',$id)->delete();
         //mengalihkan halaman
-        return redirect('/user/index')->with('status2','Data Berhasil Di
+        return redirect('/user/index')->with('status3','Data Berhasil Di
         Hapus');
 
      }

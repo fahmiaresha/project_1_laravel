@@ -100,27 +100,39 @@ data-target="#exampleModal3">
   </div>
 </div> 
 
-    @if (session('status'))
+@if (session('status'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status') }} 
-      </div>
+      <script>
+      Swal.fire(
+          'Data Berhasil Di Tambahkan!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
-
+   
     @if (session('status2'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status2') }}
-      </div>
+    <font size="4"> 
+    <script>
+      Swal.fire(
+        'Data Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
     @if (session('status3'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status3') }}
-      </div> 
+    <font size="4"> 
+    <script>
+      Swal.fire(
+          'Data Berhasil Di Hapus!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
     <font size="2">

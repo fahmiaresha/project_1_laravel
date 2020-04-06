@@ -19,7 +19,7 @@ class ControllerTampil extends Controller
             return redirect('/login')->with('alert','Anda Belum Login !');
         }
         else{
-         return view('template/dashboard');
+         return view('template/dashboard')->with('login');
         }
      }
 

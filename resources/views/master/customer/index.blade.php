@@ -161,6 +161,18 @@ Tambah Data Customer
     </script>
     </font>
     @endif
+
+    @if (session('status4'))
+    <font size="4"> 
+    <script>
+      Swal.fire(
+        'Status Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
+    </font>
+    @endif
   
 
 

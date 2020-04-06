@@ -94,6 +94,18 @@
     </font>
     @endif
 
+    @if (session('status4'))
+    <font size="4"> 
+    <script>
+      Swal.fire(
+        'Status Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
+    </font>
+    @endif
+
     <font size="2"><table class="table table-striped table-bordered mydatatable" 
     height= width="0%"> </font>
     <thead class="thead-dark">
@@ -110,25 +122,45 @@
     <tr>
       <!-- <th scope="row"> -->
         <td>
+          @php $x=0; @endphp
+            @foreach($product as $p)
+                @if($kt->category_id == $p->category_id)
+                    @php $x=1; @endphp
+                @endif
+            @endforeach
+   @if($x==0)
         <form class="post0" method="post" action="{{ url('/kategori/update/switch') }}">
         @csrf
         <input type="hidden" name="id" value="{{ $kt->category_id }}">
-        @if($kt->status == 1)
+          @if($kt->status == 1)
           <div class="custom-control custom-switch">
           <input type="checkbox" checked class="custom-control-input" id="switch{{$kt->category_id}}">
           <label class="custom-control-label" for="switch{{$kt->category_id}}"></label>
           </div>
           <span class="badge badge-success"><font size="2">Active</font></span>
             
-      @else
+            @else
           <div class="custom-control custom-switch">
           <input type="checkbox" class="custom-control-input" id="switch{{$kt->category_id}}">
           <label class="custom-control-label" for="switch{{$kt->category_id}}"></label>
           </div>
-          <span class="badge badge-danger"><font size="2">Non-Active</font></span>
-         
+          <span class="badge badge-danger"><font size="2">Non-Active</font></span>    
       @endif 
       </form>
+  @else
+  <form id="tampil{{$kt->category_id}}" onclick="tampil_cat(id)"  method="post" action="#">
+        @csrf
+        <input  type="hidden" name="id" value="{{ $kt->category_id }}">
+          @if($kt->status == 1)
+          <div class="custom-control custom-switch">
+          <input type="checkbox" checked  class="custom-control-input" id="switch{{$kt->category_id}}">
+          <label class="custom-control-label" for="switch{{$kt->category_id1}}" ></label>
+          </div>
+          <span class="badge badge-success"><font size="2">Active</font></span>
+             
+      @endif 
+      </form>
+  @endif
        </td>
       <!-- </th> -->
       <td>{{ $kt->category_id }}</td>
@@ -266,6 +298,15 @@ const x = document.getElementsByClassName('post0');
           icon: 'error',
           title: 'Oops...',
           text: 'Status Data Tidak Aktif',
+        })
+    }
+
+    function tampil_cat(id){
+      const a = document.getElementById(id);
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Data Category Telah Digunakan Di Produk !',
         })
     }
     

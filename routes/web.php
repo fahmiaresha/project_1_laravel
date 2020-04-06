@@ -37,7 +37,7 @@ Route::get('/login', 'User@login');
 Route::post('/loginPost', 'User@loginPost');
 Route::get('/register', 'User@register');
 Route::post('/registerPost', 'User@registerPost');
-Route::get('/logout', 'User@logout');
+// Route::get('/logout', 'User@logout');
 Route::get('/home_user', 'User@index');
 
 // Route::get('/kontak', 'ControllerTampil@tampil_kontak');
@@ -51,7 +51,7 @@ Route::post('/customer/store','master\Controller_Customer@store');
 Route::post('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
 Route::get('/logout','master\Controller_Customer@logout');
-Route::post('/customer/update/switch','master\Controller_customer@update_switch');
+Route::post('/customer/update/switch','master\Controller_Customer@update_switch');
 
 
 

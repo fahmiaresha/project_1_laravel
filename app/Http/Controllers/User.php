@@ -47,7 +47,7 @@ class User extends Controller
 
     public function logout(){
         Session::flush();
-        return redirect('template/login')->with('alert','Kamu sudah logout');
+        return redirect('template/login')->with('logout','Kamu sudah logout');
     }
 
     public function register(Request $request){

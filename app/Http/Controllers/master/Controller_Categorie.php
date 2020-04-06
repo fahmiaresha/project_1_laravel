@@ -5,6 +5,7 @@ namespace App\Http\Controllers\master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\categorie;
+use App\produk;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -22,8 +23,9 @@ class Controller_Categorie extends Controller
     }
     else{
         $categories= categorie::all();
-        return view('master/categorie/index' , ['kategori' => $categories]);
-       //return view('master/categorie/index ');
+        $product = produk::all();
+        return view('master/categorie/index' , ['kategori' => $categories,'product'=>$product]);
+      
     }
     }
 

@@ -19,17 +19,26 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">   
+  <link href="{{ asset('asset/admin/css/sb-admin-2.min.css') }}" rel="stylesheet"> 
+  
+
 
   <!-- Sweet Alert-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-  <link href=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">  
  
+
+  
+   <!-- Toast-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> 
+  
+
     @yield('head')
 </head>
 
 <body id="page-top">
+
+ 
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Sidebar -->
@@ -104,8 +113,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens</h6> -->
-          <a class="collapse-item" href="{{ url('/register') }}">Register</a>
-          <a class="collapse-item" href="{{ url('/login') }}" data-toggle="modal" data-target="#logoutModallogin">Login</a>
+          <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a>
+          
           <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
           
             <div class="collapse-divider"></div>
@@ -345,18 +354,18 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                </a> -->
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
-                </a>
-                <a class="dropdown-item" href="#">
+                </a> -->
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -383,6 +392,7 @@
   </div>
   </div>
   </div>
+  
 </body>
   <!-- End of Page Wrapper -->
 
@@ -445,14 +455,18 @@
   <script src="{{ asset('asset/admin/js/demo/chart-pie-demo.js') }}"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+   <!-- toast -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
   <!-- </div>
 
-    <-- Toats -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
+
+  
 
  
 </body>
-<!-- <script>
+ <script>
      $('.mydatatable').DataTable();
 </script> > -->
 

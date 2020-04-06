@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\categorie;
+use App\produk;
 use Illuminate\Support\Facades\Session;
 
 class Controller_Product extends Controller
@@ -21,7 +22,8 @@ class Controller_Product extends Controller
             return redirect('/login')->with('alert','Anda Belum Login !');
         }
         else{
-        $product = DB::table('product')->get();
+        // $product = DB::table('product')->get();
+        $product = produk::all();
         $categories= DB::table('categories')->where('status','=',1)->get();
         $product2= DB::table('product')
                     ->join('categories','product.category_id','=','categories.category_id')
@@ -57,8 +59,8 @@ class Controller_Product extends Controller
             'product_stok' => 'required',
             'explanation' => 'required',
           ]);
-
-        DB::table('product')->insert([
+         
+        produk::create([
             'category_id' => $request->category_id,
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,
@@ -112,16 +114,22 @@ class Controller_Product extends Controller
             'product_stok' => 'required',
             'explanation' => 'required'
           ]);
-        
+          $produk=produk::find($request->id); 
+          $produk->category_id = $request->category_id; 
+          $produk->product_name = $request->product_name;
+          $produk->product_price = $request->product_price;  
+          $produk->product_stok = $request->product_stok; 
+          $produk->explanation = $request->explanation; 
+          $produk->save(); 
 
         //edit
-        DB::table('product')->where('product_id',$request->id)->update([
-            'category_id' => $request->category_id,
-            'product_name' => $request->product_name,
-            'product_price' => $request->product_price,
-            'product_stok' => $request->product_stok,
-            'explanation' => $request->explanation
-        ]);
+        // DB::table('product')->where('product_id',$request->id)->update([
+        //     'category_id' => $request->category_id,
+        //     'product_name' => $request->product_name,
+        //     'product_price' => $request->product_price,
+        //     'product_stok' => $request->product_stok,
+        //     'explanation' => $request->explanation
+        // ]);
 
         //redirect
         return redirect('/product/index')->with('status2','Data Berhasil Di
@@ -136,7 +144,9 @@ class Controller_Product extends Controller
      */
     public function destroy($id)
     {
-        DB::table('product')->where('product_id',$id)->delete();
+        // DB::table('product')->where('product_id',$id)->delete();
+        $produk= produk::find($id);
+        $produk->delete();
         
         //mengalihkan halaman
         return redirect('/product/index')->with('status3','Data Berhasil Di

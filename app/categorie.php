@@ -11,4 +11,5 @@ class categorie extends Model
     protected $primaryKey = 'category_id';
     //yang dapat di insert 
    protected $fillable = ['category_name'];
+   public $timestamps= false;
 }

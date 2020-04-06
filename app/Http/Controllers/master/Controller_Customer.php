@@ -142,7 +142,7 @@ class Controller_Customer extends Controller
             ->update(['status' => 1]);
         }
         //redirect
-        return redirect('/customer/index')->with('status2','Data Berhasil Di
+        return redirect('/customer/index')->with('status4','Data Berhasil Di
         Edit');
 
        

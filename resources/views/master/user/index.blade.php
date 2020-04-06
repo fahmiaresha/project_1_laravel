@@ -15,6 +15,8 @@ data-target="#exampleModal3">
   Tambah Data User
 </button>
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -95,30 +97,46 @@ data-target="#exampleModal3">
   </div>
 </div> 
 
-    @if (session('status'))
+
+@if (session('status'))
     <font size="4"> 
-      <div class="alert alert-success">
-          {{ session ('status') }} 
-      </div>
+    <script>
+      Swal.fire(
+        'Data Berhasil Di Tambahkan!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
+    
+   
     @if (session('status2'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status2') }}
-      </div>
+    <font size="4"> 
+    <script>
+      Swal.fire(
+        'Data Berhasil Di Update!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
 
     @if (session('status3'))
-    <font size="4">  
-      <div class="alert alert-success">
-      {{ session ('status3') }}
-      </div> 
+    <font size="4"> 
+    <script>
+      Swal.fire(
+          'Data Berhasil Di Hapus!',
+          '',
+          'success'
+        )
+    </script>
     </font>
     @endif
     <font size="2">
+      
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
@@ -143,7 +161,7 @@ data-target="#exampleModal3">
       <td>{{ $us->last_name }}</td>
       <td>{{ $us->email }}</td>
       <td>{{ $us->phone }}</td>
-      <td>{{ $us->password }}</td>
+      <td >{{ $us->password }}</td>
       <td>{{ $us->job_status }}</td>
       <td>
         
@@ -176,6 +194,9 @@ data-target="#exampleModal3">
         
       <form method="post" action="{{ url('/user/update') }}">
       {{ csrf_field() }}
+
+
+      
       <input type="hidden" name="id" value="{{ $us->user_id }}">
 
       <div class="form-row">
@@ -298,7 +319,11 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
 @endsection
 
 @section('tambahscript')
+
 <script>
-     $('.mydatatable').DataTable();
-</script> >
+     window.onload=(function(){
+      $('.mydatatable').DataTable();
+      
+     });
+</script> 
 @endsection

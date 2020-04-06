@@ -27,6 +27,8 @@ class Controller_Sales_Detail extends Controller
         
         return view('transaksi/sales_detail/create',['categories'=>$categories,
         'product'=>$product]);
+             
+
         }
     }
 
