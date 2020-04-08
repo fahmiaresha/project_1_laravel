@@ -15,7 +15,7 @@ class Controller_Sales_Detail extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
         if(!Session::get('login')){
             return redirect('/login')->with('alert','Anda Belum Login !');
@@ -23,13 +23,20 @@ class Controller_Sales_Detail extends Controller
         else{
         $categories = DB::table('categories')->get();
         $product = DB::table('product')->get();
+        $customer = DB::table('customer')->get();
+        $user= DB::table('user')->get();
+        $sales= DB::table('sales')->get();
         //dump($categories);
         
         return view('transaksi/sales_detail/create',['categories'=>$categories,
-        'product'=>$product]);
+        'product'=>$product,'customer'=>$customer,'user'=>$user,'sales'=>$sales]);
              
 
         }
+    }
+
+    public function index(){
+
     }
 
     /**
@@ -37,10 +44,6 @@ class Controller_Sales_Detail extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        
-    }
 
     /**
      * Store a newly created resource in storage.

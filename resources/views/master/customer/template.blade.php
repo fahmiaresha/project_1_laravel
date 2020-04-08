@@ -98,6 +98,7 @@
             <h6 class="collapse-header">Tabel</h6>
             <a class="collapse-item" href="{{ url('/sales/index') }}">Sales</a>
             <a class="collapse-item" href="{{ url('/sales_detail/index') }}">Sales Detail</a>
+            <a class="collapse-item" href="{{ url('/sales_detail/create') }}">Point Of Sales</a>
           </div>
         </div>
       </li>

@@ -73,9 +73,9 @@ data-target="#exampleModal3">
   
 
   <div class="form-group">
-    <label for="nota_date"><font size="4">Date</font></label>
-    <input type="text" class="form-control @error('nota_date') is-invalid @enderror" 
-    id="nota_date" placeholder=" nota_date " name="nota_date" value="<?php echo date("Y-m-d")?>"readonly>
+    <label for="nota_date"><font size="4">Date </font></label>
+    <input type="date" class="form-control @error('nota_date') is-invalid @enderror" 
+    id="nota_date" placeholder=" nota_date " name="nota_date" value="">
     @error('nota_date')
   <div class="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror

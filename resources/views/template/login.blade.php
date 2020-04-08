@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Login</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- Font Icon -->
 
     <link rel="stylesheet" href="{{ asset('asset/login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
@@ -18,31 +18,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Sweet Alert-->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
 </head>
 <body>
 <div class="main"> 
-@if (session('logout'))
-      <script>
-      const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 4000,
-          timerProgressBar: true,
-          onOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-
-        Toast.fire({
-          icon: 'success',
-          title: 'Anda Berhasil Logout !',
-          padding: '2.3rem'
-        })
-      </script>
-      @endif
   <!-- Sing in  Form -->
   <section class="sign-in">
             <div class="container">
@@ -62,7 +41,7 @@
                                                 <div class="alert alert-success">
                                                     <div>{{Session::get('alert-success')}}</div>
                                                 </div>
-                               @endif
+                                        @endif
                         <h2 class="form-title">Login</h2>
                         <form action="{{ url('/loginPost') }}" method="POST" class="register-form" id="login-form">
                         {{ csrf_field() }}    
@@ -99,5 +78,27 @@
 <!-- JS -->
 <script src="{{ asset('asset/login/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('asset/login/js/main.js') }}"></script>
+
 </body>
+@if (session('logout'))
+      <script>
+      const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 4000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Anda Berhasil Logout !',
+          padding: '2.3rem'
+        })
+      </script>
+    @endif
 </html>

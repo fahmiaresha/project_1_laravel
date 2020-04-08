@@ -69,14 +69,7 @@ data-target="#exampleModal3">
       @enderror
   </div>
 
-  <div class="form-group">
-    <label for="password"><font size="4">Password</font></label>
-    <input type="password" class="form-control @error('password') is-invalid @enderror" 
-    id="password" placeholder=" Password " name="password" value="{{ old('password') }}">
-    @error('password')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
-      @enderror
-  </div>
+  
   
   <div class="form-group">
     <label for="job_status"><font size="4">Job Status</font></label>
@@ -86,8 +79,29 @@ data-target="#exampleModal3">
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
   </div>
-      </div>
 
+  <div class="form-group">
+    <label for="password"><font size="4">Password</font></label>
+    <input type="password" class="form-control @error('password') is-invalid @enderror" 
+    id="password" placeholder=" Password " name="password" value="{{ old('password') }}">
+    @error('password')
+  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+      @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="repeat_password"><font size="4">Repeat Password</font></label>
+    <input type="password" class="form-control " 
+    id="repeat_password" onkeyup="cekPass()" placeholder="Repeat Password" name="password" 
+    value="{{ old('repeat_password') }}">
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+        <strong><font size="4"><p id="error" style="color:red"></p></font></strong>
+    </div>
+    </div>
+
+</div>
       <div class="modal-footer">
         <button type="reset" class="btn btn-danger">Reset</button>
         <button type="submit" class="btn btn-success">Insert</button>
@@ -146,7 +160,7 @@ data-target="#exampleModal3">
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-      <th scope="col">Password</th>
+      <!-- <th scope="col">Password</th> -->
       <th scope="col">Job Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -161,7 +175,7 @@ data-target="#exampleModal3">
       <td>{{ $us->last_name }}</td>
       <td>{{ $us->email }}</td>
       <td>{{ $us->phone }}</td>
-      <td >{{ $us->password }}</td>
+      <!-- <td >{{ $us->password }}</td> -->
       <td>{{ $us->job_status }}</td>
       <td>
         
@@ -221,6 +235,8 @@ data-target="#exampleModal3">
     </div>
   </div>
 
+  <div class="form-group">
+  </div>
   
   <div class="form-group">
     <label for="email"><font size="4">Email</font></label>
@@ -242,15 +258,7 @@ data-target="#exampleModal3">
       @enderror
   </div>
  
-  <div class="form-group">
-    <label for="password"><font size="4">Password</font></label>
-    <input type="text" class="form-control @error('password') is-invalid @enderror" 
-    id="password" placeholder="password" name="password" 
-    value="{{ $us->password }}" required>
-    @error('password')
-  <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
-      @enderror
-  </div>
+  
 
   <div class="form-group">
     <label for="job_status"><font size="4">Job Status</font></label>
@@ -323,7 +331,22 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
 <script>
      window.onload=(function(){
       $('.mydatatable').DataTable();
-      
      });
+     function cekPass(){
+       console.log('cekPass1');
+             var pass = document.getElementById('password').value;   
+            var copass = document.getElementById('repeat_password').value;
+            var text = document.getElementById('error');
+             if(pass != copass) {
+                  text.style.color = 'red';  
+                  text.innerHTML= 'The repeat password and password must match ! ';         
+                  }      
+                    else        
+                      {            
+                        text.style.color = 'green';    
+                        text.innerHTML=' Password Match !';  
+                      } 
+        }
+
 </script> 
 @endsection

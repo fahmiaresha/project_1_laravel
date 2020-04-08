@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\master;
 
 use App\users;
-use App\ModelUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +54,8 @@ class Controller_User extends Controller
             'job_status' => 'required' 
           ]);
 
-          DB::table('user')->insert([
+
+          users::create([
             'first_name2' => $request->first_name2 ,
             'last_name' => $request->last_name ,
             'email' => $request->email ,
@@ -109,19 +109,28 @@ class Controller_User extends Controller
             'last_name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
-            'password' => 'required',
-            'job_status' => 'required'
+            'job_status' => 'required',
+            // 'password' => 'required'
           ]);
           
         //edit
-        DB::table('user')->where('user_id',$request->id)->update([
-            'first_name2' => $request->first_name2,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => $request->password,
-            'job_status' => $request->job_status,
-        ]);
+        // DB::table('user')->where('user_id',$request->id)->update([
+        //     'first_name2' => $request->first_name2,
+        //     'last_name' => $request->last_name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'password' => $request->password,
+        //     'job_status' => $request->job_status,
+        // ]);
+
+          $users=users::find($request->id); 
+          $users->first_name2 = $request->first_name2; 
+          $users->last_name = $request->last_name; 
+          $users->email = $request->email; 
+          $users->phone = $request->phone; 
+        //   $users->password = $request->password; 
+          $users->job_status = $request->job_status; 
+          $users->save();          
 
         //redirect
         return redirect('/user/index')->with('status2','Data Berhasil Di
@@ -143,7 +152,9 @@ class Controller_User extends Controller
 
     public function destroy($id)
     { 
-        DB::table('user')->where('user_id',$id)->delete();
+        // DB::table('user')->where('user_id',$id)->delete();
+        $users = users::find($id);
+        $users->delete();
         //mengalihkan halaman
         return redirect('/user/index')->with('status3','Data Berhasil Di
         Hapus');

@@ -5,47 +5,78 @@
 @section('konten')
 <div class="container">
     <div class="card border-light mb-3" style="max-width: 60rem;">
-      <div class="card-header"><h3>Form Insert Data </h3></div>
+      <div class="card-header"><h3>Point Of Sales </h3></div>
       <div class="card-body">
-      <h5 class="card-title">Point Of Sales</h5>
+      <!-- <h5 class="card-title">Point Of Sales</h5> -->
+      <form method="post" action="{{ url('/sales_detail/store') }}">
+      <div class="form-row">
+      <div class="form-group col-md-3">
+      @php $x=0; @endphp
+        @foreach($sales as $s)
+        @php $x++; @endphp
+        @endforeach
+        @php $y=$x+1; @endphp
+        <label for="date"><font size="6"><strong>Nota #{{$y}}</strong></font></label>
+      </div>
+      </div>
 
       <div class="form-row">
-        <div class="form-group col-md-4">
-        <label for="date"><font size="4">Category Id</font></label>
-            <input type="text" class="form-control @error('date') is-invalid @enderror" 
-            id="date" name="date" value=""readonly>
-            @error('date')
-          <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
-              @enderror
-          </div>
 
-          <div class="form-group col-md-2">
-          </div>
+      <div class="form-group col-md-4">
+          <label for="nota_date"><font size="4">Date *</font></label>
+          <input type="date" class="form-control @error('nota_date') is-invalid @enderror" 
+          id="nota_date" placeholder=" nota_date " name="nota_date" value="">
+          @error('nota_date')
+        <div class="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
+            @enderror
+        </div>
 
-          <div class="form-group col-md-2">
-          </div>
-          
-          <div class="form-group col-md-4">
-          <label for="category_name"><font size="4">Category Name *</font></label>
-          <select id="category_name" name="category_name" class="form-control"
+      </div>
+
+  <div class="form-row">
+      <div class="form-group col-md-4">
+          <label for="user_id"><font size="4">User *</font></label>
+          <select id="user_id" name="user_id" class="form-control"
           placeholder="" value="">
-          <option disabled selected="">Select Category Name</option>
-              @foreach($categories as $cat)
-              <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
+          <option disabled selected="">Pilih User</option>
+              @foreach($user as $us)
+              <option value="{{$us->user_id}}">{{$us->first_name2}}</option>
+              @endforeach
+          </select>
+          </div>
+
+          <div class="form-group col-md-2">
+          </div>
+
+          <div class="form-group col-md-2">
+          </div>
+           <div class="form-group col-md-4">
+          <label for="customer_id"><font size="4">Customer *</font></label>
+          <select id="customer_id" name="customer_id" class="form-control"
+          placeholder="" value="">
+          <option disabled selected="">Pilih Customer</option>
+              @foreach($customer as $cus)
+              <option value="{{$cus->customer_Id}}">{{$cus->first_name}}</option>
               @endforeach
           </select>
           </div>
   </div>
+              
 
+    <div class="form-row">
+    <div class="form-group col-md-2">
+      <button type="button" class="btn btn-primary" onclick="tampil_modal()">Add Product</button>
+    </div>   
+    </div>
     <input type="text" class="form-control" id="search" name="search" 
-    value="" placeholder="Enter Your Product Name!" onkeyup="getModal(event)">
-
+    value="" placeholder="Or Search Your Product Name !" onkeyup="getModal(event)">
+   
               <!-- Modal -->
               <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Tambah Produk</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Add Produk</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -76,9 +107,8 @@
 
                     </div> <!-- Tutup Modal Body -->
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="save" >
-                      Add</button>
-                     <font size="6"><button type="button" class="badge badge-danger" data-dismiss="modal">Back</button></font>
+                    <button type="button" class="btn btn-success" id="save" ><font size="4">Add</font></button>
+                    <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="5">Back</font></button>
                       
                     </div>
                   </div>
@@ -97,50 +127,12 @@
                     <th  style="text-align:center"  scope="col">Quantity</th>
                     <th   style="text-align:center" scope="col">Price</th>
                     <th   style="text-align:center" scope="col">Discount & Tax</th>
-                    <th   style="text-align:center" scope="col">Total</th>
-                    <th style="text-align:center"  scope="col"></th>
+                    <th   style="text-align:center" scope="col">Total Price</th>
+                    <th style="text-align:center"  scope="col">Action</th>
                   </tr>
                 </thead>
-
-                <tbody>
-                <!-- <tr> -->
-                      <!-- <th scope="row"><button type="button" class="badge badge-danger"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
-                      </svg></button></th> -->
-                      <!-- <td>Chiki</td> -->
-                      <!-- <td>8000</td> -->
-                      
-                      <!-- <td style='width: 15%;' class='align-middle'>
-                        <div class='row justify-content-center'>
-                          <button class='inc btn btn-sm btn-dark' type='button' onclick='inc("+id+")'>+</button>
-                          <input type='number' style='background-color:#f5f5f5; -moz-appearance: textfield; width: 30%; border:1px;text-align: center;' class='quantity' oninput='recount("+id+")' name='jumlah["+id+"]' min='1' id='jumlah"+id+"'required max='"+stock+"' value='1'>
-                          <button class='dec btn btn-sm btn-dark' type='button' onclick='dec("+id+")'>-</button>
-                        </div>
-                      </td> -->
-                      <!-- <td>8.000</td> -->
-                <!-- </tr> -->
-
-                <!-- <tr> -->
-                      <!-- <th scope="row"><button type="button" class="badge badge-danger"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
-                      </svg></button></th> -->
-                      <!-- <td>Chikuu</td> -->
-                      <!-- <td>9000</td> -->
-                      
-                      <!-- <td style='width: 15%;' class='align-middle'>
-                        <div class='row justify-content-center'>
-                          <button class='inc btn btn-sm btn-dark' type='button' onclick='inc("+id+")'>+</button>
-                          <input type='number' style='background-color:#f5f5f5; -moz-appearance: textfield; width: 30%; border:1px;text-align: center;' class='quantity' oninput='recount("+id+")' name='jumlah["+id+"]' min='1' id='jumlah"+id+"'required max='"+stock+"' value='1'>
-                          <button class='dec btn btn-sm btn-dark' type='button' onclick='dec("+id+")'>-</button>
-                        </div>
-                      </td> -->
-                      <!-- <td>9.000</td> -->
-                <!-- </tr>  -->
-                </tbody>
-
-                <!-- <tbody>
-
-                </tbody> -->
+                    <tbody>
+                    </tbody>
                 </table>
 
                 <table>
@@ -159,9 +151,10 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <td></td><td></td><td></td><td id="subtotal-val"></td> 
+                            <td></td><td>Rp</td><td></td><td id="subtotal-val"></td> 
                         </tr>
                         <tr>
+                        <input type="hidden" id="total_tax">
                             <td><p class="card-text">Tax </p></td>
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
@@ -170,7 +163,7 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <!-- <td></td><td></td><td></td><td>Rp.  1.700</td>  -->
+                            <td></td><td>Rp </td><td></td><td id="total_tax-val"></td> 
                         </tr>
                         <tr>
                         <input type="hidden" id="total_discount">
@@ -182,7 +175,7 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <td></td><td></td><td></td><td id="total_discount-val"></td> 
+                            <td></td><td>Rp </td><td></td><td id="total_discount-val"></td> 
                         </tr>
                     </table>
                   
@@ -199,16 +192,41 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
-                <td><div class="card text-right bg-light mb-3" >
+                <td><div class="card text-left bg-light mb-10" >
                         <div class="card-body">
-                        <input type="hidden" name="total_payment" id="total_payment">Total : 
-                          <h3 class="card-title" id="total_payment-val"></h3>
+                        <input type="hidden" name="total_payment" id="total_payment">
+                        <div class="row">
+                        <h5><strong>Total</strong></h5>
+                      </div>
+                          <div class="row">
+                              <div class="col">
+                              
+                              </div>
+                              <h3>Rp </h3>
+                               <div class="col">
+                               <h3 class="card-title" id="total_payment-val"></h3>
+                              </div>
+                          </div>
+                          
+                        
                         </div>
                 </div></td>
+          </table>
 
-</table>
-                
-                
+          <div class="form-row">
+            <br>
+          </div>
+          <div class="form-row">
+          <div class="form-group col-md-10">
+          </div>
+          <div class="form-group col-md-1">
+          <button type="reset" class="btn btn-danger">Reset</button>
+          </div>
+          <div class="form-group col-md-1">
+          <button type="submit" class="btn btn-success">Insert</button>
+          </div>
+          </div>
+      </form>
 
       </div> <!-- tutup cards -->
     </div> <!-- tutup cards -->
@@ -227,6 +245,10 @@
             $("#tambahModal").modal();
             myFunction();
         }
+    }
+
+    function tampil_modal(){
+      $("#tambahModal").modal();
     }
 
     function myFunction() {
@@ -337,7 +359,7 @@
 	  </td>\
 	  \
 	  <td style='width: 5%;' class='align-middle'>\
-	  	<i class='badge badge-danger' onclick='delRow("+id+")' style='cursor: pointer;'></i>\
+	  	<i class='badge badge-danger' onclick='delRow("+id+")' style='cursor: pointer; '>x</i>\
 	  </td>\
 	</tr>\
 	";
@@ -356,11 +378,12 @@ function getIndex(id){
 
 function money(text){
 	var text = text.toString();
-	var panjang = text.length;
+  // console.log(text);
+	var panjang = text.length; //4
 	var hasil = new Array();
 	if (panjang>0){
 		if(panjang>3){
-			var div = parseInt(panjang/3);
+			var div = parseInt(panjang/3); //1
 			var char = new Array();
 			var result="";
 			if (div > 1 && panjang > 6) {
@@ -386,15 +409,20 @@ function money(text){
 			}
 			else{
 				result = text.slice(0,panjang-3)+"."+text.slice(panjang-3,panjang);
-			}
+			//  console.log( text.slice(0,panjang-3));
+      //  console.log(text.slice(panjang-3,panjang));
+      }
 			return result;
 		}
+    else if(panjang>0){
+        return text;
+    }
 		return 0;
 	}
 }
 
     function recount(id) {
-      console.log("masuk recount");
+      console.log("function recount");
       var jumlah = document.getElementById("jumlah"+id).value;
       var price = document.getElementById("price"+id).value;
       var subtotal = (jumlah*price);
@@ -410,8 +438,12 @@ function money(text){
     }
 
     function percentDisc(id){
-      console.log("masuk percentDisc");
+      console.log("function percentDisc");
       var percent = document.getElementById("percent"+id).value;
+      if(percent>100 || percent<0){
+        console.log('masukkk if percent');
+        var percent = document.getElementById("percent"+id).value=0;
+      }
       var total = document.getElementById("total"+id).value;
       var hasil = (Number(percent)/100) * total;
       document.getElementById("discount"+id).value = hasil;
@@ -422,7 +454,7 @@ function money(text){
     };
 
     function getTotal(){
-      console.log("masuk getTotal");
+      console.log("function getTotal");
       var totals = document.getElementsByClassName("total");
 
       var i;
@@ -430,7 +462,7 @@ function money(text){
       for (i = 0; i < totals.length; ++i) {
         total_p = total_p + Number(totals[i].value);
       }
-      document.getElementById('subtotal').value = total_p;
+      document.getElementById('subtotal').value = total_p ;
       document.getElementById('subtotal-val').innerHTML = money(total_p);
 
       var discounts = document.getElementsByClassName("discount");
@@ -440,11 +472,26 @@ function money(text){
       for (i = 0; i < discounts.length; ++i) {
         total_disc = total_disc + Number(discounts[i].value);
       }
-
+    //  console.log(total_p);
+      var l=document.getElementById('total_tax').value=(Number(total_p*0.1));
+      // console.log(l);
+      document.getElementById('total_tax-val').innerHTML=money(l);
+      // console.log(money(l));
       document.getElementById('total_discount').value = total_disc;
       document.getElementById('total_discount-val').innerHTML = money(total_disc);
-      document.getElementById('total_payment-val').innerHTML = money(total_p-total_disc);
-      document.getElementById('total_payment').value = total_p-total_disc;
+
+      let k = (Number(total_p))-total_disc;
+      if(k<=0){
+        console.log('masuk if k<=0');
+        document.getElementById('total_payment').value = 0;
+        document.getElementById('total_payment-val').innerHTML = '0';
+      }
+      else{
+        console.log('masuk if k!=0');
+        document.getElementById('total_payment').value = (total_p+(Number(total_p*0.1)))-total_disc;
+        document.getElementById('total_payment-val').innerHTML = money((total_p+(Number(total_p*0.1)))-total_disc);
+      }
+     
     };
 
     function inc(id){

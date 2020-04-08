@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::get('/javascript1','ControllerTampil@tampil_javascript1');
 Route::get('/javascript2','ControllerTampil@tampil_javascript2');
+Route::get('/javascript3','ControllerTampil@tampil_javascript3');
 
 
 Route::get('/admin','Controller_Admin@coba_tampil');

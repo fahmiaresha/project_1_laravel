@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 12:35 PM
+-- Generation Time: Apr 07, 2020 at 01:25 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -43,8 +43,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`category_id`, `category_name`, `status`, `created_at`, `updated_at`) VALUES
 (21, 'Minuman', 1, '2020-02-26 23:43:00', '2020-04-05 04:50:33'),
 (31, 'Makanan', 1, '2020-03-03 01:05:39', '2020-04-05 04:50:48'),
-(54, 'Baju', 0, '2020-04-05 04:50:26', '2020-04-05 04:51:17'),
-(57, 'Barang', 1, '2020-04-06 02:34:41', '2020-04-06 02:35:17');
+(54, 'Baju', 1, '2020-04-05 04:50:26', '2020-04-05 04:51:17'),
+(57, 'Barang', 0, '2020-04-06 02:34:41', '2020-04-06 02:35:17');
 
 -- --------------------------------------------------------
 
@@ -208,7 +208,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `first_name2`, `last_name`, `email`, `phone`, `password`, `job_status`) VALUES
 (4, 'Fahmi', 'Aresha', 'fahmiaresha@gmail.com', 89312331, 'Owner', 'Owner'),
-(5, 'Veny', 'Wulan', 'Venywulan@gmail.com', 812912731, 'veny123', 'Admin');
+(5, 'Veny', 'Wulan', 'Venywulan@gmail.com', 812912731, 'veny123', 'Admin'),
+(8, 'admin', 'gita', 'admin@gmail.com', 89123, 'admin', 'Super Admin');
 
 -- --------------------------------------------------------
 
@@ -341,7 +342,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`

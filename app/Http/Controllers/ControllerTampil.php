@@ -47,6 +47,10 @@ class ControllerTampil extends Controller
       return view('javascript/index2');
    }
 
+   public function tampil_javascript3(){
+      return view('javascript/index3');
+   }
+
 
 
 

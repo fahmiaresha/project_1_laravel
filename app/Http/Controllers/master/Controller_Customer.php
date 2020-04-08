@@ -39,6 +39,7 @@ class Controller_Customer extends Controller
     public function logout(){
         Session::flush();
         return redirect('/login')->with('alert','Anda sudah logout !');
+        // return redirect('/login')->with('logout');
     }
 
     /**
