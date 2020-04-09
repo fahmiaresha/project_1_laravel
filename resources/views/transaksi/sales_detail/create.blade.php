@@ -3,12 +3,28 @@
 @section('title','Halaman Point Of Sales')
 
 @section('konten')
+
+
+@if (session('insert'))
+    <font size="4"> 
+      <script>
+      Swal.fire(
+          'Data Berhasil Di Tambahkan!',
+          '',
+          'success'
+        )
+    </script>
+    </font>
+    @endif
+
 <div class="container">
     <div class="card border-light mb-3" style="max-width: 60rem;">
       <div class="card-header"><h3>Point Of Sales </h3></div>
       <div class="card-body">
       <!-- <h5 class="card-title">Point Of Sales</h5> -->
-      <form method="post" action="{{ url('/sales_detail/store') }}">
+     
+      <form method="post" action="{{ url('/pos/store') }}">
+      @csrf
       <div class="form-row">
       <div class="form-group col-md-3">
       @php $x=0; @endphp
@@ -17,6 +33,7 @@
         @endforeach
         @php $y=$x+1; @endphp
         <label for="date"><font size="6"><strong>Nota #{{$y}}</strong></font></label>
+        <input type="hidden" name="nota_id" value="{{$y}}">
       </div>
       </div>
 
@@ -108,7 +125,7 @@
                     </div> <!-- Tutup Modal Body -->
                     <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="save" ><font size="4">Add</font></button>
-                    <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="5">Back</font></button>
+                    <button type="button" class="btn badge-danger" data-dismiss="modal"><font size="4">Back</font></button>
                       
                     </div>
                   </div>
@@ -314,7 +331,7 @@
 	  </div>\
     </td>\
     <td>\
-	    <div class='row align-text-bottom justify-content-center'>\
+    <div class='row align-text-bottom justify-content-center'>\
 	      <div class='col-4 pl-0 pt-2 align-middle'>\
 	      <h6 style='text-align: left; font-weight:bold;'>Disc. </h6></div>\
 	      <div class='col-4 px-0 pt-1'>\
@@ -469,7 +486,7 @@ function money(text){
 
       var i;
       var total_disc = 0;
-      for (i = 0; i < discounts.length; ++i) {
+      for (i = 0; i < discounts.length; ++i){
         total_disc = total_disc + Number(discounts[i].value);
       }
     //  console.log(total_p);

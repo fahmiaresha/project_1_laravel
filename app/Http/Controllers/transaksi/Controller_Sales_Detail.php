@@ -30,13 +30,51 @@ class Controller_Sales_Detail extends Controller
         
         return view('transaksi/sales_detail/create',['categories'=>$categories,
         'product'=>$product,'customer'=>$customer,'user'=>$user,'sales'=>$sales]);
-             
 
         }
     }
 
-    public function index(){
+    public function store(Request $request)
+    {
+        $request->validate([
+            'customer_id' => 'required',
+            'user_id' => 'required' ,
+            'nota_date' => 'required' ,
+            'total_payment' => 'required|numeric'
+          ]);
 
+          DB::table('sales')->insert([
+            'customer_id' => $request->customer_id ,
+            'user_id' => $request->user_id ,
+            'nota_date' => $request->nota_date ,
+            'total_payment' => $request->total_payment 
+        ]);          
+
+            foreach($request['product_id'] as $pr){
+                DB::table('sales_detail')->insert([
+                    'nota_id' => $request->nota_id ,
+                    'product_id' => $pr ,
+                    'quantity' => $request['jumlah'][$pr] ,
+                    'selling_price' => $request['selling_price'][$pr] ,
+                    'discount' => $request['discount'][$pr] ,
+                    'total_price' => $request['total'][$pr]
+                ]);     
+            }
+            return redirect('/sales_detail/create')->with('insert','data berhasil di tambah');
+    }
+
+    public function index(){
+        if(!Session::get('login')){
+            return redirect('/login')->with('alert','Anda Belum Login !');
+        }
+        else{
+            // $sales_detail=DB::table('sales_detail')->get();
+            $sales_detail= DB::table('sales_detail')
+                    ->join('product','sales_detail.product_id','=','product.product_id')->get();
+                    // ->join('categories','product.product_id','=','categories.category_id')
+                    // ->get();
+            return view('transaksi/sales_detail/index',['sales_detail'=>$sales_detail]);
+        }
     }
 
     /**
@@ -51,10 +89,7 @@ class Controller_Sales_Detail extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     /**
      * Display the specified resource.

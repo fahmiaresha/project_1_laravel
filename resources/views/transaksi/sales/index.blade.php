@@ -307,5 +307,5 @@ data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width
 @section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
-</script> >
+</script> 
 @endsection

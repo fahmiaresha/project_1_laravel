@@ -301,6 +301,9 @@ data-target="#exampleModal4">
 <script>
      $('.mydatatable').DataTable();
 
+ window.onload=function(){
+  
+    }
 
-</script> >
+</script> 
 @endsection

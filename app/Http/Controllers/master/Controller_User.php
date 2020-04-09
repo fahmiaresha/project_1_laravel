@@ -6,6 +6,7 @@ use App\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class Controller_User extends Controller
@@ -15,6 +16,62 @@ class Controller_User extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function login(){
+      return view('template/login');
+    }
+
+    public function loginPost(Request $request){
+      $email = $request->email;
+      $password = $request->password;
+
+      $data = users::where('email',$email)->first();
+      if($data){ 
+          // if(Hash::check($password,$data->password)){
+            if($data->password == $password){
+              //  Session::put('first_name2',$data->name);
+              Session::put('email',$data->email);
+              Session::put('login',TRUE);
+              return redirect('/dashboard');
+          }
+          else{
+              return redirect('/login')->with('salah_password','Password Anda , Salah !');
+          }
+      }
+      else{
+          return redirect('/login')->with('alert','Anda Belum Terdaftar , Silahkan Create Acoount !');
+      }
+   }
+
+   public function logout(){
+    Session::flush();
+    return redirect('template/login')->with('logout','Kamu sudah logout');
+}
+
+public function register(Request $request){
+    return view('template/register');
+}
+
+public function registerPost(Request $request){
+    $this->validate($request, [
+        'first_name2' => 'required|min:4',
+        'email' => 'required|min:4|email|unique:users',
+        'password' => 'required',
+        'repeat_password' => 'required|same:password',
+    ]);
+
+    $data =  new users();
+    $data->first_name2 = $request->first_name2;
+    $data->last_name = $request->last_name;
+    $data->email = $request->email;
+    $data->phone = '-';
+    $data->job_status = '-';
+    $data->password = $request->password;
+    $data->save();
+    return redirect('/login')->with('alert-success','Kamu berhasil Register');
+}
+
     public function index()
     {
         if(!Session::get('login')){
@@ -22,7 +79,6 @@ class Controller_User extends Controller
         }
         else{
         $us=users::all();
-       // dump($us);
         return view('master/user/index' , ['user' => $us]);
         }
     }

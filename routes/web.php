@@ -34,24 +34,29 @@ Route::get('/javascript3','ControllerTampil@tampil_javascript3');
 Route::get('/admin','Controller_Admin@coba_tampil');
 Route::get('/admin/create','Controller_Admin@tampil_form');
 
-Route::get('/login', 'User@login');
-Route::post('/loginPost', 'User@loginPost');
-Route::get('/register', 'User@register');
-Route::post('/registerPost', 'User@registerPost');
+// Route::get('/login', 'User@login');
+// Route::post('/loginPost', 'User@loginPost');
+// Route::get('/register', 'User@register');
+// Route::post('/registerPost', 'User@registerPost');
+
+Route::get('/login', 'master\Controller_User@login');
+Route::post('/loginPost', 'master\Controller_User@loginPost');
+Route::get('/register', 'master\Controller_User@register');
+Route::post('/registerPost', 'master\Controller_User@registerPost');
+
+
 // Route::get('/logout', 'User@logout');
-Route::get('/home_user', 'User@index');
 
 // Route::get('/kontak', 'ControllerTampil@tampil_kontak');
 Route::get('/dashboard', 'ControllerTampil@tampil_dashboard');
 Route::get('/rating', 'ControllerTampil@tampil_rating');
 Route::get('/about', 'ControllerTampil@tampil_about');
 
-
+Route::get('/logout','master\Controller_Customer@logout');
 Route::get('/customer/index','master\Controller_Customer@index');
 Route::post('/customer/store','master\Controller_Customer@store');
 Route::post('/customer/update','master\Controller_Customer@update');
 Route::get('/customer/destroy/{id}','master\Controller_Customer@destroy');
-Route::get('/logout','master\Controller_Customer@logout');
 Route::post('/customer/update/switch','master\Controller_Customer@update_switch');
 
 
@@ -89,6 +94,7 @@ Route::get('/sales/edit','transaksi\Controller_Sales@edit');
 Route::post('/sales/update','transaksi\Controller_Sales@update');
 Route::get('/sales/destroy/{id}','transaksi\Controller_Sales@destroy');
 
+Route::post('/pos/store','transaksi\Controller_Sales_Detail@store');
 
 Route::get('/sales_detail/index','transaksi\Controller_Sales_Detail@index');
 Route::get('/sales_detail/create','transaksi\Controller_Sales_Detail@create');
