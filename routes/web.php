@@ -75,6 +75,7 @@ Route::post('/kategori/update/switch','master\Controller_Categorie@update_switch
 Route::get('/user/index','master\Controller_User@index');
 Route::get('/user/create','master\Controller_User@create');
 Route::post('/user/store','master\Controller_User@store');
+Route::post('/user/about','master\Controller_User@store_about');
 Route::get('/user/edit/{id}','master\Controller_User@edit');
 Route::post('/user/update','master\Controller_User@update');
 Route::get('/user/destroy/{id}','master\Controller_User@destroy');

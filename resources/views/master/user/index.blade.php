@@ -3,17 +3,19 @@
 @section('title','Halaman User')
 
 @section('konten')
-
+@if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
   <h2 class ="mt-3">Data User</h2>
   
+  @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
    <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary my-3" data-toggle="modal" 
 data-target="#exampleModal3">
   Tambah Data User
 </button>
+@endif
 
 
 
@@ -154,29 +156,32 @@ data-target="#exampleModal3">
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
-      <th scope="col">ID</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <!-- <th scope="col">Password</th> -->
-      <th scope="col">Job Status</th>
-      <th scope="col">Action</th>
+    <!-- <th scope="col">#</th> -->
+      <th scope="col" style="text-align:center">ID</th>
+      <th scope="col" style="text-align:center">First Name</th>
+      <th scope="col" style="text-align:center">Last Name</th>
+      <th scope="col" style="text-align:center">Email</th>
+      <th scope="col" style="text-align:center">Phone</th>
+      <!-- <th scope="col" style="text-align:center">Password</th> -->
+      <th scope="col" style="text-align:center">Job Status</th>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <th scope="col" style="text-align:center">Action</th>
+      @endif
     </tr>
   </thead>
 
   <tbody>
   @foreach($user as $us )
     <tr>
-      <th scope="row"> {{ $loop->iteration }}</th>
-      <td>{{ $us->user_id}}</td>
-      <td>{{ $us->first_name2 }}</td>
-      <td>{{ $us->last_name }}</td>
-      <td>{{ $us->email }}</td>
-      <td>{{ $us->phone }}</td>
+      <!-- <th scope="row"> {{ $loop->iteration }}</th> -->
+      <td style="text-align:center">{{ $us->user_id}}</td>
+      <td style="text-align:center">{{ $us->first_name2 }}</td>
+      <td style="text-align:center">{{ $us->last_name }}</td>
+      <td style="text-align:center">{{ $us->email }}</td>
+      <td style="text-align:center">{{ $us->phone }}</td>
       <!-- <td >{{ $us->password }}</td> -->
-      <td>{{ $us->job_status }}</td>
+      <td style="text-align:center">{{ $us->job_status }}</td>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <td>
         
        
@@ -312,6 +317,7 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
   </div>
 </div> 
       </td>
+      @endif
     </tr>
   @endforeach
   </tbody>
@@ -324,6 +330,7 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
       </div>
    </div>
   </div>
+  @endif
 @endsection
 
 @section('tambahscript')

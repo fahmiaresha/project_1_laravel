@@ -32,7 +32,8 @@
         @php $x++; @endphp
         @endforeach
         @php $y=$x+1; @endphp
-        <label for="date"><font size="6"><strong>Nota #{{$y}}</strong></font></label>
+        @php $z=$y+1; @endphp
+        <label for="date"><font size="6"><strong>Nota #{{$z}}</strong></font></label>
         <input type="hidden" name="nota_id" value="{{$y}}">
       </div>
       </div>

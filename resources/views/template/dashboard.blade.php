@@ -1,7 +1,7 @@
 @extends('master/customer/template')
-
 @section('title','Halaman Dashboard')
 @section('konten')
+
 
       @if (session('login'))
       <script>

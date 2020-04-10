@@ -10,10 +10,12 @@
   <h2 class ="mt-3">Data Sales</h2>
   
    <!-- Button trigger modal -->
+   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <button type="button" class="btn btn-primary my-3" data-toggle="modal" 
 data-target="#exampleModal3">
   Tambah Data Sales
 </button>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,25 +141,28 @@ data-target="#exampleModal3">
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
-      <th scope="col">Nota Id</th>
-      <th scope="col">Customer Name</th>
-      <th scope="col">User Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Total Payment</th>
-      <th scope="col">Action</th>
+    <!-- <th scope="col">#</th> -->
+      <th scope="col" style="text-align:center" >Nota ID</th>
+      <th scope="col" style="text-align:center" >Customer Name</th>
+      <th scope="col" style="text-align:center" >User Name</th>
+      <th scope="col" style="text-align:center" >Date</th>
+      <th scope="col" style="text-align:center" >Total Payment</th>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <th scope="col" style="text-align:center" >Action</th>
+      @endif
     </tr>
   </thead>
 
   <tbody>
   @foreach($sales as $sl )
     <tr>
-      <th scope="row"> {{ $loop->iteration }}</th>
-      <td>{{ $sl->nota_id}}</td>
-      <td>{{ $sl->first_name }}</td>
-      <td>{{ $sl->first_name2}}</td>
-      <td>{{ $sl->nota_date }}</td>
-      <td>{{ $sl->total_payment }}</td>
+      <!-- <th scope="row"> {{ $loop->iteration }}</th> -->
+      <td style="text-align:center">{{ $sl->nota_id}}</td>
+      <td  style="text-align:center">{{ $sl->first_name }}</td>
+      <td  style="text-align:center">{{ $sl->first_name2}}</td>
+      <td style="text-align:center">{{ $sl->nota_date }}</td>
+      <td style="text-align:center">{{ $sl->total_payment }}</td>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <td>
         
         <!-- <a href="/user/edit/{{ $us->user_id }}" 
@@ -290,6 +295,7 @@ data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width
   </div>
 </div> 
       </td>
+      @endif
     </tr>
   @endforeach
   </tbody>

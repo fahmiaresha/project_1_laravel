@@ -31,8 +31,21 @@ class Controller_User extends Controller
           // if(Hash::check($password,$data->password)){
             if($data->password == $password){
               //  Session::put('first_name2',$data->name);
-              Session::put('email',$data->email);
-              Session::put('login',TRUE);
+              //   Session::put('email',$data->email);
+                Session::put('login',TRUE);
+                if($data->job_status == 'Super Admin'){
+                  Session::put('super_admin',TRUE);
+                 
+                }
+                if( $data->job_status =='Owner'){
+                Session::put('owner',TRUE);
+                }
+                if($data->job_status == 'Admin' ){
+                  Session::put('admin',TRUE);
+                }
+                if($data->job_status == 'Kasir' ){
+                  Session::put('kasir',TRUE);
+                }
               return redirect('/dashboard');
           }
           else{
@@ -40,7 +53,7 @@ class Controller_User extends Controller
           }
       }
       else{
-          return redirect('/login')->with('alert','Anda Belum Terdaftar , Silahkan Create Acoount !');
+          return redirect('/login')->with('tidak_terdaftar','Anda Belum Terdaftar , Silahkan Create Acoount !');
       }
    }
 
@@ -65,11 +78,11 @@ public function registerPost(Request $request){
     $data->first_name2 = $request->first_name2;
     $data->last_name = $request->last_name;
     $data->email = $request->email;
-    $data->phone = '-';
+    $data->phone = '089612312';
     $data->job_status = '-';
     $data->password = $request->password;
     $data->save();
-    return redirect('/login')->with('alert-success','Kamu berhasil Register');
+    return redirect('/login')->with('register','Kamu berhasil Register');
 }
 
     public function index()
@@ -124,6 +137,16 @@ public function registerPost(Request $request){
           Tambahkan');
 
        
+    }
+
+    public function store_about(Request $request)
+    {
+            DB::table('about')->insert(['first_name' => $request->first_name,
+            'last_name' => $request->last_name,'phone_number' => $request->phone_number,'email' => $request->email,
+            'message' => $request->message
+            ]);
+          return redirect('/about')->with('berhasil','Data Berhasil Di
+          Tambahkan');
     }
 
     /**

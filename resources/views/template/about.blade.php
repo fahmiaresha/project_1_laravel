@@ -29,10 +29,21 @@
 @endsection
 
 	@section('konten')
-
+	@if (session('berhasil'))
+    <font size="4"> 
+      <script>
+      Swal.fire(
+          'Pesan Berhasil Di kirim !',
+          '',
+          'success'
+        )
+    </script>
+    </font>
+    @endif
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form method="post" action="{{ url('/user/about') }}" class="contact100-form validate-form">
+			@csrf
 				<span class="contact100-form-title">
 					Contact Us
 				</span>
@@ -55,7 +66,7 @@
 
 				<label class="label-input100" for="phone"> phone number</label>
 				<div class="wrap-input100">
-					<input id="phone" class="input100" type="text" name="phone" placeholder="Eg. +628523423">
+					<input id="phone" class="input100" type="text" name="phone_number" placeholder="Eg. +628523423">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -66,7 +77,7 @@
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
 						Send Message
 					</button>
 				</div>

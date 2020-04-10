@@ -65,6 +65,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
       <!-- Heading -->
       <div class="sidebar-heading">
         Table
@@ -86,8 +87,10 @@
           </div>
         </div>
       </li>
+      @endif
 
       <!-- Nav Item - Utilities Collapse Menu -->
+     
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i>
@@ -102,6 +105,7 @@
           </div>
         </div>
       </li>
+     
 
       <div class="sidebar-heading">
         Account
@@ -114,10 +118,10 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens</h6> -->
+          @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
           <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a>
-          
+          @endif
           <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -240,12 +244,12 @@
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
     <!-- notif lonceng -->
-      <span class="badge badge-danger badge-counter"></span> 
-              </a>
+      <!-- <span class="badge badge-danger badge-counter"></span> 
+              </a> -->
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
@@ -290,7 +294,7 @@
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
               <!-- notif message -->

@@ -11,15 +11,17 @@
 @endsection
 
 @section('konten')
-
+@if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <div class="container">
    <div class="row">
       <div class="col-6">
   <h2 class ="mt-3">Data Kategori</h2>
+  @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
   <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal">
   Tambah Data Kategori
 </button>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,14 +108,17 @@
     </font>
     @endif
 
-    <font size="2"><table class="table table-striped table-bordered mydatatable" 
-    height= width="0%"> </font>
+    <font size="2"><table class="table table-striped table-bordered mydatatable"></font>
     <thead class="thead-dark">
     <tr>
-      <th width="2%" scope="col">Status</th>
-      <th scope="col">ID</th>
-      <th scope="col">Category Name</th>
-      <th scope="col">Action</th>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <th width="2%" scope="col" style="text-align:center">Status</th>
+      @endif
+      <th scope="col" style="text-align:center">ID</th>
+      <th scope="col" style="text-align:center">Category Name</th>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <th scope="col" style="text-align:center">Action</th>
+      @endif
     </tr>
   </thead>
 
@@ -121,6 +126,7 @@
   @foreach($kategori as $kt )
     <tr>
       <!-- <th scope="row"> -->
+      @if(\Session::has('super_admin') || \Session::has('owner'))
         <td>
           @php $x=0; @endphp
             @foreach($product as $p)
@@ -162,10 +168,12 @@
       </form>
   @endif
        </td>
+       @endif
       <!-- </th> -->
-      <td>{{ $kt->category_id }}</td>
-      <td>{{ $kt->category_name }}</td>
-      <td>
+      <td style="text-align:center">{{ $kt->category_id }}</td>
+      <td style="text-align:center">{{ $kt->category_name }}</td>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <td style="text-align:center">
        
        
         <!-- <a href="/kategori/edit/{{ $kt-> category_id }}" 
@@ -262,6 +270,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
   </div>
 </div>
       </td>
+      @endif
      
 
       
@@ -277,6 +286,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
       </div>
    </div>
   </div>
+  @endif
 @endsection
 @section('tambahscript')
 <script>

@@ -3,17 +3,19 @@
 @section('title','Halaman Product')
 
 @section('konten')
-
+@if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
   <h2 class ="mt-3">Data Product</h2>
   
    <!-- Button trigger modal -->
+   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <button type="button" class="btn btn-primary my-3" data-toggle="modal" 
 data-target="#exampleModal4">
   Tambah Data Product
 </button>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -126,27 +128,30 @@ data-target="#exampleModal4">
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
-      <th scope="col">Id</th>
-      <th scope="col">Category Name</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Stok</th>
-      <th scope="col">Explanation</th>
-      <th scope="col">Action</th>
+    <!-- <th scope="col">#</th> -->
+      <th scope="col" style="text-align:center" >ID</th>
+      <th scope="col" style="text-align:center" >Category Name</th>
+      <th scope="col" style="text-align:center" >Product Name</th>
+      <th scope="col" style="text-align:center" >Price</th>
+      <th scope="col" style="text-align:center" >Stok</th>
+      <th scope="col" style="text-align:center" >Explanation</th>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
+      <th scope="col" style="text-align:center" >Action</th>
+      @endif
     </tr>
   </thead>
 
   <tbody>
   @foreach($product as $pr )
     <tr>
-      <th scope="row"> {{ $loop->iteration }}</th>
-      <td>{{ $pr->product_id}}</td>
-      <td>{{ $pr->category_name }}</td>
-      <td>{{ $pr->product_name }}</td>
-      <td>{{ $pr->product_price }}</td>
-      <td>{{ $pr->product_stok }}</td>
-      <td>{{ $pr->explanation }}</td>
+      <!-- <th scope="row"> {{ $loop->iteration }}</th> -->
+      <td style="text-align:center">{{ $pr->product_id}}</td>
+      <td style="text-align:center">{{ $pr->category_name }}</td>
+      <td style="text-align:center">{{ $pr->product_name }}</td>
+      <td style="text-align:center">{{ $pr->product_price }}</td>
+      <td style="text-align:center">{{ $pr->product_stok }}</td>
+      <td style="text-align:center">{{ $pr->explanation }}</td>
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <td>
       
        
@@ -283,6 +288,7 @@ data-target="#exampleModal4">
   </div>
 </div> 
       </td>
+      @endif
     </tr>
   @endforeach
   </tbody>
@@ -295,6 +301,7 @@ data-target="#exampleModal4">
       </div>
    </div>
   </div>
+  @endif
 @endsection
 
 @section('tambahscript')

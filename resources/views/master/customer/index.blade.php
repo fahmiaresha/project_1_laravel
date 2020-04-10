@@ -10,17 +10,19 @@
 </style>
 @endsection
 @section('konten')
-
+@if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
 <div class="container">
    <div class="row">
       <div class="col-12">
+     
   <h2 class ="mt-3">Data Customer</h2>
   
+  @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
    <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal2">
 Tambah Data Customer
 </button>
-
+@endif
 <!-- Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -180,17 +182,24 @@ Tambah Data Customer
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
+    @if(\Session::has('super_admin') || \Session::has('owner'))
     <th scope="col">Status</th>
-      <th scope="col">ID</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Email</th>
-      <th scope="col">Street</th>
-      <th scope="col">City</th>
-      <th scope="col">State</th>
-      <th scope="col">Zip Code</th>
+    @endif
+
+   
+      <th scope="col"  style="text-align:center" >ID</th>
+      <th scope="col"  style="text-align:center" >First Name</th>
+      <th scope="col"  style="text-align:center" >Last Name</th>
+      <th scope="col"  style="text-align:center" >Phone</th>
+      <th scope="col"  style="text-align:center" >Email</th>
+      <th scope="col"  style="text-align:center" >Street</th>
+      <th scope="col"  style="text-align:center" >City</th>
+      <th scope="col"  style="text-align:center" >State</th>
+      <th scope="col"  style="text-align:center" >Zip Code</th>
+    
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <th width="5%" scope="col">Action</th>
+      @endif
     </tr>
   </thead>
 
@@ -198,6 +207,7 @@ Tambah Data Customer
   @foreach($customer as $cus )
     <tr>
       <!-- <th scope="row"> -->
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <td>
       <form class="post1" method="post" action="{{ url('/customer/update/switch') }}">
         @csrf
@@ -218,16 +228,20 @@ Tambah Data Customer
       </form>
       
        </td>
+       @endif
       <!-- </th> -->
-      <td>{{ $cus->customer_Id }}</td>
-      <td>{{ $cus->first_name }}</td>
-      <td>{{ $cus->last_name }}</td>
-      <td>{{ $cus->phone }}</td>
-      <td>{{ $cus->email }}</td>
-      <td>{{ $cus->street }}</td>
-      <td>{{ $cus->city }}</td>
-      <td>{{ $cus->state }}</td>
-      <td>{{ $cus->zip_code }}</td>
+     
+      <td  style="text-align:center">{{ $cus->customer_Id }}</td>
+      <td  style="text-align:center"> {{ $cus->first_name }}</td>
+      <td style="text-align:center">{{ $cus->last_name }}</td>
+      <td style="text-align:center">{{ $cus->phone }}</td>
+      <td style="text-align:center">{{ $cus->email }}</td>
+      <td style="text-align:center">{{ $cus->street }}</td>
+      <td style="text-align:center">{{ $cus->city }}</td>
+      <td style="text-align:center">{{ $cus->state }}</td>
+      <td style="text-align:center">{{ $cus->zip_code }}</td>
+    
+      @if(\Session::has('super_admin') || \Session::has('owner'))
       <td>
 <!-- Button trigger modal -->
 @if($cus->status == 1)
@@ -391,7 +405,7 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
   </div>
 </div> 
       </td>
-    
+    @endif
     </tr>
   @endforeach
   </tbody>
@@ -401,9 +415,11 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
 
+
       </div>
    </div>
   </div>
+  @endif
 @endsection
 
 

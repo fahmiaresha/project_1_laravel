@@ -44,6 +44,45 @@
         });
       </script>
 @endif
+
+@if(session('salah_password'))
+      <font size="4"> 
+      <script>
+     Swal.fire({
+          timer: 2000,
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Password Anda Salah !',
+        })
+    </script>
+    </font>
+@endif
+
+@if(session('tidak_terdaftar'))
+      <font size="4"> 
+      <script>
+     Swal.fire({
+          timer: 2000,
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Akun Tidak Terdaftar !',
+        })
+    </script>
+    </font>
+@endif
+
+@if(session('register'))
+      <font size="4"> 
+      <script>
+     Swal.fire({
+          timer: 2000,
+          icon: 'success',
+          title: '',
+          text: 'Selamat Akun Anda Telah Terdaftar !',
+        })
+    </script>
+    </font>
+@endif
 <div class="main"> 
   <!-- Sing in  Form -->
   <section class="sign-in">
@@ -51,11 +90,11 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{ asset('asset/login/images/signin-image.jpg') }}" alt="sing up image"></figure>
-                        <!-- <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a> -->
+                        <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a>
                     </div>
                              
                     <div class="signin-form">
-                                        @if(\Session::has('alert'))
+                                        <!-- @if(\Session::has('alert'))
                                             <div class="alert alert-danger">
                                                 <div>{{Session::get('alert')}}</div>
                                             </div>
@@ -64,7 +103,7 @@
                                                 <div class="alert alert-success">
                                                     <div>{{Session::get('alert-success')}}</div>
                                                 </div>
-                                        @endif
+                                        @endif -->
                         <h2 class="form-title">Login</h2>
                         <form action="{{ url('/loginPost') }}" method="POST" class="register-form" id="login-form">
                         {{ csrf_field() }}    
