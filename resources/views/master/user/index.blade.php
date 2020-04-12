@@ -75,8 +75,16 @@ data-target="#exampleModal3">
   
   <div class="form-group">
     <label for="job_status"><font size="4">Job Status</font></label>
-    <input type="text" class="form-control @error('job_status') is-invalid @enderror" 
-    id="job_status" placeholder=" Job " name="job_status" value="{{ old('job_status') }}">
+    <!-- <input type="text" class="form-control @error('job_status') is-invalid @enderror" 
+    id="job_status" placeholder=" Job " name="job_status" value="{{ old('job_status') }}"> -->
+    <select id="job_status" name="job_status" class="form-control @error('job_status') is-invalid @enderror"
+        placeholder="Job Status" value="{{ old('job_status') }}">
+          <option disabled selected>Pilih Job Status</option>
+          <option>Owner</option>
+          <option>Super Admin</option>
+          <option>Admin</option>
+          <option>Kasir</option>
+        </select>
     @error('job_status')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror
@@ -267,9 +275,19 @@ data-target="#exampleModal3">
 
   <div class="form-group">
     <label for="job_status"><font size="4">Job Status</font></label>
-    <input type="text" class="form-control @error('job_status') is-invalid @enderror" 
+    <!-- <input type="text" class="form-control @error('job_status') is-invalid @enderror" 
     id="job_status" placeholder="job_status" name="job_status" 
-    value="{{ $us->job_status }}" required>
+    value="{{ $us->job_status }}" required> -->
+
+    <select id="job_status" name="job_status" class="form-control @error('job_status') is-invalid @enderror"
+        placeholder="Job Status" value="{{ $us->job_status }}">
+          <option disabled selected>Pilih Job Status</option>
+          <option>Owner</option>
+          <option>Super Admin</option>
+          <option>Admin</option>
+          <option>Kasir</option>
+        </select>
+    
     @error('job_status')
   <div clas="invalid-feedback"><font color="red" size="2">{{ $message }}</font></div>
       @enderror

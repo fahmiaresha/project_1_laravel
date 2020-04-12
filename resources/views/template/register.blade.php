@@ -37,6 +37,7 @@
 
                         <form action="{{ url('/registerPost') }}" method="POST">
                         {{ csrf_field() }}
+                        
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="first_name2" id="name" placeholder="First Name" value="{{ old('name') }}"/>
@@ -46,12 +47,13 @@
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="last_name" id="last_name" placeholder="Last Name" value="{{ old('name') }}"/>
                             </div>
-
+    
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email" value="{{ old('email') }}"/>
                             </div>
 
+                           
                             
 
                             <div class="form-group">
@@ -62,13 +64,31 @@
                                 <label for="confirmation"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="repeat_password" id="repeat_password" placeholder="Repeat your password"/>
                             </div>
+
+                            <div class="form-group">
+                                <select id="job_status" name="job_status" class="form-control @error('job_status') is-invalid @enderror"
+                                    placeholder="Job Status" value="">
+                                    <option disabled selected>Pilih Job Status</option>
+                                    <option>Owner</option>
+                                    <option>Super Admin</option>
+                                    <option>Admin</option>
+                                    <option>Kasir</option>
+                                    </select>
+                            </div>
+
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" checked disabled/>
                                 <label for="agree-term" class="label-agree-term" name="Terms_Of_Service" id="Terms_Of_Service" ><span><span></span></span>I agree all statements in Terms of service</label>
                             </div>
+
+                            
+
                             <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="Register" >
                             </div>
+
+                            
+
                         </form>
                     </div>
                     <div class="signup-image">

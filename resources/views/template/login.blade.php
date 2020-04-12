@@ -90,20 +90,28 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{ asset('asset/login/images/signin-image.jpg') }}" alt="sing up image"></figure>
-                        <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a>
+                        <!-- <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a> -->
                     </div>
                              
                     <div class="signin-form">
-                                        <!-- @if(\Session::has('alert'))
-                                            <div class="alert alert-danger">
+                                        @if(\Session::has('alert'))
+                                                <script>
+                                                Swal.fire({
+                                                    timer: 2000,
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'Anda Belum Login !',
+                                                    })
+                                                </script>
+                                            <!-- <div class="alert alert-danger">
                                                 <div>{{Session::get('alert')}}</div>
-                                            </div>
+                                            </div> -->
                                         @endif
                                         @if(\Session::has('alert-success'))
                                                 <div class="alert alert-success">
                                                     <div>{{Session::get('alert-success')}}</div>
                                                 </div>
-                                        @endif -->
+                                        @endif
                         <h2 class="form-title">Login</h2>
                         <form action="{{ url('/loginPost') }}" method="POST" class="register-form" id="login-form">
                         {{ csrf_field() }}    

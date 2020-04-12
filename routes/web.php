@@ -26,7 +26,7 @@ Route::get('/', function () {
     return view('template/login');
 });
 
-Route::get('/javascript1','ControllerTampil@tampil_javascript1');
+Route::get('/ajax','ControllerTampil@tampil_javascript1');
 Route::get('/javascript2','ControllerTampil@tampil_javascript2');
 Route::get('/javascript3','ControllerTampil@tampil_javascript3');
 
@@ -70,6 +70,8 @@ Route::post('/kategori/update','master\Controller_Categorie@update');
 Route::get('/kategori/destroy/{id}','master\Controller_Categorie@destroy');
 Route::post('/kategori/update/switch','master\Controller_Categorie@update_switch');
 
+Route::get('/customer/cetak_pdf','ControllerTampil@tampil_pdf_customer');
+
 
 
 Route::get('/user/index','master\Controller_User@index');
@@ -101,6 +103,7 @@ Route::get('/sales_detail/index','transaksi\Controller_Sales_Detail@index');
 Route::get('/sales_detail/create','transaksi\Controller_Sales_Detail@create');
 Route::get('/sales_detail/edit','transaksi\Controller_Sales_Detail@edit');
 Route::get('/sales_detail/destroy','transaksi\Controller_Sales_Detail@destroy');
+Route::get('/sales_detail/pdf','transaksi\Controller_Sales_Detail@pdf');
 
 /*
 Route::get('MyView', function () {

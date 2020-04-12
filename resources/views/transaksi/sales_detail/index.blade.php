@@ -16,6 +16,7 @@
     <thead class="thead-dark">
     <tr>
     <!-- <th  style="text-align:center"  scope="col">#</th> -->
+    
       <th  style="text-align:center" scope="col">Nota ID</th>
       <th style="text-align:center"  scope="col">Product Name</th>
       <th style="text-align:center"  scope="col">Quantity</th>
@@ -26,12 +27,10 @@
   </thead>
 
   <tbody>
-  @foreach($sales_detail as $sd )
+  @foreach($sales_detail as $key => $sd )
     <tr>
-      <!-- <th scope="row"> {{ $loop->iteration }}</th> -->
-      
-      <td style="text-align:center" >{{ $sd->nota_id}}</td>
-      <td  >{{ $sd->product_name }}</td>
+      <td style="text-align:center" >{{ $sales_detail[$key]->nota_id}}</td>
+      <td>{{ $sd->product_name }}</td>
       <td style="text-align:center" >{{ $sd->quantity}}</td>
       <td style="text-align:center" >{{ $sd->selling_price }}</td>
       <td style="text-align:center" >{{ $sd->discount }}</td>

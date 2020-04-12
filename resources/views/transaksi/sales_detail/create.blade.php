@@ -18,8 +18,13 @@
     @endif
 
 <div class="container">
+
     <div class="card border-light mb-3" style="max-width: 60rem;">
-      <div class="card-header"><h3>Point Of Sales </h3></div>
+      <div class="card-header">
+      <h3>Point Of Sales</h3>
+      </div>
+      
+   
       <div class="card-body">
       <!-- <h5 class="card-title">Point Of Sales</h5> -->
      
@@ -36,6 +41,11 @@
         <label for="date"><font size="6"><strong>Nota #{{$z}}</strong></font></label>
         <input type="hidden" name="nota_id" value="{{$y}}">
       </div>
+      <div class="form-group col-md-7"></div>
+        <div class="form-group col-md-2">
+       <a href="/sales_detail/pdf"><button type="button" class="btn btn-success">PDF Laporan</button></a>
+        </div>
+       
       </div>
 
       <div class="form-row">
@@ -87,7 +97,7 @@
     </div>   
     </div>
     <input type="text" class="form-control" id="search" name="search" 
-    value="" placeholder="Or Search Your Product Name !" onkeyup="getModal(event)">
+    value="" placeholder="Or Search Your Product Name In Here And Enter !" onkeydown="getModal(event)">
    
               <!-- Modal -->
               <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -261,6 +271,7 @@
    function getModal(event){
         if(event.keyCode==13){
             $("#tambahModal").modal();
+            event.preventDefault();
             myFunction();
         }
     }

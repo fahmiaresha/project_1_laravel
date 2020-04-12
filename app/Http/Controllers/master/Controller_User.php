@@ -30,8 +30,8 @@ class Controller_User extends Controller
       if($data){ 
           // if(Hash::check($password,$data->password)){
             if($data->password == $password){
-              //  Session::put('first_name2',$data->name);
-              //   Session::put('email',$data->email);
+               Session::put('coba',$data->job_status);
+              //  Session::put('coba1',$data->last_name);
                 Session::put('login',TRUE);
                 if($data->job_status == 'Super Admin'){
                   Session::put('super_admin',TRUE);
@@ -63,8 +63,13 @@ class Controller_User extends Controller
 }
 
 public function register(Request $request){
+  if(!Session::get('login')){
+    return redirect('/login')->with('alert','Anda Belum Login !');
+   }
+   else{
     return view('template/register');
-}
+   }
+  }
 
 public function registerPost(Request $request){
     $this->validate($request, [
@@ -72,6 +77,7 @@ public function registerPost(Request $request){
         'email' => 'required|min:4|email|unique:users',
         'password' => 'required',
         'repeat_password' => 'required|same:password',
+        'job_status' => 'required'
     ]);
 
     $data =  new users();
@@ -79,7 +85,7 @@ public function registerPost(Request $request){
     $data->last_name = $request->last_name;
     $data->email = $request->email;
     $data->phone = '089612312';
-    $data->job_status = '-';
+    $data->job_status =  $request->job_status;
     $data->password = $request->password;
     $data->save();
     return redirect('/login')->with('register','Kamu berhasil Register');

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use Barryvdh\DomPDF\Facade as PDF;
 
 class Controller_Sales_Detail extends Controller
 {
@@ -32,6 +32,23 @@ class Controller_Sales_Detail extends Controller
         'product'=>$product,'customer'=>$customer,'user'=>$user,'sales'=>$sales]);
 
         }
+    }
+
+    public function pdf(){
+        $sales_detail= DB::table('sales_detail')
+        ->join('product','sales_detail.product_id','=','product.product_id')->get();
+
+        $sales = DB::table('sales') 
+        ->join('customer','sales.customer_id','=','customer.customer_Id')
+        ->join('user','sales.user_id','=','user.user_id')
+        ->select('sales.*','customer.first_name','user.first_name2','customer.customer_Id',
+        'user.user_id')
+        ->get();
+        $customer = DB::table('customer')->get();
+        $user = DB::table('user')->get();
+        // return view('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);
+         $pdf = PDF::loadview('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);  
+         return $pdf->stream();
     }
 
     public function store(Request $request)
