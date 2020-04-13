@@ -10,11 +10,25 @@
   <h2 class ="mt-3">Data Sales</h2>
   
    <!-- Button trigger modal -->
-   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
-<button type="button" class="btn btn-primary my-3" data-toggle="modal" 
+   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin') || \Session::has('kasir'))
+<!-- <button type="button" class="btn btn-primary my-3" data-toggle="modal" 
 data-target="#exampleModal3">
   Tambah Data Sales
-</button>
+</button> -->
+<div class="form-row">
+<div class="form-group col-md-4">
+<a href="/sales_detail/create"><button type="button" class="btn btn-primary my-3">Tambah Data Sales</button></a>
+</div>
+<div class="form-group col-md-5">
+</div>
+<div class="form-group col-md-3">
+<a href="/sales_detail/pdf"><button type="button" onclick="tampil_download()" class="btn btn-danger"><svg class="bi bi-download" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M5 7.5a.5.5 0 01.707 0L8 9.793 10.293 7.5a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L5 8.207A.5.5 0 015 7.5z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 1z" clip-rule="evenodd"></path>
+</svg> Laporan Sales</button></a>
+</div>
+</div>
 @endif
 
 <!-- Modal -->
@@ -172,12 +186,99 @@ data-target="#exampleModal3">
 </svg>Edit</a> -->
 
 <!-- Button trigger modal -->
-<button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $sl->nota_id }}">
+<button type="button" class="badge badge-success" data-toggle="modal" data-target="#detailModal{{$sl->nota_id}}"><svg class="bi bi-eye" width="22px" height="22px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 001.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0014.828 8a13.133 13.133 0 00-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 001.172 8z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4.5 8a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" clip-rule="evenodd"></path>
+</svg>
+  Detail
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="detailModal{{$sl->nota_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sales Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        @php $x=$sl->nota_id; @endphp
+       
+        <label for="date"><font size="4"><strong>Nota #{{$x}}</strong></font></label>
+            <font size="2">
+            <table class="table table-striped table-bordered " style="width:0%;"> </font>
+          <thead class="thead-dark">
+            <tr>
+                  <!-- <th style="text-align:center" scope="col">Nota ID</th> -->
+                  <th style="text-align:center"  scope="col">Name</th>
+                  <th style="text-align:center"  scope="col">Quantity</th>
+                  <th style="text-align:center"  scope="col">Price</th>
+                  <th style="text-align:center"  scope="col">Discount</th>
+                  <th style="text-align:center"  scope="col">Tax</th>
+                  <th style="text-align:center"  scope="col">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($sales_detail as $sd)
+            <tr>
+              @if($sl->nota_id == $sd->nota_id)
+                  <!-- <td  style="text-align:center">{{ $sd->nota_id }}</td> -->
+                  <td  style="text-align:center">{{ $sd->product_name }}</td>
+                  <td style="text-align:center" >{{ $sd->quantity}}</td>
+                  <td style="text-align:center" >{{ $sd->selling_price }}</td>
+                  @php $p=0; @endphp
+                  @php $p=(($sd->discount/$sd->total_price)*100) @endphp
+                  <td style="text-align:center" ><strong>{{$p}} %</strong></td>
+                  <th style="text-align:center" >10 %</th>
+                  <td style="text-align:center" >{{ $sd->total_price }}</td>
+                  @endif
+            </tr>
+            @endforeach
+          </tbody>  
+          </table>
+          <div class="container">
+          <!-- <br> -->
+          <div class="form-row">
+          @php $t=0; @endphp
+          @foreach($sales_detail as $sd)
+          @if($sl->nota_id == $sd->nota_id)
+             @php $t=$t+$sd->discount @endphp
+          @endif
+          @endforeach
+          <label><font size="3"><strong>Total Discount : Rp. {{$t}}</strong></font></label>
+          </div>
+
+          @foreach($sales_detail as $sd)
+          @if($sl->nota_id == $sd->nota_id)
+          <div class="form-row">
+          <label><font size="3"><strong>Total Payment : Rp. {{$sl->total_payment}}</strong></font></label>
+          </div>
+          @break
+          @endif
+          @endforeach
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MODAL EDIT -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $sl->nota_id }}">
 <svg class="bi bi-pencil" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"></path>
 </svg>Edit
-</button>
+</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="editModal{{ $sl->nota_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -267,10 +368,10 @@ data-target="#exampleModal3">
           
         <!-- Button trigger modal -->
        
-<button type="button" class="badge badge-danger" data-toggle="modal" 
+<!-- <button type="button" class="badge badge-danger" data-toggle="modal" 
 data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
-</svg>Delete</button>
+</svg>Delete</button> -->
         
 <!-- Modal -->
 <div class="modal fade" id="deleteModal{{$sl -> nota_id}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -313,5 +414,34 @@ data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width
 @section('tambahscript')
 <script>
      $('.mydatatable').DataTable();
+        function tampil_download(){
+              let timerInterval
+              Swal.fire({
+                title: 'Please Wait....',
+                html: 'Your File Is Downloading!',
+                timer: 5000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                  timerInterval = setInterval(() => {
+                    const content = Swal.getContent()
+                    if (content) {
+                      const b = content.querySelector('b')
+                      if (b) {
+                        b.textContent = Swal.getTimerLeft()
+                      }
+                    }
+                  }, 100)
+                },
+                onClose: () => {
+                  clearInterval(timerInterval)
+                }
+              }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                  console.log('I was closed by the timer')
+                }
+              })
+        }
 </script> 
 @endsection

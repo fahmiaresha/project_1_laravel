@@ -37,14 +37,13 @@
         @php $x++; @endphp
         @endforeach
         @php $y=$x+1; @endphp
-        @php $z=$y+1; @endphp
-        <label for="date"><font size="6"><strong>Nota #{{$z}}</strong></font></label>
+        <label for="date"><font size="6"><strong>Nota #{{$y}}</strong></font></label>
         <input type="hidden" name="nota_id" value="{{$y}}">
       </div>
-      <div class="form-group col-md-7"></div>
+      <!-- <div class="form-group col-md-7"></div>
         <div class="form-group col-md-2">
        <a href="/sales_detail/pdf"><button type="button" class="btn btn-success">PDF Laporan</button></a>
-        </div>
+        </div> -->
        
       </div>
 
@@ -182,7 +181,7 @@
                             <td></td><td>Rp</td><td></td><td id="subtotal-val"></td> 
                         </tr>
                         <tr>
-                        <input type="hidden" id="total_tax">
+                        <input type="hidden" name="total_tax" id="total_tax">
                             <td><p class="card-text">Tax </p></td>
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>

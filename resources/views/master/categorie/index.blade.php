@@ -221,7 +221,8 @@ data-target="#e" >
       @csrf
       <input type="hidden" name="id" value="{{ $kt->category_id }}">
     <div class="form-group">
-    <label for="category_name"><font size="4">Category Name</font></label>
+    <label for="category_name"  style='text-align:left;'><font size="4">Category Name</font></label>
+    
     <input type="text" class="form-control @error('category_name') is-invalid @enderror" 
     id="category_name" name="category_name" 
      value="{{ $kt->category_name }}" required>
@@ -257,7 +258,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"  style='text-align:left;'>
         Yakin Ingin Menghapus Data ?
       </div>
       <div class="modal-footer">
