@@ -13,5 +13,6 @@ class produk extends Model
     protected $fillable = ['category_id','product_name','product_price','product_stok','explanation'];
     //agar tidak ada kolom created at & updated add
     public $timestamps= false;
+    public $incrementing= false;
 
 }

@@ -27,18 +27,18 @@
    
       <div class="card-body">
       <!-- <h5 class="card-title">Point Of Sales</h5> -->
-     
+    
       <form method="post" action="{{ url('/pos/store') }}">
       @csrf
       <div class="form-row">
       <div class="form-group col-md-3">
-      @php $x=0; @endphp
+        @php $x=0; @endphp
         @foreach($sales as $s)
         @php $x++; @endphp
         @endforeach
         @php $y=$x+1; @endphp
         <label for="date"><font size="6"><strong>Nota #{{$y}}</strong></font></label>
-        <input type="hidden" name="nota_id" value="{{$y}}">
+        <input type="hidden" name="nota_id" value="{{$nota_id}}">
       </div>
       <!-- <div class="form-group col-md-7"></div>
         <div class="form-group col-md-2">
@@ -291,8 +291,10 @@
           for(var i=0;i<checks.length;i++) {
               ids[i] = checks[i].id; 
               $("#"+ids[i]).prop("checked", false);
-              ids[i] = ids[i].substring(2,10);
+              ids[i] = ids[i].substring(2,10); //PR001
+              console.log(ids[i]);
               addRow(ids[i]);
+
               $("#tabelproduk tbody tr#row"+ids[i]).hide();
           }
         });
@@ -329,9 +331,9 @@
 	  \
 	  <td style='width: 15%;' class='align-middle'>\
 	    <div class='row justify-content-center'>\
-      <button class='dec btn btn-sm btn-dark' type='button' onclick='dec("+id+")'>-</button>\
-	    	<input type='number' style='background-color:#f5f5f5; -moz-appearance: textfield; width: 30%; border:1px;text-align: center;' class='quantity' oninput='recount("+id+")' name='jumlah["+id+"]' min='1' id='jumlah"+id+"'required max='"+stock+"' value='1'>\
-        <button class='inc btn btn-sm btn-dark' type='button' onclick='inc("+id+")'>+</button>\
+      <button class='dec btn btn-sm btn-dark' type='button' onclick='dec(\""+id+"\")'>-</button>\
+	    	<input type='number' style='background-color:#f5f5f5; -moz-appearance: textfield; width: 30%; border:1px;text-align: center;' class='quantity' oninput='recount(\""+id+"\")' name='jumlah["+id+"]' min='1' id='jumlah"+id+"'required max='"+stock+"' value='1'>\
+        <button class='inc btn btn-sm btn-dark' type='button' onclick='inc(\""+id+"\")'>+</button>\
 	    </div>\
 	  </td>\
 	  \
@@ -346,11 +348,11 @@
 	      <div class='col-4 pl-0 pt-2 align-middle'>\
 	      <h6 style='text-align: left; font-weight:bold;'>Disc. </h6></div>\
 	      <div class='col-4 px-0 pt-1'>\
-	        <input type='number' min='0' max='100' oninput='percentDisc("+id+")' class='percent' \
+	        <input type='number' min='0' max='100' oninput='percentDisc(\""+id+"\")' class='percent' \
 	        name='percent["+id+"]' id='percent"+id+"' \
 	        placeholder='0' \
 	        style='-moz-appearance: textfield;padding-right:10px; text-align:right; width: 100%;color: black;border-radius: 10pt;border: 2px solid #E06C78;'>\
-	        <input type='hidden' min='0' oninput='recount("+id+")' \
+	        <input type='hidden' min='0' oninput='recount(\""+id+"\")' \
 	        class='discount' name='discount["+id+"]' \
 	        id='discount"+id+"' placeholder='0' \
 	        style='-moz-appearance: textfield;text-align: right;'>\
@@ -361,11 +363,11 @@
 	      <div class='col-4 pl-0 pt-2 align-middle'>\
 	      <h6 style='text-align: left; font-weight:bold;'>Tax. </h6></div>\
 	      <div class='col-4 px-0 pt-1'>\
-	        <input type='number' min='0' max='100' oninput='percentTax("+id+")' class='percentTax' \
+	        <input type='number' min='0' max='100' oninput='percentTax(\""+id+"\")' class='percentTax' \
 	        name='percentTax["+id+"]' id='percentTax"+id+"' \
 	        placeholder='10' readonly\
 	        style='-moz-appearance: textfield;padding-right:10px; text-align:right; width: 100%;color: black;border-radius: 10pt;border: 2px solid #E06C78;'>\
-	        <input type='hidden' min='0' oninput='recount("+id+")' \
+	        <input type='hidden' min='0' oninput='recount(\""+id+"\")' \
 	        class='discountTax' name='discountTax["+id+"]' \
 	        id='discountTax"+id+"' placeholder='0' \
 	        style='-moz-appearance: textfield;text-align: right;'>\
@@ -387,7 +389,7 @@
 	  </td>\
 	  \
 	  <td style='width: 5%;' class='align-middle'>\
-	  	<i class='badge badge-danger' onclick='delRow("+id+")' style='cursor: pointer; '>x</i>\
+	  	<i class='badge badge-danger' onclick='delRow(\""+id+"\")' style='cursor: pointer; '>x</i>\
 	  </td>\
 	</tr>\
 	";
@@ -399,6 +401,8 @@ function getIndex(id){
 	for(var i = 0;i<products.length;i++){
 	  if(products[i]["product_id"] == id){
 	      var index = i;
+        console.log('function getIndex');
+        console.log(index);
 	      return index;
 	  }
 	}
@@ -523,8 +527,12 @@ function money(text){
     };
 
     function inc(id){
-          var oldValue = $("#jumlah"+id).val();
+          var oldValue = $("#jumlah"+id).val();//jumlahPR004
+          console.log('Nilai Old Value : ');
+          console.log(oldValue);
           var newVal = parseFloat(oldValue)+1;
+          console.log('Nilai newVal : ');
+          console.log(newVal);
           var maximal = $("#jumlah"+id).attr('max');
           if(!(newVal > maximal)){
             $("#jumlah"+id).val(newVal);

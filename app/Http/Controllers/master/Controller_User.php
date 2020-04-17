@@ -98,6 +98,7 @@ public function registerPost(Request $request){
         }
         else{
         $us=users::all();
+        // $us=DB::table('user');
         return view('master/user/index' , ['user' => $us]);
         }
     }

@@ -161,7 +161,7 @@ data-target="#exampleModal3">
       <th scope="col" style="text-align:center" >User Name</th>
       <th scope="col" style="text-align:center" >Date</th>
       <th scope="col" style="text-align:center" >Total Payment</th>
-      @if(\Session::has('super_admin') || \Session::has('owner'))
+      @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('kasir') )
       <th scope="col" style="text-align:center" >Action</th>
       @endif
     </tr>
@@ -176,7 +176,7 @@ data-target="#exampleModal3">
       <td  style="text-align:center">{{ $sl->first_name2}}</td>
       <td style="text-align:center">{{ $sl->nota_date }}</td>
       <td style="text-align:center">{{ $sl->total_payment }}</td>
-      @if(\Session::has('super_admin') || \Session::has('owner'))
+      @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('kasir'))
       <td>
         
         <!-- <a href="/user/edit/{{ $us->user_id }}" 

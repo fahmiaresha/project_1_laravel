@@ -26,10 +26,27 @@ class Controller_Sales_Detail extends Controller
         $customer = DB::table('customer')->get();
         $user= DB::table('user')->get();
         $sales= DB::table('sales')->get();
-        //dump($categories);
-        
-        return view('transaksi/sales_detail/create',['categories'=>$categories,
-        'product'=>$product,'customer'=>$customer,'user'=>$user,'sales'=>$sales]);
+//         BEGIN
+// 	SELECT SUBSTRING((MAX(`nota_id`)),7,4) INTO @max FROM sales;
+//     IF(@total >=1) THEN
+//     	SET new.nota_id = CONCAT(DATE_FORMAT(CURRENT_DATE,"%y%m%d"),LPAD(@max+1,4,'0'));
+//     ELSE
+//     	SET new.nota_id = CONCAT(DATE_FORMAT(CURRENT_DATE,"%y%m%d"),LPAD(1,4,'0'));
+//     END IF;
+// END
+            $max= DB::table('sales')->max('nota_id');
+             date_default_timezone_set('Asia/Jakarta');
+             $date=date("ymd",time());
+            //  $maxday= substr($max,0,6);
+            $max=substr($max,6);
+            if($max>=1){
+                $nota_id=$date.str_pad($max+1,4,"0",STR_PAD_LEFT);
+            }
+            else{
+                $nota_id=$date.str_pad(1,4,"0",STR_PAD_LEFT);
+            }
+            return view('transaksi/sales_detail/create',['categories'=>$categories,
+        'product'=>$product,'customer'=>$customer,'user'=>$user,'sales'=>$sales,'nota_id'=>$nota_id]);
 
         }
     }
@@ -48,7 +65,8 @@ class Controller_Sales_Detail extends Controller
         $user = DB::table('user')->get();
         // return view('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);
          $pdf = PDF::loadview('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);  
-         return $pdf->stream();
+        //  return $pdf->stream();
+         return $pdf->download('laporan-pegawai-pdf');
     }
 
     public function store(Request $request)

@@ -160,7 +160,7 @@
           @if($kt->status == 1)
           <div class="custom-control custom-switch">
           <input type="checkbox" checked  class="custom-control-input" id="switch{{$kt->category_id}}">
-          <label class="custom-control-label" for="switch{{$kt->category_id1}}" ></label>
+          <label class="custom-control-label" for="switch{{$kt->category_id}}" ></label>
           </div>
           <span class="badge badge-success"><font size="2">Active</font></span>
              

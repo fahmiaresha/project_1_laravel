@@ -23,6 +23,7 @@ class Controller_Categorie extends Controller
     }
     else{
         $categories= categorie::all();
+        // $categories=DB::table('categories')->get();
         $product = produk::all();
         return view('master/categorie/index' , ['kategori' => $categories,'product'=>$product]);
       

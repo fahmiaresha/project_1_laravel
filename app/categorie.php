@@ -12,4 +12,5 @@ class categorie extends Model
     //yang dapat di insert 
    protected $fillable = ['category_name'];
    public $timestamps= false;
+   public $incrementing= false;
 }
