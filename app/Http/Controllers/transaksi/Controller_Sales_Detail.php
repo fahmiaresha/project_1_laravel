@@ -26,14 +26,7 @@ class Controller_Sales_Detail extends Controller
         $customer = DB::table('customer')->get();
         $user= DB::table('user')->get();
         $sales= DB::table('sales')->get();
-//         BEGIN
-// 	SELECT SUBSTRING((MAX(`nota_id`)),7,4) INTO @max FROM sales;
-//     IF(@total >=1) THEN
-//     	SET new.nota_id = CONCAT(DATE_FORMAT(CURRENT_DATE,"%y%m%d"),LPAD(@max+1,4,'0'));
-//     ELSE
-//     	SET new.nota_id = CONCAT(DATE_FORMAT(CURRENT_DATE,"%y%m%d"),LPAD(1,4,'0'));
-//     END IF;
-// END
+
             $max= DB::table('sales')->max('nota_id');
              date_default_timezone_set('Asia/Jakarta');
              $date=date("ymd",time());
@@ -61,6 +54,8 @@ class Controller_Sales_Detail extends Controller
         ->select('sales.*','customer.first_name','user.first_name2','customer.customer_Id',
         'user.user_id')
         ->get();
+
+        
         $customer = DB::table('customer')->get();
         $user = DB::table('user')->get();
         // return view('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);
@@ -109,6 +104,16 @@ class Controller_Sales_Detail extends Controller
                     // ->join('categories','product.product_id','=','categories.category_id')
                     // ->get();
             return view('transaksi/sales_detail/index',['sales_detail'=>$sales_detail]);
+        }
+    }
+
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('product')->select('product_name')->where('product_name', 'LIKE', '%'.$cari.'%')->get();
+            // dump($data);
+            return response()->json($data);
         }
     }
 

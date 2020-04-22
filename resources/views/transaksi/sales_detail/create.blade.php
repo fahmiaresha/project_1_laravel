@@ -89,14 +89,17 @@
           </div>
   </div>
               
+    
 
     <div class="form-row">
     <div class="form-group col-md-2">
       <button type="button" class="btn btn-primary" onclick="tampil_modal()">Add Product</button>
     </div>   
     </div>
-    <input type="text" class="form-control" id="search" name="search" 
-    value="" placeholder="Or Search Your Product Name In Here And Enter !" onkeydown="getModal(event)">
+    <!-- <select class="cari form-control" style="width:500px;" name="cari" ></select> -->
+
+    <input type="text" class="form-control" id="search" name="cari" 
+    value="" placeholder="Or Enter Your Product Name In Here !" onkeydown="getModal(event)">
    
               <!-- Modal -->
               <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,12 +153,12 @@
               <table class="table table-striped table-bordered " style="width:0%;" id="cart"></font>
                   <thead class="thead-white">
                   <tr>
-                  <th  style="text-align:center"   scope="col">Name</th>
-                    <th  style="text-align:center"  scope="col">Quantity</th>
-                    <th   style="text-align:center" scope="col">Price</th>
-                    <th   style="text-align:center" scope="col">Discount & Tax</th>
-                    <th   style="text-align:center" scope="col">Total Price</th>
-                    <th style="text-align:center"  scope="col">Action</th>
+                  <th   width="15%" style="text-align:center"   scope="col">Name</th>
+                    <th  width="20%"  style="text-align:center"  scope="col">Quantity</th>
+                    <th   width="15%"  style="text-align:center" scope="col">Price</th>
+                    <th  width="20%"   style="text-align:center" scope="col">Discount & Tax</th>
+                    <th  width="20%"   style="text-align:center" scope="col">Total Price</th>
+                    <th  width="10%" style="text-align:center"  scope="col">Action</th>
                   </tr>
                 </thead>
                     <tbody>
@@ -264,9 +267,10 @@
 @endsection
 
 @section('tambahscript')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> 
 <script>
    $('.mydatatable').DataTable(); 
-
    function getModal(event){
         if(event.keyCode==13){
             $("#tambahModal").modal();
@@ -284,6 +288,27 @@
     }
 
     jQuery( function( $ ) {
+
+        //   $('.cari').select2({
+        //   placeholder: 'Or Search Your Product Name In Here !',
+        //   ajax: {
+        //     url: '/cari',
+        //     dataType: 'json',
+        //     delay: 1,
+        //     processResults: function (data) {
+        //       // console.log(data);
+        //       return {
+        //         results:$.map(data, function (item) {
+        //           return {
+        //             text: item.product_name,
+        //             id: item.product_id
+        //           }
+        //         })
+        //       };
+        //     },
+        //     // cache: true
+        //   }
+        // });
         
         $("#save").click(function(){
           var checks = $("#tambahModal").find("input[type=checkbox]:checked");

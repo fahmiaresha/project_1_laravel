@@ -33,6 +33,10 @@ class ControllerTampil extends Controller
         }
      }
 
+     public function tampil_ajax(){
+      return view('javascript/ajax2');
+   }
+
      public function tampil_login(){
         return view('template/login');
      }

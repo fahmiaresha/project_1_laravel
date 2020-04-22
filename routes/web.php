@@ -26,6 +26,8 @@ Route::get('/', function () {
     return view('template/login');
 });
 
+Route::get('/tampil_ajax','ControllerTampil@tampil_ajax');
+
 Route::get('/ajax','ControllerTampil@tampil_javascript1');
 Route::get('/javascript2','ControllerTampil@tampil_javascript2');
 Route::get('/javascript3','ControllerTampil@tampil_javascript3');
@@ -104,7 +106,7 @@ Route::get('/sales_detail/create','transaksi\Controller_Sales_Detail@create');
 Route::get('/sales_detail/edit','transaksi\Controller_Sales_Detail@edit');
 Route::get('/sales_detail/destroy','transaksi\Controller_Sales_Detail@destroy');
 Route::get('/sales_detail/pdf','transaksi\Controller_Sales_Detail@pdf');
-
+Route::get('/cari', 'transaksi\Controller_Sales_Detail@loadData');
 /*
 Route::get('MyView', function () {
     return view('webtest');
