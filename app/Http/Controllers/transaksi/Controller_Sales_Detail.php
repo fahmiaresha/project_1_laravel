@@ -107,14 +107,21 @@ class Controller_Sales_Detail extends Controller
         }
     }
 
+    // public function loadData(Request $request)
+    // {
+    //     if ($request->has('q')) {
+    //         $cari = $request->q;
+    //         $data = DB::table('product')->select('product_name')->where('product_name', 'LIKE', '%'.$cari.'%')->get();
+    //         // dump($data);
+    //         return response()->json($data);
+    //     }
+    // }
+
     public function loadData(Request $request)
     {
-        if ($request->has('q')) {
-            $cari = $request->q;
-            $data = DB::table('product')->select('product_name')->where('product_name', 'LIKE', '%'.$cari.'%')->get();
-            // dump($data);
-            return response()->json($data);
-        }
+       $product=DB::table('product')->where('product_name','like','%'.$request->key.'%')->get();
+       return response()->json(['product'=>$product]);
+      
     }
 
     /**

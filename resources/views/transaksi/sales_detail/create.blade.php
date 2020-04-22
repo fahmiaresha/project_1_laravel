@@ -113,7 +113,7 @@
                     </div>
                     <div class="modal-body">
 
-                    <font size="3"> <table class="table table-striped table-bordered mydatatable" id="tabelproduk"></font>
+                    <font size="3"> <table class="table table-striped table-bordered mydatatable tabel" id="tabelproduk"></font>
                       <thead class="thead-dark">
                         <tr>
                           <th width=1px scope="col">#</th>
@@ -144,6 +144,8 @@
                   </div>
                 </div>
               </div>
+
+               
 
               <div class="form-group">
               </div>
@@ -270,25 +272,89 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> 
 <script>
-   $('.mydatatable').DataTable(); 
-   function getModal(event){
+   $('.mydatatable').DataTable(
+  //   //  {
+  //     //  "paging":   false,
+  //     //   // "ordering": false,
+  //     //   "info":     false
+  //   //  }
+   ); 
+  
+
+  //  function getModal(event){
+  //       if(event.keyCode==13){
+  //           $("#tambahModal").modal();
+  //           event.preventDefault();
+  //           myFunction();
+  //       }
+  //   }
+
+  function getModal(event){
         if(event.keyCode==13){
+          var key = document.getElementById('search').value;
+          event.preventDefault();
+
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
+            $.ajax({
+            type:"POST",
+            url:"/cari",
+            data:{
+              "key":key,
+             "_token": "{{ csrf_token() }}",
+            },
+            success : function(results) {
+              console.log(JSON.stringify(results)); //print_r
+              // console.log(results.product[0].product_name);
+            var tab = $('.tabel').DataTable();
+            tab.clear().draw();
+
+            // <tr id="row{{$pr -> product_id}}">
+            //               <th scope="row"><input type="checkbox" id="pr{{$pr->product_id }}" ></th>
+            //               <td>{{ $pr->product_name}}</td>
+            //               <td>{{ $pr->product_price}}</td>
+            //               <td>{{ $pr->product_stok}}</td>
+            //             </tr>
+            
+            for(let i=0;i<results.product.length;i++){
+                  $('.tabel').DataTable().row.add([
+                  '<input type="checkbox" id="pr'+results.product[i]['product_id']+'">',
+                   results.product[i]['product_name'], 
+                   results.product[i]['product_price'],
+                   results.product[i]['product_stok']
+                  ]).node().id = 'row'+results.product[i]['product_id'];
+                  $('.tabel').DataTable().draw();
+            }
             $("#tambahModal").modal();
-            event.preventDefault();
-            myFunction();
+           
+           
+            
+
+            },
+            error: function(data) {
+                console.log(data);
+            }
+      });
+
         }
     }
+
+   
 
     function tampil_modal(){
       $("#tambahModal").modal();
     }
 
-    function myFunction() {
-     document.getElementById("search").value='';
-    }
+    // function myFunction() {
+    //  document.getElementById("search").value='';
+    // }
 
     jQuery( function( $ ) {
-
+     
         //   $('.cari').select2({
         //   placeholder: 'Or Search Your Product Name In Here !',
         //   ajax: {
@@ -317,10 +383,18 @@
               ids[i] = checks[i].id; 
               $("#"+ids[i]).prop("checked", false);
               ids[i] = ids[i].substring(2,10); //PR001
-              console.log(ids[i]);
-              addRow(ids[i]);
 
-              $("#tabelproduk tbody tr#row"+ids[i]).hide();
+              console.log(ids[i]);
+              if( $("#cart tbody tr#"+ids[i]).length){
+                console.log('masuk ifff');
+                  $('#jumlah'+ids[i]).val(parseInt($('#jumlah'+ids[i]).val())+1);  
+                  recount(ids[i]);
+              }
+              else{
+                addRow(ids[i]);
+              }
+              
+              // $("#tabelproduk tbody tr#row"+ids[i]).hide();
           }
         });
             //function agar di klik row mana saja bsa ke ceklis

@@ -19,7 +19,7 @@
       </div>
       <div class="modal-body">
         <table border="1" width="100%" id="tableModal">
-          <thead>
+          <!-- <thead>
             <td style="text-align:center"><b>Nama Barang</b></td>
             <td style="text-align:center"><b>Harga</b></td>
           </thead>
@@ -46,7 +46,7 @@
           <tr style="cursor:pointer" onclick="pilihBarang(6)">
               <td style="text-align:center">Sirup</td>
               <td style="text-align:center">2000</td>
-          </tr>
+          </tr> -->
        
         </table>
       </div>
