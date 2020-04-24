@@ -99,7 +99,7 @@
     <!-- <select class="cari form-control" style="width:500px;" name="cari" ></select> -->
 
     <input type="text" class="form-control" id="search" name="cari" 
-    value="" placeholder="Or Enter Your Product Name In Here !" onkeydown="getModal(event)">
+    value="" placeholder="Or Search Your Product Name In Here and Enter !" onkeydown="getModal(event)">
    
               <!-- Modal -->
               <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -183,7 +183,7 @@
                             <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td><td></td> 
                             <td>:</td>
-                            <td></td><td>Rp</td><td></td><td id="subtotal-val"></td> 
+                            <td></td><td>Rp</td><td></td><td id="subtotal-val" ></td> 
                         </tr>
                         <tr>
                         <input type="hidden" name="total_tax" id="total_tax">

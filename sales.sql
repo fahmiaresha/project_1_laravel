@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2020 at 05:28 PM
+-- Generation Time: Apr 23, 2020 at 05:08 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -164,7 +164,10 @@ INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `product_pri
 ('PR001', 'CAT002', 'Siomay', 10000, 100, '-'),
 ('PR002', 'CAT001', 'fanta', 7000, 100, '-'),
 ('PR003', 'CAT002', 'Chitatos', 7000, 70, '-'),
-('PR004', 'CAT001', 'Sprite', 9000, 50, '-');
+('PR004', 'CAT001', 'Sprite', 9000, 50, '-'),
+('PR005', 'CAT002', 'Oreo Coklat', 10000, 20, '-'),
+('PR006', 'CAT002', 'Oreo Vanilla', 10000, 200, '-'),
+('PR007', 'CAT002', 'Oreo Keju', 10000, 150, '-');
 
 --
 -- Triggers `product`
@@ -206,7 +209,8 @@ INSERT INTO `sales` (`nota_id`, `customer_id`, `user_id`, `nota_date`, `total_pa
 ('2004170004', 'CUS003', 'US002', '2020-04-17', 15400),
 ('2004210005', 'CUS001', 'US001', '2020-04-21', 7700),
 ('2004210006', 'CUS001', 'US001', '2020-04-21', 26400),
-('2004210007', 'CUS006', 'US003', '2020-04-21', 36300);
+('2004210007', 'CUS006', 'US003', '2020-04-21', 36300),
+('2004220008', 'CUS006', 'US001', '2020-04-22', 7700);
 
 --
 -- Triggers `sales`
@@ -259,7 +263,8 @@ INSERT INTO `sales_detail` (`nota_id`, `product_id`, `quantity`, `selling_price`
 ('2004210007', 'PR001', 1, 10000, 0, 10000),
 ('2004210007', 'PR002', 1, 7000, 0, 7000),
 ('2004210007', 'PR003', 1, 7000, 0, 7000),
-('2004210007', 'PR004', 1, 9000, 0, 9000);
+('2004210007', 'PR004', 1, 9000, 0, 9000),
+('2004220008', 'PR003', 1, 7000, 0, 7000);
 
 -- --------------------------------------------------------
 

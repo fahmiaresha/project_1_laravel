@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
+	<title>laporan-penjualan-pdf</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -23,10 +23,10 @@
     <thead class="thead-dark">
 			<tr>
             <th scope="col" style="text-align:center" >Nota ID</th>
-            <th scope="col" style="text-align:center" >Customer Name</th>
+            <th scope="col" width="20%" style="text-align:center" >Customer Name</th>
             <th scope="col" style="text-align:center" >User Name</th>
-            <th scope="col" style="text-align:center" >Date</th>
-            <th scope="col" style="text-align:center" >Total Payment</th>
+            <th scope="col" width="20%" style="text-align:center" >Date</th>
+            <th scope="col"  width="20%" style="text-align:center" >Total Payment</th>
 			</tr>
 		</thead>
 		<tbody>

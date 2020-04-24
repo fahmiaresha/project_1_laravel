@@ -27,7 +27,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
  <!-- Search 2-->
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+ <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
  
   

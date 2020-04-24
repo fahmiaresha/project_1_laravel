@@ -30,6 +30,7 @@ class Controller_Sales_Detail extends Controller
             $max= DB::table('sales')->max('nota_id');
              date_default_timezone_set('Asia/Jakarta');
              $date=date("ymd",time());
+             
             //  $maxday= substr($max,0,6);
             $max=substr($max,6);
             if($max>=1){
@@ -61,7 +62,7 @@ class Controller_Sales_Detail extends Controller
         // return view('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);
          $pdf = PDF::loadview('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);  
         //  return $pdf->stream();
-         return $pdf->download('laporan-pegawai-pdf');
+         return $pdf->download('laporan-penjualan-pdf');
     }
 
     public function store(Request $request)
