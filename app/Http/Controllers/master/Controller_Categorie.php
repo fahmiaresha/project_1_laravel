@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\categorie;
 use App\produk;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -46,19 +47,42 @@ class Controller_Categorie extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'category_name' => 'required'
+    //       ]);
+    //         categorie::create([
+    //          'category_name' => $request->category_name
+    //       ]);
+
+    //       return redirect('/kategori/index')->with('status','Data Berhasil Di
+    //       Tambahkan');
+    // }
+
     public function store(Request $request)
     {
+        
         $request->validate([
             'category_name' => 'required'
           ]);
+          try{
+            DB::beginTransaction();
             categorie::create([
-             'category_name' => $request->category_name
-          ]);
-
-          return redirect('/kategori/index')->with('status','Data Berhasil Di
-          Tambahkan');
-
-
+                'category_name' => $request->category_name
+             ]);
+            //   $error = \Illuminate\Validation\ValidationException::withMessages([
+            //         'field_name_1' => ['Validation Message #1'],
+            //         'field_name_2' => ['Validation Message #2'],
+            //      ]);
+            //     throw $error;
+             DB::commit();
+             return redirect('/kategori/index')->with('status','Data Berhasil Di
+             Tambahkan');
+          }
+          catch(Exception $exception){
+                return redirect('/kategori/index');
+          }
     }
 
 

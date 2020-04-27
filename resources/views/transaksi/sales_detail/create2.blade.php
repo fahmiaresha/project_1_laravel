@@ -125,8 +125,8 @@
 
                       <tbody>
                         @foreach($product as $pr)
-                        <tr id="row{{$pr -> product_id}}">
-                          <th scope="row"><input type="checkbox" id="pr{{$pr->product_id }}" ></th>
+                        <tr id="{{$pr -> product_id}}" onclick="pilih_barang(id)" style="cursor: pointer">
+                          <!-- <th scope="row"><input type="checkbox" id="pr{{$pr->product_id }}" ></th> -->
                           <td>{{ $pr->product_name}}</td>
                           <td>{{ $pr->product_price}}</td>
                           <td>{{ $pr->product_stok}}</td>
@@ -346,7 +346,7 @@
     //  document.getElementById("search").value='';
     // }
 
-    jQuery( function( $ ) {
+    // jQuery( function( $ ) {
      
         //   $('.cari').select2({
         //   placeholder: 'Or Search Your Product Name In Here !',
@@ -369,27 +369,27 @@
         //   }
         // });
         
-        $("#save").click(function(){
-          var checks = $("#tambahModal").find("input[type=checkbox]:checked");
-          var ids = Array();
-          for(var i=0;i<checks.length;i++) {
-              ids[i] = checks[i].id; 
-              $("#"+ids[i]).prop("checked", false);
-              ids[i] = ids[i].substring(2,10); //PR001
+        // $("#save").click(function(){
+        //   var checks = $("#tambahModal").find("input[type=checkbox]:checked");
+        //   var ids = Array();
+        //   for(var i=0;i<checks.length;i++) {
+        //       ids[i] = checks[i].id; 
+        //       $("#"+ids[i]).prop("checked", false);
+        //       ids[i] = ids[i].substring(2,10); //PR001
 
-              console.log(ids[i]);
-              if( $("#cart tbody tr#"+ids[i]).length){
-                console.log('masuk ifff');
-                  $('#jumlah'+ids[i]).val(parseInt($('#jumlah'+ids[i]).val())+1);  
-                  recount(ids[i]);
-              }
-              else{
-                addRow(ids[i]);
-              }
+        //       console.log(ids[i]);
+        //       if( $("#cart tbody tr#"+ids[i]).length){
+        //         console.log('masuk ifff');
+        //           $('#jumlah'+ids[i]).val(parseInt($('#jumlah'+ids[i]).val())+1);  
+        //           recount(ids[i]);
+        //       }
+        //       else{
+        //         addRow(ids[i]);
+        //       }
               
-              // $("#tabelproduk tbody tr#row"+ids[i]).hide();
-          }
-        });
+        //       // $("#tabelproduk tbody tr#row"+ids[i]).hide();
+        //   }
+        // });
             //function agar di klik row mana saja bsa ke ceklis
         // $('#tabelproduk tr').click(function() {
         //     var check = $(this).find("input[type=checkbox]");
@@ -400,9 +400,13 @@
         //       check.prop("checked", true);
         //     }
         // });
-      });
+    //   });
 
-    var products = <?php echo json_encode($product); ?>;
+    function pilih_barang(id){
+        addRow(id);
+    }
+
+    
 
   function addRow(id){
       var index = getIndex(id);
@@ -488,6 +492,8 @@
 	$("#cart tbody").append(markup);
 	recount(id);
 }
+
+var products = <?php echo json_encode($product); ?>;
 
 function getIndex(id){
 	for(var i = 0;i<products.length;i++){

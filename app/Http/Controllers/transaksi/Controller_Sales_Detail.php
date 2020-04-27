@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Barryvdh\DomPDF\Facade as PDF;
+use Exception;
 
 class Controller_Sales_Detail extends Controller
 {
@@ -74,24 +75,41 @@ class Controller_Sales_Detail extends Controller
             'total_payment' => 'required|numeric'
           ]);
 
-          DB::table('sales')->insert([
-            'customer_id' => $request->customer_id ,
-            'user_id' => $request->user_id ,
-            'nota_date' => $request->nota_date ,
-            'total_payment' => $request->total_payment 
-        ]);          
+          try{
+            DB::beginTransaction();
 
-            foreach($request['product_id'] as $pr){
-                DB::table('sales_detail')->insert([
-                    'nota_id' => $request->nota_id ,
-                    'product_id' => $pr ,
-                    'quantity' => $request['jumlah'][$pr] ,
-                    'selling_price' => $request['selling_price'][$pr] ,
-                    'discount' => $request['discount'][$pr] ,
-                    'total_price' => $request['total'][$pr]
-                ]);     
-            }
-            return redirect('/sales_detail/create')->with('insert','data berhasil di tambah');
+            DB::table('sales')->insert([
+                'customer_id' => $request->customer_id ,
+                'user_id' => $request->user_id ,
+                'nota_date' => $request->nota_date ,
+                'total_payment' => $request->total_payment 
+            ]);          
+    
+                foreach($request['product_id'] as $pr){
+                    DB::table('sales_detail')->insert([
+                        'nota_id' => $request->nota_id ,
+                        'product_id' => $pr ,
+                        'quantity' => $request['jumlah'][$pr] ,
+                        'selling_price' => $request['selling_price'][$pr] ,
+                        'discount' => $request['discount'][$pr] ,
+                        'total_price' => $request['total'][$pr]
+                    ]);     
+                }
+                // $error = \Illuminate\Validation\ValidationException::withMessages([
+                //     'field_name_1' => ['Validation Message #1'],
+                //     'field_name_2' => ['Validation Message #2'],
+                //  ]);
+                // throw $error;
+                DB::commit();
+                return redirect('/sales_detail/create')->with('insert','data berhasil di tambah');
+          }
+          catch(Exception $exception){
+            //   $eror = $exception;
+              DB::rollBack();
+              return redirect('/sales_detail/create');
+            //   return redirect('/sales_detail/create',['eror'=>$eror]);
+          } 
+           
     }
 
     public function index(){
