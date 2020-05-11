@@ -7,13 +7,13 @@
 <div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
-  <h2 class ="mt-3">Data User</h2>
+  <h2 class ="mt-3  animate__animated animate__backInLeft" style=" animation-duration: 3s;">Data User</h2>
   
   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary my-3" data-toggle="modal" 
+<button type="button" class="btn btn-success my-2 animate__animated animate__fadeInUp " style=" animation-duration: 3s; " data-toggle="modal" 
 data-target="#exampleModal3">
-  Tambah Data User
+<i class="fas fa-plus-circle"></i> Tambah Data User
 </button>
 @endif
 
@@ -161,6 +161,7 @@ data-target="#exampleModal3">
     @endif
     <font size="2">
       
+    
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
     <thead class="thead-dark">
     <tr>
@@ -324,12 +325,12 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
         Yakin Ingin Menghapus Data ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="badge badge-success">
+        <button type="button" class="btn btn-success">
         
        
        <a href="{{ url('/user/destroy/'.$us->user_id) }}">
         <font size="2" color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
@@ -344,6 +345,7 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
 <div class="container">
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
+      
 
       </div>
    </div>
@@ -354,9 +356,6 @@ data-target="#deleteModal{{$us -> user_id}}"><svg class="bi bi-trash-fill" width
 @section('tambahscript')
 
 <script>
-     window.onload=(function(){
-      $('.mydatatable').DataTable();
-     });
      function cekPass(){
        console.log('cekPass1');
              var pass = document.getElementById('password').value;   

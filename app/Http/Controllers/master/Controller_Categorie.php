@@ -81,6 +81,7 @@ class Controller_Categorie extends Controller
              Tambahkan');
           }
           catch(Exception $exception){
+              
                 return redirect('/kategori/index');
           }
     }

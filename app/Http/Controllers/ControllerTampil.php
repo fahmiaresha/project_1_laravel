@@ -29,7 +29,7 @@ class ControllerTampil extends Controller
             return redirect('/login')->with('alert','Anda Belum Login !');
         }
         else{
-         return view('template/dashboard')->with('login');
+         return view('template/dashboard')->with('login','yay!');
         }
      }
 
@@ -51,6 +51,7 @@ class ControllerTampil extends Controller
         }
         else{
          return view('template/about');
+         
         }
      }
 

@@ -25,6 +25,10 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('asset/kontak/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('asset/kontak/css/main.css') }}">
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
 <!--===============================================================================================-->
 @endsection
 
@@ -40,7 +44,7 @@
     </script>
     </font>
     @endif
-	<div class="container-contact100">
+	<div class="container-contact100 animate__animated animate__fadeInUp" style="animation-duration: 3s;">
 		<div class="wrap-contact100">
 			<form method="post" action="{{ url('/user/about') }}" class="contact100-form validate-form">
 			@csrf

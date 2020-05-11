@@ -19,7 +19,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Sweet Alert-->
     <!-- toast -->
-  
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('asset/Login_v18/css/main.css') }}">
 </head>
 <body>
 
@@ -83,7 +105,7 @@
     </script>
     </font>
 @endif
-<div class="main"> 
+<div class="main animate__animated animate__lightSpeedInLeft" style="animation-duration: 3s;"> 
   <!-- Sing in  Form -->
   <section class="sign-in">
             <div class="container">
@@ -115,14 +137,28 @@
                         <h2 class="form-title">Login</h2>
                         <form action="{{ url('/loginPost') }}" method="POST" class="register-form" id="login-form">
                         {{ csrf_field() }}    
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="text" name="email" id="email" placeholder="Email" value="{{ old('email') }}"/>
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                            
+                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="email" value="{{ old('email') }}">
+                            <span class="focus-input100"></span>
+                            <span class="label-input100">Email</span>
+                           </div>
+                            
+                           <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" name="password">
+                            <span class="focus-input100"></span>
+                            <span class="label-input100">Password</span>
+                        </div>
+                            <!-- <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="password" placeholder="Password"/>
-                            </div>
+                            </div> -->
+
+
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term" ><span><span></span></span>Remember me</label>
@@ -131,14 +167,14 @@
                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
                             </div>
                         </form>
-                        <div class="social-login">
+                        <!-- <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

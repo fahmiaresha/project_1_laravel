@@ -25,7 +25,7 @@
       </script>
       @endif
 
-<div class="container-fluid">
+<div class="container-fluid animate__animated animate__fadeInUp" style="animation-duration: 3s;">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">

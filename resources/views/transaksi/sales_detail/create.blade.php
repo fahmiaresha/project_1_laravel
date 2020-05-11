@@ -17,7 +17,7 @@
     </font>
     @endif
 
-<div class="container">
+<div class="container animate__animated animate__fadeInUp" style="animation-duration: 3s;">
 
     <div class="card border-light mb-3" style="max-width: 60rem;">
       <div class="card-header">

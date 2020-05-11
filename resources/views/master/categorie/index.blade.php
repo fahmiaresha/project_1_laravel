@@ -15,11 +15,11 @@
 <div class="container">
    <div class="row">
       <div class="col-6">
-  <h2 class ="mt-3">Data Kategori</h2>
+  <h2 class ="mt-3  animate__animated animate__backInLeft" style=" animation-duration: 3s; ">Data Kategori</h2>
   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal">
-  Tambah Data Kategori
+<button type="button" class="btn btn-success my-2 animate__animated animate__fadeInUp " style=" animation-duration: 3s; " data-toggle="modal" data-target="#exampleModal">
+<i class="fas fa-plus-circle"></i> Tambah Data Kategori
 </button>
 @endif
 
@@ -108,12 +108,12 @@
     </font>
     @endif
 
-
-    <font size="2"><table class="table table-striped table-bordered mydatatable"></font>
-    <thead class="thead-dark">
+  
+    <font size="2"><table class="table table-striped table-bordered mydatatable " style="width:100%; "></font>
+    <thead class="thead-dark ">
     <tr>
       @if(\Session::has('super_admin') || \Session::has('owner'))
-      <th width="2%" scope="col" style="text-align:center">Status</th>
+      <th width="2%" scope="col">Status</th>
       @endif
       <th scope="col" style="text-align:center">ID</th>
       <th scope="col" style="text-align:center">Category Name</th>
@@ -160,7 +160,7 @@
         <input  type="hidden" name="id" value="{{ $kt->category_id }}">
           @if($kt->status == 1)
           <div class="custom-control custom-switch">
-          <input type="checkbox" checked  class="custom-control-input" id="switch{{$kt->category_id}}">
+          <input type="checkbox" checked  class="custom-control-input" id="switch2{{$kt->category_id}}">
           <label class="custom-control-label" for="switch{{$kt->category_id}}" ></label>
           </div>
           <span class="badge badge-success"><font size="2">Active</font></span>
@@ -244,7 +244,7 @@ data-target="#e" >
           
         <!-- Button trigger modal -->
        
-<button type="button" class="badge badge-danger" data-toggle="modal" 
+<button type="button" class="badge badge-danger " data-toggle="modal" 
 data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
 </svg>Delete</button>
@@ -263,10 +263,10 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
         Yakin Ingin Menghapus Data ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="badge badge-success">
+        <button type="button" class="btn btn-success">
         <a href="{{ url('/kategori/destroy/'.$kt->category_id) }}">
         <font size="2" color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
@@ -284,6 +284,7 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
 <div class="container">
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
+    
 
       </div>
    </div>
@@ -292,8 +293,6 @@ data-target="#deleteModal{{$kt -> category_id}}"><svg class="bi bi-trash-fill" w
 @endsection
 @section('tambahscript')
 <script>
-$('.mydatatable').dataTable( {
-} );
     
     
 const x = document.getElementsByClassName('post0');

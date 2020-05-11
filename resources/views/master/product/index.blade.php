@@ -7,13 +7,13 @@
 <div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
-  <h2 class ="mt-3">Data Product</h2>
+  <h2 class ="mt-3  animate__animated animate__backInLeft" style=" animation-duration: 3s; ">Data Product</h2>
   
    <!-- Button trigger modal -->
    @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
-<button type="button" class="btn btn-primary my-3" data-toggle="modal" 
+<button type="button" class="btn btn-success my-2 animate__animated animate__fadeInUp " style=" animation-duration: 3s; " data-toggle="modal" 
 data-target="#exampleModal4">
-  Tambah Data Product
+<i class="fas fa-plus-circle"></i> Tambah Data Product
 </button>
 @endif
 
@@ -124,8 +124,11 @@ data-target="#exampleModal4">
     </script>
     </font>
     @endif
+    
     <font size="2">
+      
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
+      
     <thead class="thead-dark">
     <tr>
     <!-- <th scope="col">#</th> -->
@@ -141,6 +144,7 @@ data-target="#exampleModal4">
     </tr>
   </thead>
 
+  
   <tbody>
   @foreach($product as $pr )
     <tr>
@@ -196,10 +200,12 @@ data-target="#exampleModal4">
   <div class="form-group ">
     <label for="category_id"><font size="4">Category Name</font></label>
     <select class="form-control" id="category_id" name="category_id">
-    <option disabled selected="">Pilih Kategori</option>
+    <option  selected value="{{$pr->category_id}}">{{$pr->category_name}}</option>
+    @php $cek_jenis=$pr->category_id; @endphp
       @foreach($categories as $cat)
-      
+      @if($cek_jenis!=$cat->category_id)
       <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
+      @endif
       @endforeach
     </select>
   </div>
@@ -278,11 +284,11 @@ data-target="#exampleModal4">
         Yakin Ingin Menghapus Data ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="badge badge-success">
+        <button type="button" class="btn btn-success">
        
         <a href="{{ url('/product/destroy/'.$pr->product_id) }}">
         <font size="2" color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
@@ -297,7 +303,7 @@ data-target="#exampleModal4">
 <div class="container">
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
-
+    
       </div>
    </div>
   </div>

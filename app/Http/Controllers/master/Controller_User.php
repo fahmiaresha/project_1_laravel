@@ -22,6 +22,8 @@ class Controller_User extends Controller
       return view('template/login');
     }
 
+    
+
     public function loginPost(Request $request){
       $email = $request->email;
       $password = $request->password;
@@ -38,7 +40,8 @@ class Controller_User extends Controller
                  
                 }
                 if( $data->job_status =='Owner'){
-                Session::put('owner',TRUE);
+                 Session::put('owner',TRUE);
+                   
                 }
                 if($data->job_status == 'Admin' ){
                   Session::put('admin',TRUE);

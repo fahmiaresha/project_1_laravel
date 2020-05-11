@@ -15,12 +15,12 @@
    <div class="row">
       <div class="col-12">
      
-  <h2 class ="mt-3">Data Customer</h2>
+  <h2 class ="mt-3  animate__animated animate__backInLeft" style=" animation-duration: 3s; ">Data Customer</h2>
   
   @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal2">
-Tambah Data Customer
+<button type="button" class="btn btn-success my-2 animate__animated animate__fadeInUp " style=" animation-duration: 3s; " data-toggle="modal" data-target="#exampleModal2">
+<i class="fas fa-plus-circle"></i> Tambah Data Customer
 </button>
 @endif
 <!-- Modal -->
@@ -177,9 +177,8 @@ Tambah Data Customer
     @endif
   
 
-
     <font size="2">
-      <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
+      <table class="table table-striped table-bordered mydatatable " style="width:100%; "> </font>
     <thead class="thead-dark">
     <tr>
     @if(\Session::has('super_admin') || \Session::has('owner'))
@@ -187,15 +186,15 @@ Tambah Data Customer
     @endif
 
    
-      <th scope="col"  style="text-align:center" >ID</th>
-      <th scope="col"  style="text-align:center" >First Name</th>
-      <th scope="col"  style="text-align:center" >Last Name</th>
-      <th scope="col"  style="text-align:center" >Phone</th>
-      <th scope="col"  style="text-align:center" >Email</th>
-      <th scope="col"  style="text-align:center" >Street</th>
-      <th scope="col"  style="text-align:center" >City</th>
-      <th scope="col"  style="text-align:center" >State</th>
-      <th scope="col"  style="text-align:center" >Zip Code</th>
+      <th scope="col" style="text-align:center"  >ID</th>
+      <th scope="col" style="text-align:center"  >First Name</th>
+      <th scope="col" style="text-align:center"  >Last Name</th>
+      <th scope="col" style="text-align:center"  >Phone</th>
+      <th scope="col" style="text-align:center"  >Email</th>
+      <th scope="col" style="text-align:center"  >Street</th>
+      <th scope="col" style="text-align:center"  >City</th>
+      <th scope="col" style="text-align:center"  >State</th>
+      <th scope="col" style="text-align:center"  >Zip Code</th>
     
       @if(\Session::has('super_admin') || \Session::has('owner'))
       <th width="5%" scope="col">Action</th>
@@ -232,7 +231,7 @@ Tambah Data Customer
       <!-- </th> -->
      
       <td  style="text-align:center">{{ $cus->customer_Id }}</td>
-      <td  style="text-align:center"> {{ $cus->first_name }}</td>
+      <td style="text-align:center" > {{ $cus->first_name }}</td>
       <td style="text-align:center">{{ $cus->last_name }}</td>
       <td style="text-align:center">{{ $cus->phone }}</td>
       <td style="text-align:center">{{ $cus->email }}</td>
@@ -396,10 +395,10 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
         Yakin Ingin Menghapus Data ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="badge badge-success">
+        <button type="button" class="btn btn-success">
         <a href="{{ url('/customer/destroy/'.$cus->customer_Id) }}">
         <font size="2" color="white">Yes</font></a></button>
-        <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><font size="2">No</font></button>
       </div>
     </div>
   </div>
@@ -414,7 +413,7 @@ data-target="#exampleModal{{$cus -> customer_Id}}"><svg class="bi bi-trash-fill"
 <div class="container">
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
-
+      
 
       </div>
    </div>

@@ -7,7 +7,7 @@
 <div class="container" style="margin-left: 15px;">
    <div class="row">
       <div class="col-20">
-  <h2 class ="mt-3">Data Sales</h2>
+  <h2  class ="mt-3  animate__animated animate__backInLeft" style=" animation-duration: 3s;">Data Sales</h2>
   
    <!-- Button trigger modal -->
    @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin') || \Session::has('kasir'))
@@ -17,12 +17,12 @@ data-target="#exampleModal3">
 </button> -->
 <div class="form-row">
 <div class="form-group col-md-4">
-<a href="/sales_detail/create"><button type="button" class="btn btn-primary my-3">Tambah Data Sales</button></a>
+<a href="/sales_detail/create"><button type="button" class="btn btn-success my-2 animate__animated animate__fadeInUp " style=" animation-duration: 3s; "> <i class="fas fa-plus-circle"></i> Tambah Data Sales</button></a>
 </div>
 <div class="form-group col-md-5">
 </div>
 <div class="form-group col-md-3">
-<a href="/sales_detail/pdf"><button type="button" onclick="tampil_download()" class="btn btn-danger"><svg class="bi bi-download" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<a href="/sales_detail/pdf"><button type="button" onclick="tampil_download()" class="btn btn-danger animate__animated animate__fadeInUp " style=" animation-duration: 3s; "><svg class="bi bi-download" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M5 7.5a.5.5 0 01.707 0L8 9.793 10.293 7.5a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L5 8.207A.5.5 0 015 7.5z" clip-rule="evenodd"></path>
   <path fill-rule="evenodd" d="M8 1a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 1z" clip-rule="evenodd"></path>
@@ -405,6 +405,7 @@ data-target="#deleteModal{{$sl -> nota_id}}"><svg class="bi bi-trash-fill" width
 <div class="container">
       <div class="text-center text-muted"><font size="4">Copyright © 2020 - M.  Fahmi Aresha</font></div>
     </div>
+    
 
       </div>
    </div>

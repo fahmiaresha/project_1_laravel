@@ -34,6 +34,10 @@
    <!-- Toast-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> 
   
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
 
     @yield('head')
 </head>
@@ -60,7 +64,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('/dashboard') }}">
-        <i><img src="{{ asset('asset/login/images/dashboard.png') }}" width="16px" height="16px"></i>
+        <!-- <i><img src="{{ asset('asset/login/images/dashboard.png') }}" width="16px" height="16px"></i> -->
+        <i class="fas fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
@@ -76,7 +81,8 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i>
+          <!-- <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i> -->
+          <i class="fas fa-table"></i>
           <span>Master</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -95,7 +101,8 @@
      
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i>
+        <!-- <i><img src="{{ asset('asset/login/images/tabel.png') }}" width="16px" height="16px"></i> -->
+        <i class="fas fa-table"></i>
           <span>Transaction</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -108,22 +115,34 @@
         </div>
       </li>
      
+      <div class="sidebar-heading">
+        About
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/about') }}">
+          <!-- <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i> -->
+          <i class="fas fa-id-card"></i>
+          <!-- i></i>< -->
+          <span>Contact Us</span>
+        </a>
+      </li>
 
       <div class="sidebar-heading">
         Account
       </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-          <i><img src="{{ asset('asset/login/images/pengaturan.png') }}" width="16px" height="16px"></i>
+          <!-- <i><img src="{{ asset('asset/login/images/pengaturan.png') }}" width="16px" height="16px"></i> -->
+          <i class="fas fa-sync-alt"></i>
           <span>Settings</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens</h6> -->
           @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
-          <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a>
+          <!-- <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a> -->
           @endif
-          <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <a class="collapse-item"  onclick="tampil_logout()">Logout</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -149,25 +168,7 @@
   </div>
 
       
-      <div class="sidebar-heading">
-        About
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('/about') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
-          <!-- i></i>< -->
-          <span>Contact Us</span>
-        </a>
-        <!-- <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
-          <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens</h6>
-          <a class="collapse-item" href="{{ url('/about') }}">Developer</a>
-        
-          
-            <div class="collapse-divider"></div>
-          </div>
-        </div> -->
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -357,8 +358,8 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session::get('coba')}}</span>
-                
-                <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" role="img" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg-inline--fa fa-user-circle fa-w-16 fa-fw fa-2x"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" class=""></path></svg>
+                <!-- <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG"> -->
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -375,7 +376,7 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" onclick="tampil_logout()">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -439,8 +440,6 @@
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <!-- <script src="./src/bootstrap-input-spinner.js"></script> -->
    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
   
 
@@ -464,9 +463,47 @@
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
    <!-- toast -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
+   
+   <script>
+     $('.mydatatable').DataTable();
+     function tampil_logout(){
+              // event.preventDefault();
+              // var urlToRedirect = event.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
+              // console.log(urlToRedirect); // verify if this is the right URL
+              
+              Swal.fire({
+                  title: 'Apakah Anda Ingin Logout ?',
+                  text: "Session Akan Di Reset !",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Logout'
+                  
+                }).then((result) => {
+                  if (result.value) {
+                    Swal.fire(
+                      'Success!',
+                      'Anda Berhasil Logout !',
+                      'success'
+                    
+                    )
+                    tampil_link();
+                  }
+                })
+            }
+            function tampil_link(){
+              window.location.href = "{{URL::to('/logout')}}"
+            }
+  </script>
+   @yield('tambahscript')
   <!-- </div>
+
 
   
 
@@ -474,10 +511,8 @@
 
  
 </body>
- <script>
-     $('.mydatatable').DataTable();
-</script> > -->
 
 
-     @yield('tambahscript')
+
+    
 </html>
