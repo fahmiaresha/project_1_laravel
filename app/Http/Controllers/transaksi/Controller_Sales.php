@@ -40,6 +40,17 @@ class Controller_Sales extends Controller
         }
     }
 
+    public function invoice($id){
+        $customer = DB::table('customer')->get();
+        $sales = DB::table('sales')->get();
+        $sales_detail = DB::table('sales_detail')->get();
+        $product = DB::table('product')->get();
+        $nota = DB::table('sales')->where('nota_id',$id)->get();
+        $invoice=$id;
+        return view('transaksi/sales/invoice',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
+        'product'=>$product,'sales_detail'=>$sales_detail]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

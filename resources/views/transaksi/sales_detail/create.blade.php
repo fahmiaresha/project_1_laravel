@@ -17,11 +17,11 @@
     </font>
     @endif
 
-<div class="container animate__animated animate__fadeInUp" style="animation-duration: 3s;">
+<div class="container" >
 
     <div class="card border-light mb-3" style="max-width: 60rem;">
       <div class="card-header">
-      <h3>Point Of Sales</h3>
+      <h3 class=" animate__animated animate__fadeInUp" style="animation-duration: 3s;">Point Of Sales</h3>
       </div>
       
    
