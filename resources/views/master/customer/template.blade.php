@@ -454,12 +454,13 @@
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('asset/admin/js/sb-admin-2.min.js') }}"></script>
 
-  <!-- Page level plugins -->
+  <!-- CHART GRAFIK -->
   <script src="{{ asset('asset/admin/vendor/chart.js/Chart.min.js') }}"></script>
-
-  <!-- Page level custom scripts -->
   <script src="{{ asset('asset/admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('asset/admin/js/demo/chart-pie-demo.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
@@ -471,6 +472,11 @@
    
    <script>
      $('.mydatatable').DataTable();
+     console.log('===================');
+     console.log('Selamat Datang Di Web Admin');
+     console.log('Copyright © 2020');
+     console.log(' - M.Fahmi Aresha');
+     console.log('===================');
      function tampil_logout(){
               // event.preventDefault();
               // var urlToRedirect = event.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty

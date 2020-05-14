@@ -280,7 +280,6 @@
   //   //  }
    ); 
   
-
   //  function getModal(event){
   //       if(event.keyCode==13){
   //           $("#tambahModal").modal();
@@ -288,12 +287,10 @@
   //           myFunction();
   //       }
   //   }
-
   function getModal(event){
         if(event.keyCode==13){
           var key = document.getElementById('search').value;
           event.preventDefault();
-
             $.ajaxSetup({
               headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -326,26 +323,20 @@
            
            
             
-
             },
             error: function(data) {
                 console.log(data);
             }
       });
-
         }
     }
-
    
-
     function tampil_modal(){
       $("#tambahModal").modal();
     }
-
     // function myFunction() {
     //  document.getElementById("search").value='';
     // }
-
     jQuery( function( $ ) {
      
         //   $('.cari').select2({
@@ -376,7 +367,6 @@
               ids[i] = checks[i].id; 
               $("#"+ids[i]).prop("checked", false);
               ids[i] = ids[i].substring(2,10); //PR001
-
               console.log(ids[i]);
               if( $("#cart tbody tr#"+ids[i]).length){
                 console.log('masuk ifff');
@@ -401,9 +391,7 @@
         //     }
         // });
       });
-
     var products = <?php echo json_encode($product); ?>;
-
   function addRow(id){
       var index = getIndex(id);
       var id = products[index]["product_id"];
@@ -488,7 +476,6 @@
 	$("#cart tbody").append(markup);
 	recount(id);
 }
-
 function getIndex(id){
 	for(var i = 0;i<products.length;i++){
 	  if(products[i]["product_id"] == id){
@@ -499,7 +486,6 @@ function getIndex(id){
 	  }
 	}
 }
-
 function money(text){
 	var text = text.toString();
   // console.log(text);
@@ -544,7 +530,6 @@ function money(text){
 		return 0;
 	}
 }
-
     function recount(id) {
       console.log("function recount");
       var jumlah = document.getElementById("jumlah"+id).value;
@@ -554,13 +539,11 @@ function money(text){
       document.getElementById("total"+id).value = subtotal;
       percentDisc(id);
     };
-
     function delRow(id){
           $('#cart tbody tr#'+id).remove();
           getTotal();
           $("#tabelproduk tbody tr#row"+id).show();
     }
-
     function percentDisc(id){
       console.log("function percentDisc");
       var percent = document.getElementById("percent"+id).value;
@@ -571,16 +554,13 @@ function money(text){
       var total = document.getElementById("total"+id).value;
       var hasil = (Number(percent)/100) * total;
       document.getElementById("discount"+id).value = hasil;
-
       document.getElementById("total"+id).value = total;
       document.getElementById("total-val"+id).innerHTML = money(total-hasil);
       getTotal();
     };
-
     function getTotal(){
       console.log("function getTotal");
       var totals = document.getElementsByClassName("total");
-
       var i;
       var total_p = 0;
       for (i = 0; i < totals.length; ++i) {
@@ -588,9 +568,7 @@ function money(text){
       }
       document.getElementById('subtotal').value = total_p ;
       document.getElementById('subtotal-val').innerHTML = money(total_p);
-
       var discounts = document.getElementsByClassName("discount");
-
       var i;
       var total_disc = 0;
       for (i = 0; i < discounts.length; ++i){
@@ -603,7 +581,6 @@ function money(text){
       // console.log(money(l));
       document.getElementById('total_discount').value = total_disc;
       document.getElementById('total_discount-val').innerHTML = money(total_disc);
-
       let k = (Number(total_p))-total_disc;
       if(k<=0){
         console.log('masuk if k<=0');
@@ -617,7 +594,6 @@ function money(text){
       }
      
     };
-
     function inc(id){
           var oldValue = $("#jumlah"+id).val();//jumlahPR004
           console.log('Nilai Old Value : ');
@@ -632,7 +608,6 @@ function money(text){
             console.log("massssuk");
           }
     }
-
         function dec(id){
           var oldValue = $("#jumlah"+id).val();
           if (parseFloat(oldValue) > 1) {
@@ -641,7 +616,5 @@ function money(text){
           }
           recount(id);
         }
-
 </script> 
 @endsection
-
