@@ -1,18 +1,26 @@
-@extends('master/customer/template')
-
-@section('title','Halaman Invoice')
-@section('konten')
-
-<div class="container-fluid animate__animated animate__fadeInUp" style="animation-duration: 3s;">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>print-invoice-pdf</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+       <h2> <strong>Invoice Penjualan</strong></h2>
+    </center>
+    <br>
+    <div class="container">
 
 <div class="card" style="width: 1070px;">
   <div class="card-body">
     <div class="form-row">
-    <div class="form-group col-md-10">
+    <div class="form-group col-md-9">
     <h3 class="card-title mb-3"><strong>Invoice #{{$invoice}}</strong></h3>
     </div>
-    <div class="form-group col-md-2">
-    <a href="/sales/pdf/{{$invoice}}"><button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Print Invoice</button></a>
+    <div class="form-group col-md-3 mt-3">
+     <h6 style="font-family: Arial, Helvetica, sans-serif">
+     <strong>Created at : @php  echo date('H:i:s d-m-Y'); @endphp</strong>
+     </h6>
     </div>
 
 
@@ -176,65 +184,12 @@
 </div>
 
 </div>
-
-<!-- <div class="form-row mt-7">
-      <div class="form-group col-md-7">
-      </div>
-      <div class="form-group col-md-4">
-             @php $z=0; @endphp
-                @foreach($sales_detail as $sd)
-                @if($sd->nota_id==$invoice)
-                  @php $z=$z+$sd->total_price @endphp
-                @endif
-                @endforeach
-                <label><font size="3"><strong>Subtotal: Rp. {{$z}}</strong></font></label>
-                
-      </div>
-</div>
-
-<div class="form-row" style="margin-top:-12px">
-      <div class="form-group col-md-7">
-      </div>
-      <div class="form-group col-md-4">
-                @php $t=0; @endphp
-                @foreach($sales_detail as $sd)
-                @if($sd->nota_id==$invoice)
-                  @php $t=$t+$sd->discount @endphp
-                @endif
-                @endforeach
-        <label><font size="3"><strong>Total Discount : Rp. {{$t}}</strong></font></label>
-       </div>
-      </div>
-
-      <div class="form-row" style="margin-top:-12px">
-        <div class="form-group col-md-7">
-       </div>
-       <div class="form-group col-md-4">            
-                  @php $p=($z*0.1) @endphp
-                  <label><font size="3"><strong>Discount (10%): Rp. {{$p}}</strong></font></label>
-       </div>
-        </div>
-
-        <div class="form-row" style="margin-top:-12px">
-        <div class="form-group col-md-7">
-       </div>
-       <div class="form-group col-md-4">
-        @foreach($sales as $sd)
-          @if($sd->nota_id==$invoice)
-          <div class="form-row">
-          <label><font size="3"><strong>Total Payment : Rp. {{$sd->total_payment}}</strong></font></label>
-          </div>
-          @endif
-          @endforeach
-       </div>
-        </div> -->
-
         
-  
-
     </div>
   </div>
 </div>
 
 </div>
-@endsection
+    </body>
+</html>
+

@@ -50,7 +50,7 @@ Route::post('/registerPost', 'master\Controller_User@registerPost');
 // Route::get('/logout', 'User@logout');
 
 // Route::get('/kontak', 'ControllerTampil@tampil_kontak');
-Route::get('/dashboard', 'ControllerTampil@tampil_dashboard');
+Route::get('/dashboard', 'master\Controller_User@tampil_dashboard');
 Route::get('/rating', 'ControllerTampil@tampil_rating');
 Route::get('/about', 'ControllerTampil@tampil_about');
 
@@ -96,9 +96,11 @@ Route::get('/sales/index','transaksi\Controller_Sales@index');
 Route::post('/sales/store','transaksi\Controller_Sales@store');
 Route::get('/sales/create','transaksi\Controller_Sales@create');
 Route::get('/sales/invoice/{id}','transaksi\Controller_Sales@invoice');
+Route::get('/sales/pdf/{id}','transaksi\Controller_Sales@pdf');
 Route::get('/sales/edit','transaksi\Controller_Sales@edit');
 Route::post('/sales/update','transaksi\Controller_Sales@update');
 Route::get('/sales/destroy/{id}','transaksi\Controller_Sales@destroy');
+
 
 Route::post('/pos/store','transaksi\Controller_Sales_Detail@store');
 

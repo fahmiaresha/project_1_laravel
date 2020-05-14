@@ -163,9 +163,14 @@
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term" ><span><span></span></span>Remember me</label>
                             </div>
-                            <div class="form-group form-button">
+                            <!-- <div class="form-group form-button">
                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
-                            </div>
+                            </div> -->
+                            <div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Log In
+						</button>
+				    	</div>
                         </form>
                         <!-- <div class="social-login">
                             <span class="social-label">Or login with</span>

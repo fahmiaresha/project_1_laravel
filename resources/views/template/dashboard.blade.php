@@ -3,7 +3,7 @@
 @section('konten')
 
 
-      @if (session('login'))
+      @if (session('login_masuk'))
       <script>
       const Toast = Swal.mixin({
           toast: true,

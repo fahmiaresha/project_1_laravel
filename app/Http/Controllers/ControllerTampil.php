@@ -24,14 +24,7 @@ class ControllerTampil extends Controller
          return $pdf->stream();
      }
 
-     public function tampil_dashboard(){
-        if(!Session::get('login')){
-            return redirect('/login')->with('alert','Anda Belum Login !');
-        }
-        else{
-         return view('template/dashboard')->with('login','yay!');
-        }
-     }
+    
 
      public function tampil_ajax(){
       return view('javascript/ajax2');

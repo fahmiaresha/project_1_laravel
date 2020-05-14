@@ -16,7 +16,19 @@
     </center>
     <br>
     <div class="container">
-    
+   
+    <div class="form-row" style="margin-top:-10px;">
+    <div class="form-group col-md-9">
+    <strong>Created at : @php  echo date('H:i:s d-m-Y'); @endphp</strong>
+    </div>
+    <div class="form-group col-md-3 mt-3">
+     <h6 style="font-family: Arial, Helvetica, sans-serif">
+     
+     </h6>
+    </div>
+
+
+    </div>
 
     <font size="2">
       <table class="table table-striped table-bordered mydatatable" style="width:100%;"> </font>
@@ -44,6 +56,7 @@
     </table>
 
     </div>
+    
 
     </body>
 </html>

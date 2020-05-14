@@ -242,21 +242,66 @@ data-target="#exampleModal3">
           </tbody>  
           </table>
           <div class="container">
+            
           <!-- <br> -->
-          <div class="form-row">
+          <div class="form-row mt-4">
+          <div class="form-group col-md-5">
+          </div>
+          <div class="form-group col-md-3">
+             @php $z=0; @endphp
+                @foreach($sales_detail as $sd)
+                @if($sd->nota_id==$sl->nota_id)
+                  @php $z=$z+$sd->total_price @endphp
+                @endif
+                @endforeach
+                <label><font size="3"><strong>Subtotal : </strong></font></label>
+          </div>
+          <div class="form-group col-md-3">
+          <label><font size="3"><strong>Rp. {{$z}} </strong></font></label>
+          </div>
+           
+          </div>
+
+          <div class="form-row "style="margin-top: -15px">
+          <div class="form-group col-md-5">
+          </div>
+          <div class="form-group col-md-3">
           @php $t=0; @endphp
           @foreach($sales_detail as $sd)
           @if($sl->nota_id == $sd->nota_id)
              @php $t=$t+$sd->discount @endphp
           @endif
           @endforeach
-          <label><font size="3"><strong>Total Discount : Rp. {{$t}}</strong></font></label>
+          <label><font size="3"><strong>Discount :</strong></font></label>
+          </div>
+          <div class="form-group col-md-3">
+          <label><font size="3"><strong> Rp. {{$t}}</strong></font></label>
+          </div>
+          </div>
+
+          <div class="form-row" style="margin-top: -15px">
+          <div class="form-group col-md-5">
+          </div>
+          <div class="form-group col-md-3">
+          @php $b=($z*0.1) @endphp
+          <label><font size="3"><strong>Tax (10%) : </strong></font></label>
+          </div>
+          <div class="form-group col-md-3">
+          <label><font size="3"><strong>Rp. {{$b}}</strong></font></label>
+          </div>
           </div>
 
           @foreach($sales_detail as $sd)
           @if($sl->nota_id == $sd->nota_id)
-          <div class="form-row">
-          <label><font size="3"><strong>Total Payment : Rp. {{$sl->total_payment}}</strong></font></label>
+          <div class="form-row" style="margin-top: -15px">
+          <div class="form-group col-md-5">
+          </div>
+          <div class="form-group col-md-3">
+          <label><font size="3"><strong> Payment : </strong></font></label>
+          </div>
+          <div class="form-group col-md-3">
+          <label><font size="3"><strong>Rp. {{$sl->total_payment}}</strong></font></label>
+          </div>
           </div>
           @break
           @endif

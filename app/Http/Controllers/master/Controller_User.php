@@ -22,7 +22,14 @@ class Controller_User extends Controller
       return view('template/login');
     }
 
-    
+    public function tampil_dashboard(){
+      if(!Session::get('login')){
+          return redirect('/login')->with('alert','Anda Belum Login !');
+      }
+      else{
+       return view('template/dashboard');
+      }
+   }
 
     public function loginPost(Request $request){
       $email = $request->email;
@@ -49,7 +56,7 @@ class Controller_User extends Controller
                 if($data->job_status == 'Kasir' ){
                   Session::put('kasir',TRUE);
                 }
-              return redirect('/dashboard');
+              return redirect('/dashboard')->with('login_masuk','sukses !');
           }
           else{
               return redirect('/login')->with('salah_password','Password Anda , Salah !');

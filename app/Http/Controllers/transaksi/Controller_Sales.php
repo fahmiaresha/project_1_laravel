@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class Controller_Sales extends Controller
 {
@@ -49,6 +50,21 @@ class Controller_Sales extends Controller
         $invoice=$id;
         return view('transaksi/sales/invoice',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
         'product'=>$product,'sales_detail'=>$sales_detail]);
+    }
+
+    public function pdf($id){
+        $customer = DB::table('customer')->get();
+        $sales = DB::table('sales')->get();
+        $sales_detail = DB::table('sales_detail')->get();
+        $product = DB::table('product')->get();
+        $nota = DB::table('sales')->where('nota_id',$id)->get();
+        $invoice=$id;
+        return view('transaksi/sales/pdf_sales',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
+        'product'=>$product,'sales_detail'=>$sales_detail]);
+
+        // $pdf=PDF::loadview('transaksi/sales/pdf_sales',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
+        // 'product'=>$product,'sales_detail'=>$sales_detail]);
+        //  return $pdf->download('print-invoice-pdf');
     }
 
     /**
