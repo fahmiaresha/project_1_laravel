@@ -45,7 +45,12 @@ Route::get('/login', 'master\Controller_User@login');
 Route::post('/loginPost', 'master\Controller_User@loginPost');
 Route::get('/register', 'master\Controller_User@register');
 Route::post('/registerPost', 'master\Controller_User@registerPost');
-
+Route::get('/lupapassword', 'master\Controller_User@lupapassword');
+Route::post('/getpassword', 'master\Controller_User@getpassword');
+Route::get('/profile', 'master\Controller_User@profile');
+Route::post('/updateprofile', 'master\Controller_User@updateprofile');
+Route::get('/ubahpassword', 'master\Controller_User@ubahpassword');
+Route::post('/updatepassword', 'master\Controller_User@updatepassword');
 
 // Route::get('/logout', 'User@logout');
 

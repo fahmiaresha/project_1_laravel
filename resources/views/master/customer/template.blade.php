@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" type="image/png" href="{{ asset('asset/admin/img/fahmi.jpg') }}">
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -142,7 +143,9 @@
           @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
           <!-- <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a> -->
           @endif
-          <a class="collapse-item"  onclick="tampil_logout()">Logout</a>
+          <a href="profile" class="collapse-item" style="cursor: pointer;">Profile</a>
+          <a href="ubahpassword" class="collapse-item" style="cursor: pointer;">Ubah Password</a>
+          <a class="collapse-item"  onclick="tampil_logout()" style="cursor:pointer">Logout</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -376,8 +379,18 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" onclick="tampil_logout()">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <a href="/profile" class="dropdown-item">
+                <i class="far fa-id-badge fa-sm fa-fw mr-2 text-gray-400"></i>
+                <!-- <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> -->
+                  Profile
+                </a>
+                <a href="/ubahpassword" class="dropdown-item">
+                <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                 Ubah Password
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item"  onclick="tampil_logout()" style="cursor:pointer" >
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" ></i>
                   Logout
                 </a>
               </div>

@@ -62,7 +62,7 @@ class Controller_Sales_Detail extends Controller
         $user = DB::table('user')->get();
         // return view('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);
          $pdf = PDF::loadview('transaksi/sales_detail/pdf',['sales_detail'=>$sales_detail,'sales'=>$sales,'customer'=>$customer,'user'=>$user]);  
-       
+         $pdf->setPaper('a4');
          return $pdf->download('laporan-penjualan-pdf');
     }
 

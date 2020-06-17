@@ -61,10 +61,11 @@ class Controller_Sales extends Controller
         $invoice=$id;
         return view('transaksi/sales/pdf_sales',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
         'product'=>$product,'sales_detail'=>$sales_detail]);
-
+        // $customPaper = array(0,0,1190.5511811,1190.5511811016);
         // $pdf=PDF::loadview('transaksi/sales/pdf_sales',['nota'=>$nota,'customer'=>$customer,'sales'=>$sales,'invoice'=>$invoice,
         // 'product'=>$product,'sales_detail'=>$sales_detail]);
-        //  return $pdf->download('print-invoice-pdf');
+        // $pdf->setPaper($customPaper);
+        //  return $pdf->stream('print-invoice-pdf');
     }
 
     /**

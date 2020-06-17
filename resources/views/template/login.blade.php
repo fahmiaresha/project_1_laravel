@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Halaman Login</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="icon" type="image/png" href="{{ asset('asset/admin/img/fahmi.jpg') }}">
     <!-- Font Icon -->
 
     <link rel="stylesheet" href="{{ asset('asset/login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
@@ -143,15 +145,15 @@
                             </div> -->
                             
                             <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" value="{{ old('email') }}">
+                            <input class="input100" type="email" name="email" value="{{ old('email') }}" required>
                             <span class="focus-input100"></span>
-                            <span class="label-input100">Email</span>
+                            <span class="label-input100" >Email</span>
                            </div>
                             
                            <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" name="password">
+                            <input class="input100" type="password" name="password" required>
                             <span class="focus-input100"></span>
-                            <span class="label-input100">Password</span>
+                            <span class="label-input100" required>Password</span>
                         </div>
                             <!-- <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
@@ -162,6 +164,9 @@
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term" ><span><span></span></span>Remember me</label>
+                                <div class="coba mt-1" style="text-align: right;">
+                    <strong><a href="/lupapassword"><font size="2" style="color:skyblue">Lupa Password ?</font></strong></a>
+                    </div>
                             </div>
                             <!-- <div class="form-group form-button">
                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
